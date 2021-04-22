@@ -84,3 +84,7 @@ nb-configuration.xml
 .DS_Store
 /test output/
 /test-output/
+##############################
+## automationcraft
+##############################
+src/test/resources/
