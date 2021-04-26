@@ -6,7 +6,7 @@
 
     <groupId>com.fahelo.dev</groupId>
     <artifactId>automationcraft</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -127,18 +127,5 @@
                 </configuration> </execution> </executions> </plugin> -->
         </plugins>
     </build>
-
-    <distributionManagement>
-        <repository>
-            <id>automationcraft</id>
-            <name>automationcraft_releases</name>
-            <url>http://localhost:8081/repository/automationcraft_releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>automationcraft</id>
-            <name>automationcraft_snapshot</name>
-            <url>http://localhost:8081/repository/automationcraft_snapshot/</url>
-        </snapshotRepository>
-    </distributionManagement>
     
 </project>

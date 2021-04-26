@@ -20,7 +20,7 @@ public class JetSmartHomePage extends SeleniumBase {
     private By aTagCheckIn = By.xpath("//a[@href='#dg-check-in-modal']");
     private By aTagAdministraTuViaje = By.xpath("//a[@href='#dg-administer-modal']");
     private By aTagEmpresas = By.xpath("//a[@href='./empresas']");
-    private By aTagIniciaSesion = By.cssSelector(".login-container > li:nth-child(4) > a:nth-child(1)");
+    private By aTagIniciaSesion = By.cssSelector(" ");
     private By aTagClienteBancoEstado = By.cssSelector(".login-container > li:nth-child(5) > a:nth-child(1)");
     private By btnPopUp = By.xpath("//div[@class='modal-header']//button[@type='button']//span[@aria-hidden='true'][contains(text(),'×')]");
 
