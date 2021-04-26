@@ -20,7 +20,7 @@
 		<documentTitle>Extent</documentTitle>
 		<!-- report name - displayed at top-nav -->
 
-		<reportName>JetSmart Report</reportName>
+		<reportName>AutomationCraft Report</reportName>
 		<!-- location of charts in the test view -->
 
 		<!-- top, bottom -->

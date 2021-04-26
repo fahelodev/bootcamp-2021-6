@@ -87,4 +87,7 @@ nb-configuration.xml
 ##############################
 ## automationcraft
 ##############################
-src/test/resources/
+/src/test/resources/config.properties
+/src/test/resources/cucumber.properties
+/src/test/resources/extent.properties
+/src/test/resources/extent-config.xml

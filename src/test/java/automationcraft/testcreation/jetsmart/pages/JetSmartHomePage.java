@@ -1,4 +1,4 @@
-package automationcraft.testcreation.pages;
+package automationcraft.testcreation.jetsmart.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,9 +20,9 @@ public class JetSmartHomePage extends SeleniumBase {
     private By aTagCheckIn = By.xpath("//a[@href='#dg-check-in-modal']");
     private By aTagAdministraTuViaje = By.xpath("//a[@href='#dg-administer-modal']");
     private By aTagEmpresas = By.xpath("//a[@href='./empresas']");
-    private By aTagIniciaSesion = By.cssSelector(" ");
+    private By aTagIniciaSesion = By.xpath("//span[contains(text(),'Inicia Sesión')]");
     private By aTagClienteBancoEstado = By.cssSelector(".login-container > li:nth-child(5) > a:nth-child(1)");
-    private By btnPopUp = By.xpath("//div[@class='modal-header']//button[@type='button']//span[@aria-hidden='true'][contains(text(),'×')]");
+    private By btnPopUp = By.xpath("//div[@class='modal-header']//button[@type='button']");
 
 
 
