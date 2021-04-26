@@ -127,18 +127,5 @@
                 </configuration> </execution> </executions> </plugin> -->
         </plugins>
     </build>
-
-    <distributionManagement>
-        <repository>
-            <id>automationcraft</id>
-            <name>automationcraft_releases</name>
-            <url>http://localhost:8081/repository/automationcraft_releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>automationcraft</id>
-            <name>automationcraft_snapshot</name>
-            <url>http://localhost:8081/repository/automationcraft_snapshot/</url>
-        </snapshotRepository>
-    </distributionManagement>
     
 </project>
