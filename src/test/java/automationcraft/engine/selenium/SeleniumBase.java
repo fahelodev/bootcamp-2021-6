@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Clase Base de Selenium, para poder enmascarar
  * la version de Selenium
- * @author eduardo.araya
+ * @responsable eduardo.araya
  */
 public class SeleniumBase {
 
@@ -44,7 +44,7 @@ public class SeleniumBase {
     /**
      * funcion que obtiene el texto de un objeto WebElement
      * @param locator: Objeto By del repositorio
-     * @return String
+     * @return String     *
      */
     public String getText (By locator){
         return driver.findElement(locator).getText();

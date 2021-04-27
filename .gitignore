@@ -91,3 +91,4 @@ nb-configuration.xml
 /src/test/resources/cucumber.properties
 /src/test/resources/extent.properties
 /src/test/resources/extent-config.xml
+/test-output-thread/
