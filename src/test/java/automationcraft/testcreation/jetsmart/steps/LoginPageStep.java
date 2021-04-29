@@ -10,6 +10,7 @@ public class LoginPageStep {
 
     private JetSmartHomePage homePage = new JetSmartHomePage(DriverFactory.getDriver());
     private JetSmartInicioSesionPage inicioSesionPage = new JetSmartInicioSesionPage(DriverFactory.getDriver());
+    private String title;
 
 
     @Given("user is on login page")
@@ -21,15 +22,13 @@ public class LoginPageStep {
 
     @When("user gets the title of the page")
     public void user_gets_the_title_of_the_page() {
-        String title =  inicioSesionPage.getTitle();
-        System.out.println("inicio Sesion Page titile is: "+title);
-
+        title =  inicioSesionPage.getTitle();
     }
 
     @Then("page title should be {string}")
     public void page_title_should_be(String string) {
         // Write code here that turns the phrase above into concrete actions
-        Assert.assertEquals(string,"Vuelos Baratos – JetSMART Aviones Nuevos | Sitio Oficial");
+        Assert.assertEquals(string,title);
     }
 
     @Then("forgot message link should be displayed")

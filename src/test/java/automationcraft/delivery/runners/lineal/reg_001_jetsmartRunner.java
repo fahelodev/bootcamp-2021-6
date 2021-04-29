@@ -1,8 +1,8 @@
 package automationcraft.delivery.runners.lineal;
 
+import org.junit.runner.RunWith;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
-import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
@@ -10,6 +10,6 @@ import org.junit.runner.RunWith;
         glue = {"automationcraft.testcreation.jetsmart.steps","automationcraft.engine.bdd"},
         plugin = {"pretty","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                   "timeline:test-output-thread"}
-)
-public class reg_001_jetsmart {
+        )
+public class reg_001_jetsmartRunner {
 }

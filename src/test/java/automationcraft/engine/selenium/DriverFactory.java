@@ -27,7 +27,6 @@ public class DriverFactory {
         }else {
             System.out.println("Please pass the correct browser value: "+browser);
         }
-
         getDriver().manage().deleteAllCookies();
         getDriver().manage().window().maximize();
         return getDriver();
