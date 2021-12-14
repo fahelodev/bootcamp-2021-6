@@ -42,7 +42,7 @@ public class CountingDuplicatesTest {
     }
     @Test
     public void devuelveUnoCaracterRepetido (){
-        assertEquals(1,CountingDuplicates.duplicateCount("aaaaaaaaaa"));
+        assertEquals(1,CountingDuplicates.duplicateCount("aaaaaaaabcdaa"));
     }
 
     @Test
@@ -50,4 +50,8 @@ public class CountingDuplicatesTest {
         assertEquals(2,CountingDuplicates.duplicateCount("aA11"));
     }
 
+    @Test
+    public void neg_IngresoDeStringNoAlfaNumerico(){
+        assertEquals(-1,CountingDuplicates.duplicateCount("!@##$%^@"));
+    }
 }
