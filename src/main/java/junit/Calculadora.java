@@ -18,6 +18,11 @@ public class Calculadora {
         return ans;
     }
 
+    public int multiplicar(int numero1, int numero2){
+        ans = numero1 * numero2;
+        return ans;
+    }
+
     public int ans() {
         return ans;
     }
