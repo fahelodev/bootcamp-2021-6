@@ -1,5 +1,4 @@
-package iromero;
-
+package katas.iromero;
 
 import java.util.*;
 

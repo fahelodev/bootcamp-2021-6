@@ -1,5 +1,4 @@
-package iromero;
-
+package katas.iromero;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

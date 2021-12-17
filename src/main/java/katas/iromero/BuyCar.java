@@ -1,4 +1,4 @@
-package iromero;
+package katas.iromero;
 
 public class BuyCar {
     public static int[] nbMonths(float startPriceOld, float startPriceNew, float savingperMonth, double percentLossByMonth) {
