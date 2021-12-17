@@ -1,5 +1,7 @@
+package katas.mentoria;
+
+import org.junit.Assert;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  * Contar el número de duplicados
@@ -27,31 +29,31 @@ public class CountingDuplicatesTest {
 
     @Test
     public void devuelveCero (){
-        assertEquals(0,CountingDuplicates.duplicateCount("abcde"));
+        Assert.assertEquals(0, CountingDuplicates.duplicateCount("abcde"));
 
     }
 
     @Test
     public void devuelveDos (){
-        assertEquals(2,CountingDuplicates.duplicateCount("aabbcde"));
+        Assert.assertEquals(2, CountingDuplicates.duplicateCount("aabbcde"));
     }
 
     @Test
     public void devuelveDosCaseInsensitive (){
-        assertEquals(2,CountingDuplicates.duplicateCount("aabBcde"));
+        Assert.assertEquals(2, CountingDuplicates.duplicateCount("aabBcde"));
     }
     @Test
     public void devuelveUnoCaracterRepetido (){
-        assertEquals(1,CountingDuplicates.duplicateCount("aaaaaaaabcdaa"));
+        Assert.assertEquals(1, CountingDuplicates.duplicateCount("aaaaaaaabcdaa"));
     }
 
     @Test
     public void devuelveDosAlfaNumerico (){
-        assertEquals(2,CountingDuplicates.duplicateCount("aA11"));
+        Assert.assertEquals(2, CountingDuplicates.duplicateCount("aA11"));
     }
 
     @Test
     public void neg_IngresoDeStringNoAlfaNumerico(){
-        assertEquals(-1,CountingDuplicates.duplicateCount("!@##$%^@"));
+        Assert.assertEquals(-1, CountingDuplicates.duplicateCount("!@##$%^@"));
     }
 }

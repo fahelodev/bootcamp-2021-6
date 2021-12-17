@@ -1,5 +1,6 @@
-package junit;
+package junit.mentoria;
 
+import junit.mentoria.Calculadora;
 import org.junit.*;
 
 import static org.junit.Assert.*;

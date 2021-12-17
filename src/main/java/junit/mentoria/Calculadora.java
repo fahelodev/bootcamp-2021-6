@@ -1,4 +1,4 @@
-package junit;
+package junit.mentoria;
 
 public class Calculadora {
 

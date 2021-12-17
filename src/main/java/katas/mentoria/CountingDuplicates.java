@@ -1,4 +1,4 @@
-import java.util.Locale;
+package katas.mentoria;
 
 public class CountingDuplicates {
 

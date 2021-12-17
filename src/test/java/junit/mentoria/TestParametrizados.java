@@ -1,6 +1,8 @@
-package junit;
+package junit.mentoria;
 
 import static org.junit.Assert.*;
+
+import junit.mentoria.Calculadora;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
