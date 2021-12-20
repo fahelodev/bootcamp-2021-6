@@ -1,6 +1,4 @@
-package msabattini;
-import org.apache.commons.lang3.StringUtils;
-import com.sun.org.apache.xpath.internal.operations.Equals;
+package katas.msabattini;
 
 public class KataReverse {
 

@@ -1,4 +1,4 @@
-package nmarinucci;
+package katas.nmarinucci;
 
 public class Kata {
     public static String declareWinner(Fighter fighter1, Fighter fighter2, String firstAttacker) {

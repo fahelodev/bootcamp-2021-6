@@ -1,4 +1,4 @@
-package nmarinucci;
+package katas.nmarinucci;
 
 public class Fighter {
     public String name;

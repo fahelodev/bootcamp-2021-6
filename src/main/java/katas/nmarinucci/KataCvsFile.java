@@ -1,4 +1,4 @@
-package nmarinucci;
+package katas.nmarinucci;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package nmarinucci;
+package katas.nmarinucci;
 
 public class BuyCar {
     public static int[] nbMonths(float startPriceOld, float startPriceNew, float savingperMonth, double percentLossByMonth) {

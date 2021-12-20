@@ -1,4 +1,4 @@
-package nmarinucci;
+package katas.nmarinucci;
 
 public class KataReverseWords {
     public static String reverseWords(String original) {

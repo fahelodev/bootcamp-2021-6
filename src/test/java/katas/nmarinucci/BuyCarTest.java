@@ -1,4 +1,4 @@
-package nmarinucci;
+package katas.nmarinucci;
 
     import static org.junit.Assert.*;
     import org.junit.Test;
