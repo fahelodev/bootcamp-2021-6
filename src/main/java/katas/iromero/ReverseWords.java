@@ -1,5 +1,4 @@
-package iromero;
-
+package katas.iromero;
 public class ReverseWords {
     public static String reverseWords(final String original) {
         String[] words = original.split(" ");

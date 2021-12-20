@@ -1,4 +1,4 @@
-package msabattini;
+package katas.msabattini;
 
 import static java.lang.Character.*;
 
