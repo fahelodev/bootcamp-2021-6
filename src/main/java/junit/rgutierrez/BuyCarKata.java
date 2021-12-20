@@ -1,4 +1,4 @@
-package katas.rgutierrez;
+package junit.rgutierrez;
 
 public class BuyCarKata {
 
