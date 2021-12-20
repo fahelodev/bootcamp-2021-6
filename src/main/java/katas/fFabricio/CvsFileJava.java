@@ -1,4 +1,4 @@
-package fabriciof;
+package katas.fFabricio;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
