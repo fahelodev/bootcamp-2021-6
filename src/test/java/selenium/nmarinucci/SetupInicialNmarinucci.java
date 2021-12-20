@@ -13,7 +13,7 @@ public class SetupInicialNmarinucci {
         WebDriver driver;
 
         //Inicialización del WebDriver con Chrome
-        WebDriverManager.chromedriver().setup(
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
 
         //Inicialización del WebDriver con Firefox
