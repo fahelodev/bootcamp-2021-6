@@ -1,4 +1,4 @@
-package iromero;
+package katas.iromero;
 
 public class AlternatingCase {
     public static String toAlternativeString(String string) {
