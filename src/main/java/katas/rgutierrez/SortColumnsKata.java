@@ -1,4 +1,4 @@
-package rgutierrez;
+package katas.rgutierrez;
 
 import java.text.Collator;
 import java.util.Arrays;
