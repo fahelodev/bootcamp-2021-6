@@ -21,6 +21,8 @@ public class atc00_SetupInicial {
         //Cargar la página
         driver.get("http://automationpractice.com/");
 
+
+        //Cerrar el navegador
         Thread.sleep(2000);
         driver.close();
 
