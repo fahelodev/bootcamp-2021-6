@@ -1,4 +1,4 @@
-package selenium.dYañez;
+package selenium.dYanez;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +19,7 @@ public class atc00_selenium {
 //        driver = new FirefoxDriver();
 
         //Cargar la página
-        driver.get("http://automationpractice.com/");
+        driver.get("http://google.com/");
 
         Thread.sleep(2000);
         driver.close();
