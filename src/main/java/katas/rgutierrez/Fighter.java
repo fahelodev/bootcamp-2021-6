@@ -1,4 +1,4 @@
-package rgutierrez;
+package katas.rgutierrez;
 
 public class Fighter {
     public String name;
