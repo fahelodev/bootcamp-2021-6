@@ -1,5 +1,5 @@
-package msabattini;
-import msabattini.KataReverse;
+package katas.msabattini;
+import katas.msabattini.KataReverse;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
