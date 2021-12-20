@@ -1,4 +1,4 @@
-package rgutierrez;
+package junit.rgutierrez;
 
 public class AlternateCaseKata {
 

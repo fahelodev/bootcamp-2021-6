@@ -1,4 +1,4 @@
-package rgutierrez;
+package junit.rgutierrez;
 
 import java.text.Collator;
 import java.util.Arrays;
