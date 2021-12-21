@@ -1,5 +1,5 @@
-package msabattini;
-import msabattini.KataColumnasCSV;
+package katas.msabattini;
+import katas.msabattini.KataColumnasCSV;
 import org.junit.Test;
 import org.junit.Test;
 import static org.junit.Assert.*;

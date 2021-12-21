@@ -1,4 +1,4 @@
-package iromero;
+package katas.iromero;
 
 public class DeclareWinner {
     public static String declareWinner(Fighter fighter1, Fighter fighter2, String firstAttacker) {

@@ -1,4 +1,4 @@
-package rgutierrez;
+package katas.rgutierrez;
 
 import org.junit.Test;
 

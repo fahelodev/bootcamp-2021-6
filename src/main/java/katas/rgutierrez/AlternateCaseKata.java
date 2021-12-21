@@ -1,4 +1,4 @@
-package rgutierrez;
+package katas.rgutierrez;
 
 public class AlternateCaseKata {
 
@@ -17,7 +17,7 @@ public class AlternateCaseKata {
                 result.append(letter);
             }
         }
-        
+
 
         return result.toString();
     }

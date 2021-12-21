@@ -1,35 +1,23 @@
-package msabattini;
+package katas.msabattini;
 
-public class KataDeclararGanador {
+public class KataDeclararGanador { //kata grupal
 
-    public static String declararGanador(Luchador luchador1, Luchador luchador2, String primerAtacante){
+    public static String declararGanador(Fighter fighter1, Fighter fighter2, String firstAttacker){
 
-        if(primerAtacante == luchador1.nombre){
-            while(luchador1.salud>0 && luchador2.salud>0){
-                luchador2.salud-=luchador1.danioPorAtaque;
-                if(luchador2.salud<=0) {
-                    return luchador1.nombre;
-                }
-                luchador1.salud-= luchador2.danioPorAtaque;
-                if(luchador1.salud<=0) {
-                    return luchador2.nombre;
-                }
-            }
-        }else{
-            while(luchador1.salud>0 && luchador2.salud>0){
-                luchador1.salud-=luchador2.danioPorAtaque;
-                if(luchador1.salud<=0) {
-                    return luchador2.nombre;
-                }
-                luchador2.salud-= luchador1.danioPorAtaque;
-                if(luchador2.salud<=0) {
-                    return luchador1.nombre;
-                }
+        while(fighter1.health>0 && fighter2.health>0){
+            if(firstAttacker.equals(fighter2.name)){
+                fighter1.health-=fighter2.damagePerAttack;
+                firstAttacker = fighter1.name;
+            }else{
+                fighter2.health -= fighter1.damagePerAttack;
+                firstAttacker = fighter2.name;
             }
 
         }
 
-        return "";
+        if(fighter1.health<=0) return fighter2.name;
+        else return fighter1.name;
+
     }
 
 }
