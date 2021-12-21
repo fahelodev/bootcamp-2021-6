@@ -1,6 +1,6 @@
 package msabattini;
 
-public class KataBuyCar {
+public class KataBuyCar { //Kata grupal
 
     public static int[] nbMonths(float startPriceOld, float startPriceNew, float savingperMonth, double percentLossByMonth) {
         percentLossByMonth = percentLossByMonth/100;

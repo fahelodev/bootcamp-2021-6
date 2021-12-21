@@ -1,5 +1,4 @@
-package iromero;
-
+package katas.iromero;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
