@@ -1,33 +1,34 @@
 package katas.msabattini;
 
+
+
 public class KataReverse {
 
-    public static String reverseString(String string) {
+    public static String reverseWords(final String original)
+    {
+        char[] array_origin = original.toCharArray();
+        StringBuilder assistant = new StringBuilder();
+        String reverseString= "";
+        String reverseString_final ="";
 
-        //CORREGIR
+        for(int i=0; i<array_origin.length; i++){
 
-        char[] cadena_auxiliar = string.toCharArray();
-        String string_completo = "";
-        char ultimo_caracter = string.charAt(string.length() - 1);
-
-        for (int i=0; i<cadena_auxiliar.length; i++){
-            if(cadena_auxiliar[i] == ' ' || cadena_auxiliar[i] == ultimo_caracter) {
-                for(int j=i-1; j>=0; j--){
-                    if(cadena_auxiliar[j] == ' '){
-                        break;
-                    }else if(cadena_auxiliar[j+1] == ultimo_caracter){
-                        string_completo = string_completo + cadena_auxiliar[j+1];
-                    }
-                    string_completo = string_completo + cadena_auxiliar[j];
-                }
-                string_completo = string_completo + " ";
-
+            if(array_origin[i] != ' '){
+                assistant.append(array_origin[i]);
+            }if(array_origin[i] == ' ' || i == array_origin.length - 1){
+                reverseString += assistant.reverse();
+                reverseString_final += reverseString;
+                reverseString_final+=" ";
+                assistant.delete(0, assistant.length());
+                reverseString = "";
             }
 
         }
 
-        return string_completo.substring(0, string_completo.length() - 1);
-    }
+        reverseString_final += reverseString;
 
+        return reverseString_final.substring(0,reverseString_final.length()-1);
+
+    }
 
 }
