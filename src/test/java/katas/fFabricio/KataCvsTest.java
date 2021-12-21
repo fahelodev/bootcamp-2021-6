@@ -1,5 +1,7 @@
-package fabriciof;
+package katas.fFabricio;
+
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
 public class KataCvsTest {
@@ -12,7 +14,7 @@ public class KataCvsTest {
         String postSorting = "Dentzil;myjinxin2015;raulbc777;smile67;SteffenVogel_79\n"
                 + "3907;17945;10091;10088;10132\n"
                 + "48;2;12;13;11";
-        assertEquals(postSorting, KataJava3.sortCsvColumns(preSorting));
+        assertEquals(postSorting, CvsFileJava.sortCsvColumns(preSorting));
 
         preSorting = "IronMan;Thor;Captain America;Hulk\n"
                 + "arrogant;divine;honorably;angry\n"
@@ -22,7 +24,7 @@ public class KataCvsTest {
                 + "honorably;angry;arrogant;divine\n"
                 + "shield;greenhorn;armor;hammer\n"
                 + "Steven;Bruce;Tony;Thor";
-        assertEquals(postSorting, KataJava3.sortCsvColumns(preSorting));
+        assertEquals(postSorting, CvsFileJava.sortCsvColumns(preSorting));
     }
 
 }
