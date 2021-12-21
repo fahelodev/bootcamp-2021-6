@@ -1,4 +1,7 @@
 package katas.rgutierrez;
+
+import junit.rgutierrez.ReverseWordsKata;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
