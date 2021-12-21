@@ -8,18 +8,27 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
-public class act02_BusquedaDirectaProductoExistente {
-    public static void main(String[] args) throws InterruptedException{
+public class act01_BusquedaPalabrasClaves{
+
+    public static void main(String[] args) throws InterruptedException
+    {
+        WebDriver driver;
+
+        //Inicialización del WebDriver con Chrome
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
+
+        //Cargar la página
         driver.get("http://automationpractice.com/");
 
-        //driver.findElement(By.xpath("//input[@id='search_query_top']")).sendKeys( "printed chiffon dress");
-        driver.findElement(By.cssSelector("#search_query_top")).sendKeys( "printed chiffon dress");
-
+        //xpath = "//tag[@atributo = 'valor']"
+        //Seleccionar area de busqueda y escribir 'dress'
+        //driver.findElement(By.xpath("//input[@id='search_query_top']")).sendKeys("dress");
+        driver.findElement(By.cssSelector("#search_query_top")).sendKeys("dress");
+        //Seleccionar boton search y clickear
         //driver.findElement(By.xpath("//button[@name='submit_search']")).click();
         driver.findElement(By.cssSelector("[name='submit_search']")).click();
-
+        //Validacion test correcto
         //List<WebElement> resultado = driver.findElements(By.xpath("//li[contains (@class, 'ajax_block_product')]"));
         List<WebElement> resultado = driver.findElements(By.cssSelector("ul.product_list.grid.row > li"));
 
@@ -29,3 +38,4 @@ public class act02_BusquedaDirectaProductoExistente {
         driver.close();
     }
 }
+
