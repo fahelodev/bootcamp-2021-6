@@ -23,7 +23,7 @@ public class atc00_SetupInicial {
         driver.get("http://automationpractice.com/");
 
         Thread.sleep(2000);
-        driver.close();
+        //driver.close();
 
     }
 }
