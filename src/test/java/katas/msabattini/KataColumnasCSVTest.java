@@ -1,4 +1,4 @@
-package msabattini;
+package katas.msabattini;
 import katas.msabattini.KataColumnasCSV;
 import org.junit.Test;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package msabattini;
+package katas.msabattini;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

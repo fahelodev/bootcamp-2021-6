@@ -1,5 +1,5 @@
 package katas.msabattini;
-import com.sun.org.apache.xpath.internal.operations.Equals;
+
 
 
 public class KataReverse {
