@@ -1,4 +1,4 @@
-package fabriciof;
+package katas.fFabricio;
 
 public class CasoAlternativoJava {
 
