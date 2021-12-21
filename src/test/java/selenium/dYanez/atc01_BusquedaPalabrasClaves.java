@@ -26,7 +26,7 @@ public class atc01_BusquedaPalabrasClaves {
         searchFieldDress.sendKeys(wordSearchDress);
 
         //element click in btn search
-        WebElement btnSearch = driver.findElement(By.xpath("//header/div[3]/div[1]/div[1]/div[2]/form[1]/button[1]"));
+        WebElement btnSearch = driver.findElement(By.xpath("//*[@id=\'searchbox\']/button"));
         btnSearch.click();
 
         //validate Results
