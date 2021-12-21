@@ -1,4 +1,4 @@
-package katas.fFabricio;
+package fabriciof;
 
 public class Fighter {
     public String name;
