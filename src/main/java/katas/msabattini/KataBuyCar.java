@@ -1,4 +1,4 @@
-package msabattini;
+package katas.msabattini;
 
 public class KataBuyCar { //Kata grupal
 
