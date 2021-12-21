@@ -1,4 +1,4 @@
-package ifuentes;
+package katas.ifuentes;
 public class fighter {
 
     public String name;

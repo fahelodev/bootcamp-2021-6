@@ -1,12 +1,9 @@
-package selenium.nmarinucci;
-
-
+package selenium.fFabricio;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-//import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class SetupInicialNmarinucci {
+public class SetupInicialF {
 
     public static void main(String[] args) throws InterruptedException
     {
@@ -27,4 +24,5 @@ public class SetupInicialNmarinucci {
         driver.close();
 
     }
+
 }

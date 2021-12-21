@@ -1,4 +1,4 @@
-package ifuentes;
+package katas.ifuentes;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
