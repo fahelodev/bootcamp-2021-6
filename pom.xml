@@ -24,20 +24,20 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
+            <version>4.1.0</version>
             <scope>test</scope>
         </dependency>
         <!-- https://github.com/bonigarcia/webdrivermanager#motivation -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>4.1.0</version>
+            <version>5.0.2</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/selenium-jupiter -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>selenium-jupiter</artifactId>
-            <version>3.3.4</version>
+            <version>4.0.1</version>
         </dependency>
     </dependencies>
 
