@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Atc01_BusquedaPalabrasClavesXpath {
+public class atc01_BusquedaPalabrasClavesXpath {
     public static void main(String[] args) throws InterruptedException
     {
         WebDriver driver;
