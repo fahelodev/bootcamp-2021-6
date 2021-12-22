@@ -1,4 +1,4 @@
-package selenium.fluzon;
+package selenium.rsobarzo;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
