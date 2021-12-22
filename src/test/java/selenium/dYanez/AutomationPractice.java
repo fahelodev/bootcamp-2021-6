@@ -77,6 +77,34 @@ public class AutomationPractice {
         Assert.assertEquals(resultProductExpected,wordSearchDress);
     }
 
+    @Test
+    public void atc03MensajeProductoNoEncontrado2() {
+        System.out.println("Test Case 3");
+        //cargar page
+        driver.get("http://automationpractice.com/");
+        //validate string title pestaña of the page
+        Assert.assertEquals("My Store", driver.getTitle());
+        //element field write "McBook"
+        String wordSearchDress = "McBook";
+        WebElement searchFieldDress = driver.findElement(By.xpath("//input[@id='search_query_top']"));
+        searchFieldDress.sendKeys(wordSearchDress);
+
+        //element click in btn search
+        WebElement btnSearch = driver.findElement(By.xpath("//*[@id=\'searchbox\']/button"));
+        btnSearch.click();
+
+        //element string text information
+        String titleText = driver.findElement
+                (By.xpath("//p[contains(text(),'No results were found for your search \"McBook\"')]")).getText();
+
+        //validate text msg
+        Assert.assertEquals(titleText,"No results were found for your search \"McBook\"");
+
+
+
+    }
+
+
     @After
     public void close(){
         if(driver != null){
