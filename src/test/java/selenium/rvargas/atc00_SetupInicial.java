@@ -4,6 +4,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
+
 public class atc00_SetupInicial {
 
     public static void main(String[] args) throws InterruptedException
@@ -25,5 +27,4 @@ public class atc00_SetupInicial {
         driver.close();
 
     }
-
 }
