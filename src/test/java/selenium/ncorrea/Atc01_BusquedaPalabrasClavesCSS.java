@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
-public class Atc01_BusquedaPalabrasClavesCSS {
+public class atc01_BusquedaPalabrasClavesCSS {
     public static void main(String[] args) throws InterruptedException
     {
         WebDriver driver;
