@@ -27,9 +27,13 @@ public class Selenium02 {
         driver.findElement(By.cssSelector("[name='submit_search']")).click();
 
         //Introducir dress en el campo de busqueda
-        //List<WebElement> result = driver.findElements(By.cssSelector("a.product-name = printed chiffon dress"));
+        List<WebElement> result = driver.findElements(By.cssSelector("ul.product_list.grid.row>li"));
 
-        driver.findElement(By.cssSelector("li.ajax_block_product:nth-child(1) > div:nth-child(1) > div:nth-child(2) > h5:nth-child(1) > a:nth-child(1)")).getText();
+        String text = result.get(0).findElement(By.cssSelector(".product-name")).getText();
+
+        if (text.equals("printed chiffon dress")) System.out.println("prueba exitosa");
+        else System.out.println("algo salio mal D:");
+
 
     }
 }
