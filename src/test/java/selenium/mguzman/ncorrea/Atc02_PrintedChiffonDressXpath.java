@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class atc02_PrintedChiffonDressXpath {
+public class Atc02_PrintedChiffonDressXpath {
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver;
 
