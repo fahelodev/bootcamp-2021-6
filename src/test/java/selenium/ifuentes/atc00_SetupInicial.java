@@ -1,12 +1,10 @@
-package selenium.nmarinucci;
-
+package selenium.ifuentes;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-//import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class SetupInicialNmarinucci {
+public class atc00_SetupInicial {
 
     public static void main(String[] args) throws InterruptedException
     {
