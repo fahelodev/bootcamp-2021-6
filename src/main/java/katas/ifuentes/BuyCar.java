@@ -1,4 +1,4 @@
-package ifuentes;
+package katas.ifuentes;
 public class BuyCar {
 
     public static int[] nbMonths(int startPriceOld, int startPriceNew, int savingperMonth, double percentLossByMonth) {
