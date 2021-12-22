@@ -6,8 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class AutomationPractice {
 
@@ -78,7 +78,7 @@ public class AutomationPractice {
     }
 
     @Test
-    public void atc03MensajeProductoNoEncontrado2() {
+    public void atc03MensajeProductoNoEncontrado() throws InterruptedException {
         System.out.println("Test Case 3");
         //cargar page
         driver.get("http://automationpractice.com/");
@@ -93,6 +93,7 @@ public class AutomationPractice {
         WebElement btnSearch = driver.findElement(By.xpath("//*[@id=\'searchbox\']/button"));
         btnSearch.click();
 
+
         //element string text information
         String titleText = driver.findElement
                 (By.xpath("//p[contains(text(),'No results were found for your search \"McBook\"')]")).getText();
@@ -104,6 +105,27 @@ public class AutomationPractice {
 
     }
 
+    @Test
+    public void atc04FindProductInListDymanic() throws InterruptedException {
+        //En la caja de busqueda poner blo y seleccionar lo pre-buscado
+        System.out.println("Test Case 4");
+        //cargar page
+        driver.get("http://automationpractice.com/");
+
+
+        //Poner en caja de busqueda la palabra blo
+        String wordSearchDress = "blo";
+        WebElement searchFieldDress = driver.findElement(By.cssSelector("#search_query_top"));
+        searchFieldDress.sendKeys(wordSearchDress);
+        //wait implicit for list result visible
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        //click in list result
+        driver.findElement(By.xpath("//ul/li[@class=\"ac_even\"]")).click();
+        //get text for validate product name reference is visible
+        String result = driver.findElement(By.xpath("//div//p[@id=\"product_reference\"]")).getText();
+        Assert.assertEquals("Model demo_2", result );
+
+    }
 
     @After
     public void close(){
