@@ -81,7 +81,7 @@ public class AutomationPractice {
     }
 
     //test realizado para confirmar dudas :D
-    @Test
+    @Test @Ignore
     public void testListaDinamica(){
         driver.findElement(By.xpath("//input[@class=\"search_query form-control ac_input\"]")).sendKeys("dress");
         List <WebElement> element = driver.findElements(By.xpath("//ul/li[@class=\"ac_odd\"]"));
