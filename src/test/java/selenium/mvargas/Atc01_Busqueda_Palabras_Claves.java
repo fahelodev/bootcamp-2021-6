@@ -1,6 +1,7 @@
 package selenium.mvargas;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,13 +27,9 @@ public class Atc01_Busqueda_Palabras_Claves {
 
         List<WebElement> resultados = driver.findElements(By.xpath("//*[@id=\'center_column\']/ul/li"));
 
-        if (resultados.size() > 1) {
-            System.out.println("Resultados de la busqueda '" + resultados.size() + "' - Prueba Exitosa");
-        } else {
-            System.out.println("No se cumple resultado esperado" + resultados.size());
-        }
+        Assert.assertTrue(resultados.size() > 1);
 
         Thread.sleep(2000);
-        //driver.close();
+        driver.close();
     }
 }

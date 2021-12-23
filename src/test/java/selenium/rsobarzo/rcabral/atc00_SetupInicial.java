@@ -1,4 +1,4 @@
-package selenium.rcabral;
+package selenium.rsobarzo.rcabral;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
