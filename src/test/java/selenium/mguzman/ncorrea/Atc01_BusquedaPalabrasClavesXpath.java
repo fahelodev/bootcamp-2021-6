@@ -1,7 +1,7 @@
 package selenium.ncorrea;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;https://github.com/EmilianoTCS/bootcamp-2021-6/blob/main/src/test/java/selenium/mguzman/ncorrea/Atc01_BusquedaPalabrasClavesXpath.java
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.ArrayList;
