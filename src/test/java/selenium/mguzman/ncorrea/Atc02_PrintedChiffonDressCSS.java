@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
-public class atc02_PrintedChiffonDressCSS {
+public class Atc02_PrintedChiffonDressCSS {
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver;
         WebDriverManager.chromedriver().setup();
