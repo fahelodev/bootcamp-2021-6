@@ -19,13 +19,12 @@ public class atc02_css_busquedaDirectaProductoExistente {
 
         //Cargar la página
         driver.get("http://automationpractice.com/");
-
         //Introducir"printed chiffon dress" en campo busqueda
-        driver.findElement(By.cssSelector("#search_query_top")).sendKeys("printed chiffon dress");
+        driver.findElement(By.cssSelector("input#search_query_top")).sendKeys("printed chiffon dress");
         //Hacer click en campo SEARCH
-        driver.findElement(By.cssSelector("#searchbox > button")).click();
+        driver.findElement(By.cssSelector("[name='submit_search']")).click();
         //guardo objeto buscado nombre
-        WebElement objetoBuscado = driver.findElement(By.cssSelector("button.btn:nth-child(5)"));
+        WebElement objetoBuscado = driver.findElement(By.cssSelector("ul.product_list.grid.row>li"));
         // se espera "Printed Chiffon Dress"- (comprara objero buscado)
         Assert.assertEquals("Printed Chiffon Dress", objetoBuscado.getText());
     }

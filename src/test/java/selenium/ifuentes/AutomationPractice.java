@@ -3,6 +3,7 @@ package selenium.ifuentes;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -71,26 +72,46 @@ public class AutomationPractice {
         //Hacer click en campo SEARCH
         driver.findElement(By.xpath("//*[@id=\'searchbox\']/button")).click();
         //guardo objeto buscado nombre
-        List<WebElement> objetoBuscado = driver.findElements(By.xpath("//*[@id=\'center_column\']/ul/li"));
-        String texto = objetoBuscado.get(0).findElement(By.xpath("//a[contains ( @class, 'product-name')]")).getText();
+        List<WebElement> resultado = driver.findElements(By.xpath("//*[@id=\'center_column\']/ul/li"));
+        String texto = resultado.get(0).findElement(By.xpath("//a[contains ( @class, 'product-name')]")).getText();
         // se espera "Printed Chiffon Dress" comprara objero buscado
         assertEquals("Printed Chiffon Dress", texto );
 
     }
-    @Test
+    @Test @Ignore
     public void atc02_css_busquedaDirectaProductoExistente(){
         System.out.println("Test Case 2");
         //Cargar la página
         driver.get("http://automationpractice.com/");
-        //Introducir"printed chiffon dress" en campo busqueda
-        driver.findElement(By.cssSelector("#search_query_top")).sendKeys("printed chiffon dress");
+        //Introducir printed chiffon dress en campo busqueda
+        driver.findElement(By.cssSelector("input#search_query_top")).sendKeys("printed chiffon dress");
         //Hacer click en campo SEARCH
-        driver.findElement(By.cssSelector("#searchbox > button")).click();
+        driver.findElement(By.cssSelector("[name='submit_search']")).click();
         //guardo objeto buscado nombre
-        WebElement objetoBuscado = driver.findElement(By.cssSelector("button.btn:nth-child(5)"));
-        // se espera "Printed Chiffon Dress"- (comprara objero buscado)
-        assertEquals("Printed Chiffon Dress", objetoBuscado.getText());
+        List<WebElement> result = driver.findElements(By.cssSelector("ul.product_list.grid.row>li"));
+        String text = result.get(0).findElement(By.cssSelector(".product-name")).getText();
+        // se espera "Printed Chiffon Dress" comprara objero buscado
+        Assert.assertEquals("Printed Chiffon Dress", text);
     }
+
+    @Test @Ignore
+    public void atc03_MensajeProductoNoEncontrado(){
+        System.out.println("Test Case 3");
+        //1. Cargar Home
+        driver.get("http://automationpractice.com/");
+        //2.Introducir "liquido matapulgas" en el campo de búsqueda (para asegurar que no encuentre el producto)
+        driver.findElement(By.cssSelector("#search_query_top")).sendKeys("liquido matapulgas");
+        //3.Hacer la búsqueda introduciendo Enter en el campo de búsqueda
+        driver.findElement(By.cssSelector("#searchbox > button")).sendKeys(Keys.ENTER);
+
+        //Se debe haber mostrado un mensaje que dice: No results were found for your search "liquido matapulgas"
+        WebElement resultado = driver.findElement(By.cssSelector("<p class=\'alert alert-warning\'>"));
+        // se espera "No results were found for your search "liquido matapulgas" comprara objero buscado
+        assertEquals("No results were found for your search liquido matapulgas", resultado.getText());
+
+    }
+
+
 
     @After
     public void close(){
