@@ -100,7 +100,10 @@ public class AutomationPractice {
             String result = driver.findElement(By.xpath("//div//p[@id=\"product_reference\"]")).getText();
             Assert.assertEquals("Model demo_2", result );
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> bf5227f253112f32df509045b3bb490c35bedf52
     @After
         public void close(){
             if(driver != null){
