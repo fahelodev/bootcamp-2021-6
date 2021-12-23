@@ -1,9 +1,8 @@
-package selenium.fluzon;
+package selenium.ncorrea;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class atc00_SetupInicial {
 
@@ -22,6 +21,8 @@ public class atc00_SetupInicial {
         //Cargar la página
         driver.get("http://automationpractice.com/");
 
+
+        //Cerrar el navegador
         Thread.sleep(2000);
         driver.close();
 
