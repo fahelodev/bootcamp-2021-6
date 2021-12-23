@@ -30,12 +30,12 @@ public class AutomationPractice {
 
         driver.get("http://automationpractice.com/");
 
+        // Definimos un implicit wait de 4 segundos
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+
         // Buscamos por la palabra dress
         driver.findElement(By.cssSelector("#search_query_top")).sendKeys("dress");
         driver.findElement(By.cssSelector("[name='submit_search']")).click();
-
-        // Esperamos 2 segundos antes de continuar para que cargen los resultados
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
         // Guardamos todos los resultados li encontrados correspondientes a productos
         List<WebElement> resultados = driver.findElements(By.cssSelector("ul.product_list.grid.row>li"));
@@ -53,12 +53,13 @@ public class AutomationPractice {
 
         driver.get("http://automationpractice.com/");
 
+        // Definimos un implicit wait de 4 segundos
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+
         // Buscamos por la palabra dress
         driver.findElement(By.xpath("//*[@id=\'search_query_top\']")).sendKeys("dress");
         driver.findElement(By.xpath("//*[@id=\'searchbox\']/button")).click();
 
-        // Esperamos 2 segundos antes de continuar para que cargen los resultados
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
         // Guardamos todos los resultados li encontrados correspondientes a productos
         List<WebElement> resultados = driver.findElements(By.xpath("//*[@id=\'center_column\']/ul/li"));
@@ -76,12 +77,12 @@ public class AutomationPractice {
 
         driver.get("http://automationpractice.com/");
 
+        // Definimos un implicit wait de 4 segundos
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+
         // Buscamos por la palabra printed chiffon dress
         driver.findElement(By.cssSelector("#search_query_top")).sendKeys("printed chiffon dress");
         driver.findElement(By.cssSelector("[name='submit_search']")).click();
-
-        // Esperamos 2 segundos
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
         // Guardamos todos los resultados li encontrados correspondientes a productos
         List<WebElement> resultados = driver.findElements(By.cssSelector("ul.product_list.grid.row>li"));
@@ -99,12 +100,12 @@ public class AutomationPractice {
 
         driver.get("http://automationpractice.com/");
 
+        // Definimos un implicit wait de 4 segundos
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+
         // Buscamos por la palabra printed chiffon dress
         driver.findElement(By.xpath("//*[@id=\'search_query_top\']")).sendKeys("printed chiffon dress");
         driver.findElement(By.xpath("//*[@id=\'searchbox\']/button")).click();
-
-        // Esperamos 2 segundos
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
         // Guardamos todos los resultados li encontrados correspondientes a productos
         List<WebElement> resultados = driver.findElements(By.xpath("//*[@id=\'center_column\']/ul/li"));
