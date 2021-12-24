@@ -7,6 +7,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
 import java.util.concurrent.TimeUnit;
 
 import java.util.List;
@@ -76,12 +78,12 @@ public class AutomationPractice {
     public void atc04_EncontrarProductoDeListaDinamica(){
         driver.findElement(By.xpath("//input[@class=\"search_query form-control ac_input\"]")).sendKeys("blo"); //escribir en la barra de busqueda blo
         driver.findElement(By.xpath("//ul/li[@class=\"ac_even\"]")).click(); //espera con el implicity wait para hacer click a la opcion desplegada
-        String element = driver.findElement(By.xpath("//div[@class=\"pb-center-column col-xs-12 col-sm-4\"]/h1")).getText();
-        Assert.assertEquals("Blouse", element);
+        String element = driver.findElement(By.xpath("//p[@id=\"product_reference\"]")).getText();
+        Assert.assertEquals("Model demo_2", element);
     }
 
     //test realizado para confirmar dudas :D
-    @Test @Ignore
+   /* @Test @Ignore
     public void testListaDinamica(){
         driver.findElement(By.xpath("//input[@class=\"search_query form-control ac_input\"]")).sendKeys("dress");
         List <WebElement> element = driver.findElements(By.xpath("//ul/li[@class=\"ac_odd\"]"));
@@ -95,7 +97,43 @@ public class AutomationPractice {
         }
         String result = driver.findElement(By.xpath("//div[@class=\"pb-center-column col-xs-12 col-sm-4\"]/h1")).getText();
         Assert.assertEquals("Printed Chiffon Dress", result);
+    }*/
+
+    @Test
+    public void atc05_AgregarProductoCambiandoTallaYColor(){
+        //busqueda de blouse
+        driver.findElement(By.xpath("//input[@class=\"search_query form-control ac_input\"]")).sendKeys("Blouse"+Keys.RETURN);
+
+        //click en producto
+        driver.findElement(By.xpath("//div[@class=\"right-block\"]//a")).click();
+
+        //uso de select para elegir la opcion de L
+        WebElement element = driver.findElement(By.xpath("//select[@id=\"group_1\"]"));
+        Select sel = new Select(element);
+        sel.selectByIndex(2);
+
+        //elegir color que no este seleccionado (false)
+        driver.findElement(By.xpath("//ul[@class=\"clearfix\"]/li[contains(@class,\"select\")=false]")).click();
+
+        //click para agregar a carrito
+        driver.findElement(By.xpath("//button[contains(@name,\"Submit\")]")).click();
+
+        //obtener precio del producto
+        String price = driver.findElement(By.cssSelector("//div[@class=\"layer_cart_row\"]/span[contains(text(),\"$29.00\")]")).getText();
+
+        //click a checkout
+        driver.findElement(By.xpath("//a[contains(@title,\"Proceed to checkout\")]")).click();
+
+        //obtiene descripcion y lo valida
+        String descript = driver.findElement(By.xpath("//td[@class=\"cart_description\"]/small/a")).getText();
+        Assert.assertEquals("Color : White, Size : L",descript);
+
+        //obtiene precio de la boleta y valida que se igual al precio anterior
+        String confirmed = driver.findElement(By.xpath("//td[@class=\"price\"]/span")).getText();
+        Assert.assertEquals(price,confirmed);
     }
+
+
 
     //cerrado de chrome driver despues de cada test
     @After
