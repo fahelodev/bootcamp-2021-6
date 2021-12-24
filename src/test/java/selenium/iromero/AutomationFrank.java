@@ -29,7 +29,7 @@ public class AutomationFrank {
 
     @Test
     public void atc01_AgregarReview() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@class=\"search-field\"]"))).sendKeys("CAP" + Keys.RETURN);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class=\"tabs wc-tabs\"]/li[@class=\"reviews_tab\"]/a"))).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"comment-form-rating\"]/p/span/a[5]"))).click();

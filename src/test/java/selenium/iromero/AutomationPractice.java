@@ -119,7 +119,7 @@ public class AutomationPractice {
         driver.findElement(By.xpath("//button[contains(@name,\"Submit\")]")).click();
 
         //obtener precio del producto
-        String price = driver.findElement(By.cssSelector("//div[@class=\"layer_cart_row\"]/span[contains(text(),\"$29.00\")]")).getText();
+        String price = driver.findElement(By.xpath("//div[@class=\"layer_cart_row\"]/span[contains(text(),\"$29.00\")]")).getText();
 
         //click a checkout
         driver.findElement(By.xpath("//a[contains(@title,\"Proceed to checkout\")]")).click();
