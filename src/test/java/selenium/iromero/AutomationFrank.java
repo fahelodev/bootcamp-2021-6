@@ -31,18 +31,18 @@ public class AutomationFrank {
     public void atc01_AgregarReview() {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@class=\"search-field\"]"))).sendKeys("CAP" + Keys.RETURN);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class=\"tabs wc-tabs\"]/li[@class=\"reviews_tab\"]/a"))).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"comment-form-rating\"]/p/span/a[5]"))).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class=\"comment-form-comment\"]//textarea"))).sendKeys("excelente producto y entrega");
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@class=\"tabs wc-tabs\"]/li[@class=\"reviews_tab\"]/a"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"comment-form-rating\"]/p/span/a[5]"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class=\"comment-form-comment\"]//textarea"))).sendKeys("excelente producto y entrega rapida");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class=\"comment-form-author\"]//input"))).sendKeys("Isaac Romero");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class=\"comment-form-email\"]//input"))).sendKeys("isaac.romero@tsoftlatam.com");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p/input[@id=\"submit\"]"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p/input[@id=\"submit\"]"))).click();
         String mensage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class=\"meta\"]/em"))).getText();
         Assert.assertEquals("Your review is awaiting approval", mensage);
 
         String rating = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"comment-text\"]/div[@class=\"star-rating\"]"))).getText();
         String [] rate = rating.split(" ");
-        Assert.assertEquals("5", rate[3].toString());
+        Assert.assertEquals("5", rate[3]);
     }
 
     @After

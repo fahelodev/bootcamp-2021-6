@@ -29,7 +29,7 @@ public class AutomationPractice {
 
         driver = new ChromeDriver();
         driver.get("http://automationpractice.com/");
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     //Busqueda de dress y confirmar cantidad de elementos encontrados en la busqueda utilizando Xpath
