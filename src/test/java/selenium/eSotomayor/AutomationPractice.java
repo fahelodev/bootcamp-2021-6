@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -101,6 +102,36 @@ public class AutomationPractice {
             Assert.assertEquals("Model demo_2", result );
         }
 
+
+        @Test
+        public void atc05_AgregarProductoCambiandoTallaYColor() throws InterruptedException {
+            //Test case 7 -
+            // Escribir "Model demo_2" en "Search"
+            driver.findElement(By.xpath("//*[@id=\"search_query_top\"]")).sendKeys("Blouse");
+
+            //Hacer click para buscar
+            driver.findElement(By.xpath("//button[@name=\"submit_search\"]")).click();
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+            //Seleccionar Blouse
+            driver.findElement(By.xpath("//*[@id=\"center_column\"]/ul/li/div")).click();
+
+            //Seleccionar talle
+            Select seleccion1 = new Select(driver.findElement(By.cssSelector("#group_1")));
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+            seleccion1.selectByVisibleText("L");
+
+            //Seleccionar un color
+            driver.findElement(By.xpath("//*[@id=\"color_8\"]")).click();
+
+            //Clickear en añadir al carro
+            driver.findElement(By.xpath("//*[@id=\"add_to_cart\"]/button")).click();
+            Thread.sleep(2000);
+            //Verificación final
+            String result = driver.findElement(By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[1]/h2")).getText();
+            Assert.assertEquals("Product successfully added to your shopping cart", result);
+
+        }
     @After
         public void close(){
             if(driver != null){
