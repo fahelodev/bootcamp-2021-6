@@ -3,8 +3,11 @@ package selenium.fmarfull;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,7 +26,7 @@ public class AutomationPractice {
         driver = new ChromeDriver();
         driver.get("http://automationpractice.com/");
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
     }
 
     @Test @Ignore
@@ -96,7 +99,7 @@ public class AutomationPractice {
 
     @Test
     public void atc02_busquedaDirectaProductoExistenteXPath() {
-        System.out.println("Test Case 1\n" + "BusquedaPalabrasClavesXPath");
+        System.out.println("Test Case 2\n" + "atc02_busquedaDirectaProductoExistenteXPath");
 
         String strToSearch = "printed chiffon dress";
         String strExpected = "Printed Chiffon Dress";
@@ -113,6 +116,52 @@ public class AutomationPractice {
 
         // Se corrobora que exista el término buscado en lo encontrado.
         if (strReceived.contains(strExpected)) strReceived = strExpected;
+
+        Assert.assertEquals(strExpected, strReceived);
+    }
+
+    @Test
+    public void atc03_MensajeProductoNoEncontradoXPath() {
+        System.out.println("Test Case 3\n" + "MensajeProductoNoEncontradoXPath");
+
+        String strToSearch = "liquido matapulgas";
+        String boilerplate = "No results were found for your search ";
+        String strExpected = boilerplate + '"' + strToSearch + '"';
+        String strReceived;
+
+        // Búsqueda del término.
+        driver.findElement(By.xpath("//*[@id='search_query_top']")).sendKeys(strToSearch);
+
+        // Click al botón buscar.
+        driver.findElement(By.xpath("//*[@id='searchbox']/button")).click();
+
+        // Revisar si se encuentran productos.
+        strReceived = driver.findElement(By.xpath("//p[contains(@class, 'alert alert-warning')]")).getText();
+
+        Assert.assertEquals(strExpected, strReceived);
+    }
+
+    @Test
+    public void atc04_EncontrarProductoDeListaDinamicaXPath() throws InterruptedException {
+        System.out.println("Test Case 4\n" + "EncontrarProductoDeListaDinamica");
+
+        String strToSearch = "blo";
+        String strExpected = "Model demo_2";
+        String strReceived;
+
+        // Búsqueda del término.
+        driver.findElement(By.xpath("//input[@id='search_query_top']")).sendKeys(strToSearch);
+
+        // Se hace una espera hasta ver la lista de resultados.
+        WebDriverWait delay = new WebDriverWait(driver,5);
+        delay.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='ac_results']")));
+
+        // Click al botón buscar.
+        driver.findElement(By.xpath("//*[@id='search_query_top']")).sendKeys(Keys.ARROW_DOWN);
+        driver.findElement(By.xpath("//*[@id='search_query_top']")).sendKeys(Keys.TAB);
+
+        // Revisar si se encuentran productos.
+        strReceived = driver.findElement(By.xpath("//p[@id='product_reference']")).getText();
 
         Assert.assertEquals(strExpected, strReceived);
     }
