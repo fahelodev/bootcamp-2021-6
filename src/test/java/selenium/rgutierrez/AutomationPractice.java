@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class git adAutomationPractice {
+public class AutomationPractice {
 
     private WebDriver driver;
     @BeforeClass
