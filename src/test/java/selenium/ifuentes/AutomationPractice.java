@@ -7,7 +7,10 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -99,20 +102,33 @@ public class AutomationPractice {
         System.out.println("Test Case 3");
         //1. Cargar Home
         driver.get("http://automationpractice.com/");
-        //2.Introducir "liquido matapulgas" en el campo de búsqueda (para asegurar que no encuentre el producto)
+        //2.Introducir "liquido matapulgas" en search
         driver.findElement(By.cssSelector("#search_query_top")).sendKeys("liquido matapulgas");
         //3.Hacer la búsqueda introduciendo Enter en el campo de búsqueda
-        driver.findElement(By.cssSelector("#searchbox > button")).sendKeys(Keys.ENTER);
-
-        //Se debe haber mostrado un mensaje que dice: No results were found for your search "liquido matapulgas"
-        WebElement resultado = driver.findElement(By.cssSelector("<p class=\'alert alert-warning\'>"));
-        // se espera "No results were found for your search "liquido matapulgas" comprara objero buscado
-        assertEquals("No results were found for your search liquido matapulgas", resultado.getText());
+        driver.findElement(By.cssSelector("#search_query_top")).sendKeys(Keys.ENTER);
+        //Guardamos el mensaje "No results were found for your search "liquido matapulgas"
+        String mensaje_alerta = driver.findElement(By.cssSelector("#center_column > p")).getText();
+        Assert.assertEquals( "No results were found for your search \"liquido matapulgas\"" ,mensaje_alerta);
 
     }
+    @Test
+    public void atc05_AgregarProductoCambiandoTallaYColor() {
+        System.out.println("Test Case 5");
+        //1. Cargar Home
+        driver.get("http://automationpractice.com/");
+        //2.Buscar el producto "Blouse Model demo_2"
+        driver.findElement(By.xpath("//*[@id=\'search_query_top\']")).sendKeys("Blouse");
+        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(5));
+        //Esperamos explicitamente
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#index > div.ac_results")));
+        //hacer click en search para buscar producto
+        driver.findElement(By.xpath("//*[@id=\'searchbox\']/button")).click();
+
+        Assert.assertEquals("l",driver.findElement(By.xpath("//*[@id=\'group_1\']")).getText());
 
 
 
+    }
     @After
     public void close(){
         if(driver != null){
