@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -15,21 +16,21 @@ import java.util.List;
 public class AutomationPractice {
 
     private WebDriver driver;
-    @BeforeClass
-    public static void setup(){
-        System.out.println("Setup necesario antes de Instanciar");
-        WebDriverManager.chromedriver().setup();
-    }
+        @BeforeClass
+        public static void setup(){
+            System.out.println("Setup necesario antes de Instanciar");
+            WebDriverManager.chromedriver().setup();
+        }
 
-    @Before
-    public void init(){
-        System.out.println("init para instanciar");
-        driver = new ChromeDriver();
-        driver.get("http://automationpractice.com/");
-    }
+        @Before
+        public void init(){
+            System.out.println("init para instanciar");
+            driver = new ChromeDriver   ();
+            driver.get("http://automationpractice.com/");
+        }
 
     @Test
-    public void PalabraClaveXpath(){
+    public void act01_PalabraClaveXpath(){
 
         //Palabra clave - XPATH
 
@@ -53,7 +54,7 @@ public class AutomationPractice {
     }
 
     @Test
-    public void PalabraClaveCSS(){
+    public void act01__PalabraClaveCSS(){
         //Palabra clave - CSS
 
         driver.findElement(By.cssSelector("#search_query_top")).sendKeys("dress");
@@ -68,7 +69,7 @@ public class AutomationPractice {
     }
 
     @Test
-    public void PrimerResultadoXpath(){
+    public void act02_PrimerResultadoXpath(){
 
         //Primer resultado - XPATH
 
@@ -85,7 +86,7 @@ public class AutomationPractice {
     }
 
     @Test
-    public void PrimerResultadoCSS(){
+    public void act02__PrimerResultadoCSS(){
 
         driver.findElement(By.cssSelector("#search_query_top")).sendKeys("printed chiffon dress");
         driver.findElement(By.cssSelector("#searchbox > button")).click();
@@ -96,7 +97,7 @@ public class AutomationPractice {
     }
 
     @Test
-    public void MensajeProductoNoEncontrado(){
+    public void act03_MensajeProductoNoEncontrado(){
 
         //Enviamos el texto al campo de busqueda.
         driver.findElement(By.cssSelector("#search_query_top")).sendKeys("liquido matapulgas");
@@ -110,7 +111,7 @@ public class AutomationPractice {
     }
 
     @Test
-    public void EncontrarProductoDeListaDinamica(){
+    public void act04_EncontrarProductoDeListaDinamica(){
 
         driver.findElement(By.cssSelector("#search_query_top")).sendKeys("blo");
 
@@ -124,6 +125,32 @@ public class AutomationPractice {
         driver.findElement(By.cssSelector("#search_query_top")).sendKeys(Keys.ENTER);
 
         Assert.assertEquals("Model demo_2",driver.findElement(By.cssSelector("#product_reference")).getText());
+    }
+
+    @Test
+    public void atc05_AgregarProductoCambiandoTallaYColor() throws InterruptedException {
+
+        driver.findElement(By.cssSelector("#search_query_top")).sendKeys("blo");
+
+        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(5));
+        //Esperamos explicitamente
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#index > div.ac_results")));
+
+        //bajamos en los resultados.
+        driver.findElement(By.cssSelector("#search_query_top")).sendKeys(Keys.DOWN);
+        //Presionamos enter.
+        driver.findElement(By.cssSelector("#search_query_top")).sendKeys(Keys.ENTER);
+
+
+        Select select = new Select(driver.findElement(By.cssSelector("#group_1")));
+        select.selectByVisibleText("L");
+
+        driver.findElement(By.cssSelector("#color_8")).click();
+        driver.findElement(By.cssSelector("#add_to_cart > button")).click();
+        String texto_busqueda = driver.findElement(By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[1]/h2")).getText();
+        Thread.sleep(6000);
+        Assert.assertEquals("Product successfully added to your shopping cart",texto_busqueda);
+
     }
 
     @After
