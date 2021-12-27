@@ -121,11 +121,11 @@ public class AutomationPractice {
         Assert.assertEquals("$29.00", price);
     }
 
-        @After
-        public void close(){
-            if(driver != null){
-                driver.close();
-                System.out.println("Close");
-            }
+    @After
+    public void close() {
+        if (driver != null) {
+            driver.close();
+            System.out.println("Close");
         }
     }
+}

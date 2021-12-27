@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -29,7 +30,7 @@ public class AmazonPractice {
     }
 
     @Test
-    public void atc01_TarjetasDeRegalo(){
+    public void atc01_TarjetasDeRegalo() {
 
         //instanciamos la clase Actions
         Actions action = new Actions(driver);
@@ -53,9 +54,9 @@ public class AmazonPractice {
 
         //se obtiene la cantidad de resultados para hacer una comparacion
         String results = driver.findElement(By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']/span")).getText();
-        String [] arr = results.split(" ");
+        String[] arr = results.split(" ");
         int number = Integer.parseInt(arr[0]);
-        List <WebElement> productsFound = driver.findElements(By.xpath("//div[@class='a-section a-spacing-none']//span[contains(text(),'Google Play')]"));
+        List<WebElement> productsFound = driver.findElements(By.xpath("//div[@class='a-section a-spacing-none']//span[contains(text(),'Google Play')]"));
 
         //se valida el test
         Assert.assertEquals(number, productsFound.size());
