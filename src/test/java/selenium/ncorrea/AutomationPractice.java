@@ -30,62 +30,93 @@ public class AutomationPractice {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
+
     @Test
     public void atc01_BusquedaPalabrasClaveXpath() {
+
+        //se escribe el elemento y se clickea la barra de busqueda
         driver.findElement(By.xpath("//input[@id='search_query_top']")).sendKeys("dress");
         driver.findElement(By.xpath("//button[@class='btn btn-default button-search']")).click();
+
+        //se valida que la cantidad de resultados encontrados sean correctos
         List<WebElement> results = driver.findElements(By.xpath("//ul[@class='product_list grid row']/descendant::a[@class='product-name']"));
         Assert.assertTrue(results.size() > 2);
     }
 
     @Test
     public void atc01_BusquedaPalabrasClaveCSS() {
+
+        //se escribe el elemento y se clickea la barra de busqueda
         driver.findElement(By.cssSelector("input#search_query_top")).sendKeys("dress");
         driver.findElement(By.cssSelector("button.btn.btn-default.button-search")).click();
+
+        //se valida que la cantidad de resultados encontrados sean correctos
         List<WebElement> results = driver.findElements(By.cssSelector("ul.product_list.grid.row  a.product-name"));
         Assert.assertTrue(results.size() > 2);
     }
 
     @Test
     public void atc02_PrintedChiffonDressXpath() {
+
+        //se escribe el elemento y se clickea la barra de busqueda
         driver.findElement(By.xpath("//input[@id='search_query_top']")).sendKeys("printed chiffon dress");
         driver.findElement(By.xpath("//button[@class='btn btn-default button-search']")).click();
+
+        //se valida que el texto recibido sea el esperado
         String search = driver.findElement(By.xpath("(//ul[@class='product_list grid row']//a[@class='product-name'])[1]")).getText();
         Assert.assertEquals("Printed Chiffon Dress", search);
     }
 
     @Test
     public void atc02_PrintedChiffonDressCss() {
+
+        //se escribe el elemento y se clickea la barra de busqueda
         driver.findElement(By.cssSelector("input#search_query_top")).sendKeys("printed chiffon dress");
         driver.findElement(By.cssSelector("button.btn.btn-default.button-search")).click();
+
+        //se valida que el texto recibido sea el esperado
         String search = driver.findElement(By.cssSelector("ul.product_list.grid.row li:nth-of-type(1) a.product-name")).getText();
         Assert.assertEquals("Printed Chiffon Dress", search);
     }
 
     @Test
     public void aatc03_MensajeProductoNoEncontrado() {
+
+        //se escribe el elemento y se presiona enter
         driver.findElement(By.xpath("//input[@id='search_query_top']")).sendKeys("liquido matapulgas" + ENTER);
+
+        //se valida que el texto recibido sea el esperado
         String notFound = driver.findElement(By.xpath("//p[@class='alert alert-warning']")).getText();
         Assert.assertEquals("No results were found for your search \"liquido matapulgas\"", notFound);
     }
 
     @Test
     public void atc04_EncontrarProductoDeListaDinamica() {
+
+        //se escribe el elemento y se clickea el 1er elemento de la lista
         driver.findElement(By.xpath("//input[@id='search_query_top']")).sendKeys("blo");
         driver.findElement(By.xpath("//li[@class='ac_even']")).click();
+
+        //se valida que el texto recibido sea el esperado
         String search = driver.findElement(By.xpath("//h1[@itemprop='name']")).getText();
         Assert.assertEquals("Blouse", search);
     }
 
     @Test
     public void atc05_AgregarProductoCambiandoTallaYColor() {
+
+        //se escribe el elemento y se clickea el elemento que se busca
         driver.findElement(By.xpath("//input[@id='search_query_top']")).sendKeys("blo");
         driver.findElement(By.xpath("//li[@class='ac_even']")).click();
+
+        //se elige el color, la talla y se añade al carrito
         WebElement options = driver.findElement(By.xpath("//select[@id='group_1']"));
         Select sel = new Select(options);
         sel.selectByIndex(2);
         driver.findElement(By.xpath("//a[@id='color_8']")).click();
         driver.findElement(By.xpath("//button[@class='exclusive']")).click();
+
+        //se valida que el precio del producto sea el esperado
         String price = driver.findElement(By.xpath("//div[@class=\"layer_cart_row\"]/span[contains(text(),\"$29.00\")]")).getText();
         Assert.assertEquals("$29.00", price);
     }

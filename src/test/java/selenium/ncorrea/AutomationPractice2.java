@@ -27,13 +27,21 @@ public class AutomationPractice2 {
 
     @Test
     public void atc01_AgregarReview() {
+
+        //se escribe el elemento y se presiona enter
         driver.findElement(By.xpath("//input[@id='woocommerce-product-search-field-0']")).sendKeys("CAP" + Keys.ENTER);
+
+        //se clickea el boton review y se seleccionan las 4 estrellas
         driver.findElement(By.xpath("//li[@id='tab-title-reviews']/a[contains(text(), 'Reviews')]")).click();
         driver.findElement(By.xpath("//div[@class='comment-form-rating']//a[@class='star-4']")).click();
+
+        //se escribe el comentario, el nombre, el email del usuario y se clickea el boton submit
         driver.findElement(By.xpath("//p[@class='comment-form-comment']//textarea[@id='comment']")).sendKeys("Encontré lo que necesitaba :D");
         driver.findElement(By.xpath("//input[@id='author']")).sendKeys("Nicolás Correa");
         driver.findElement(By.xpath("//input[@id='email']")).sendKeys("nicolas.correa@tsoftlatam.com");
         driver.findElement(By.xpath("//input[@id='submit']")).click();
+
+        //se valida que el texto recibido sea el esperado
         String reviews = driver.findElement(By.xpath("//p[@class='meta']/em[contains(text(), 'Your review is awaiting approval')]\t\t")).getText();
         Assert.assertEquals("Your review is awaiting approval", reviews);
     }
