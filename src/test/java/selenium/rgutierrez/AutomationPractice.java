@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class AutomationPractice {
+public class git adAutomationPractice {
 
     private WebDriver driver;
     @BeforeClass

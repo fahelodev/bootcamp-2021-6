@@ -39,7 +39,7 @@ public class AutomationPractice {
         System.out.println("Test Case 1");
         //1. Cargar Home
         driver.get("http://automation.frankluzon.com");
-        //2.. Buscar el producto "CAP"
+        //2.. Buscar el producto . "CAP"
         driver.findElement(By.cssSelector("//*[@id=\"woocommerce-product-search-field-0\"]")).sendKeys("CAP");
 
     }

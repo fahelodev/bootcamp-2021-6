@@ -112,7 +112,7 @@ public class AutomationPractice {
         //seleccionamos talla
         Select select = new Select(driver.findElement(By.cssSelector("#group_1")));
         select.selectByVisibleText("L");
-        //cambiamos color
+        //cambiamos colorgit pus
         driver.findElement(By.cssSelector("#color_8")).click();
         driver.findElement(By.cssSelector("#add_to_cart>button")).click();
         //aparece msj de compra
