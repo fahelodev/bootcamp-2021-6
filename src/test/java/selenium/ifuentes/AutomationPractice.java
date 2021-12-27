@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -32,40 +33,23 @@ public class AutomationPractice {
         driver.manage().window().maximize();
     }
 
-    @Test
-    public void Atc01_BusquedaPalabrasClaves(){
-        System.out.println("Test Case 1");
-        //Cargar la página
-        driver.get("http://automationpractice.com/");
-        //Introducir DRESS en campo busqueda
-        driver.findElement(By.xpath("//*[@id=\'search_query_top\']")).sendKeys("dress");
-        //Hacer click en campo SEARCH
-        By.xpath("//*[@id=\'searchbox\']/button").findElement(driver).click();
-        List<WebElement> resultados = driver.findElements(By.xpath("//*[@id=\'center_column\']/ul/li"));
-        if (resultados.size() > 1) {
-            System.out.println("Resultados de la busqueda '" + resultados.size() + "' - Prueba Exitosa");
-        } else {
-            System.out.println("No se cumple resultado esperado" + resultados.size());
-        }
-    }
 
-    @Test
+
+    @Test @Ignore
     public void Atc01css_BusquedaPalabrasClaves(){
         System.out.println("Test Case 1");
         //Cargar la página
         driver.get("http://automationpractice.com/");
-        //Introducir DRESS en campo busqueda
-        driver.findElement(By.cssSelector("#search_query_top")).sendKeys("dress");
-        //Hacer click en campo SEARCH
-        driver.findElement(By.cssSelector("#searchbox > button")).click();
-        List<WebElement> resultados = driver.findElements(By.cssSelector("#center_column > ul"));
-        if (resultados.size() > 1) {
-            System.out.println("Resultados de la busqueda '" + resultados.size() + "' - Prueba Exitosa");
-        } else {
-            System.out.println("Resultado es '" + resultados.size() +"' - No se el cumple resultado esperado");
-        }
+        //escribir en la barra de busqueda
+       driver.findElement(By.cssSelector("input.search_query")).sendKeys("dress");
+        //click en boton de busqueda
+        driver.findElement(By.cssSelector("button.button-search")).click();
+        //enlistar elementos encontrado
+        List<WebElement> result = driver.findElements(By.cssSelector("ul.product_list.grid.row  a.product-name"));
+        Assert.assertTrue(result.size()>=2);
     }
-    @Test
+
+    @Test @Ignore
     public void atc02_busquedaDirectaProductoExistente(){
         System.out.println("Test Case 2");
         //Cargar la página
@@ -112,23 +96,35 @@ public class AutomationPractice {
 
     }
     @Test
-    public void atc05_AgregarProductoCambiandoTallaYColor() {
+    public void atc05_AgregarProductoCambiandoTallaYColor() throws InterruptedException {
         System.out.println("Test Case 5");
         //1. Cargar Home
         driver.get("http://automationpractice.com/");
         //2.Buscar el producto "Blouse Model demo_2"
-        driver.findElement(By.xpath("//*[@id=\'search_query_top\']")).sendKeys("Blouse");
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(5));
+        driver.findElement(By.cssSelector("#search_query_top")).sendKeys("Blo");
+        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(10));
         //Esperamos explicitamente
         espera.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#index > div.ac_results")));
-        //hacer click en search para buscar producto
-        driver.findElement(By.xpath("//*[@id=\'searchbox\']/button")).click();
-
-        Assert.assertEquals("l",driver.findElement(By.xpath("//*[@id=\'group_1\']")).getText());
-
-
-
+        //bajamos en los resultados.
+        driver.findElement(By.cssSelector("#search_query_top")).sendKeys(Keys.DOWN);
+        //Presionamos enter.
+        driver.findElement(By.cssSelector("#search_query_top")).sendKeys(Keys.ENTER);
+        //seleccionamos talla
+        Select select = new Select(driver.findElement(By.cssSelector("#group_1")));
+        select.selectByVisibleText("L");
+        //cambiamos color
+        driver.findElement(By.cssSelector("#color_8")).click();
+        driver.findElement(By.cssSelector("#add_to_cart>button")).click();
+        //aparece msj de compra
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#layer_cart > div.clearfix > div.layer_cart_product.col-xs-12.col-md-6 > h2 > font > font")));
+        //guardamos el msj de compra
+        String mensaje =driver.findElement(By.cssSelector("#layer_cart > div.clearfix > div.layer_cart_product.col-xs-12.col-md-6 > h2 > font > font")).getText();
+        //compara que el msj sea el esperado
+        Assert.assertEquals("Producto agregado exitosamente a su carrito de compras",mensaje);
     }
+
+
+
     @After
     public void close(){
         if(driver != null){
