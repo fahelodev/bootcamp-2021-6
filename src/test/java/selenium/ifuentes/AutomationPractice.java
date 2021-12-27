@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 import java.time.Duration;
 import java.util.List;
 
@@ -81,7 +82,7 @@ public class AutomationPractice {
         Assert.assertEquals("Printed Chiffon Dress", text);
     }
 
-    @Test @Ignore
+    @Test
     public void atc03_MensajeProductoNoEncontrado(){
         System.out.println("Test Case 3");
         //1. Cargar Home
@@ -95,7 +96,21 @@ public class AutomationPractice {
         Assert.assertEquals( "No results were found for your search \"liquido matapulgas\"" ,mensaje_alerta);
 
     }
-    @Test
+
+    @Test @Ignore
+    public void atc04_Xpath() throws InterruptedException {
+        //En la caja de busqueda poner blo y seleccionar lo pre-buscado
+        System.out.println("Test Case 4");
+        //Poner en caja de busqueda la palabra blo
+        driver.findElement(By.cssSelector("input.search_query")).sendKeys("blo");
+        //Hacer click en lo pre-buscado
+        driver.findElement( By.xpath("//div//ul//li[@class=\"ac_even ac_over\"]")).click();
+        //obternet texto
+        String result = driver.findElement(By.xpath("//div//p[@id=\"product_reference\"]")).getText();
+        Assert.assertEquals("Model demo_2", result );
+    }
+
+    @Test @Ignore
     public void atc05_AgregarProductoCambiandoTallaYColor() throws InterruptedException {
         System.out.println("Test Case 5");
         //1. Cargar Home
