@@ -35,19 +35,10 @@ public class atc01_AgregarReview {
 
 
     @Test @Ignore
-    public void atc01_AgregarReview() {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
-        driver.findElement(By.cssSelector("#woocommerce-product-search-field-0")).sendKeys("CAP");
-        driver.findElement(By.cssSelector("#woocommerce-product-search-field-0")).sendKeys(Keys.ENTER);
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#tab-title-reviews > a"))).click();
-        driver.findElement(By.cssSelector("#commentform > div > p > span > a.star-5")).click();
-        driver.findElement(By.xpath("//*[@id='comment']")).sendKeys("muy lindo colo, calida y textura!!!");
-        driver.findElement(By.cssSelector("#author")).sendKeys("Franco Javier");
-        driver.findElement(By.cssSelector("#email")).sendKeys("chuck_ledbetter@hotmail.com");
-        driver.findElement(By.cssSelector("#submit")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("em.woocommerce-review__awaiting-approval")));
-        assertEquals("Your review is awaiting approval", driver.findElement(By.cssSelector("em.woocommerce-review__awaiting-approval")).getText());
-    }
+    //public void atc01_AgregarReview() {
+
+
+
 
     @After
     public void close(){
