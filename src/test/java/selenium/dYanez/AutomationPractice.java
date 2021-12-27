@@ -1,11 +1,15 @@
 package selenium.dYanez;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.hamcrest.core.StringContains;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -24,7 +28,7 @@ public class AutomationPractice {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         //wait implicit for list result visible cada vez que vaya a buscar al elemento
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
     }
 
@@ -71,7 +75,8 @@ public class AutomationPractice {
         //validate Results
 
         List<WebElement> resultSearch = driver.findElements(By.xpath("//*[@id='center_column']/ul/li"));
-
+        Boolean isPresent = driver.findElements(By.xpath("//*[@id='center_column']/ul/li")).size() > 0;
+        System.out.println(isPresent);
         //firts element title product
         String resultProductExpected = resultSearch.get(0).findElement(By.xpath("//a[contains(@class, 'product-name')]")).getText();
 
@@ -155,14 +160,17 @@ public class AutomationPractice {
         WebElement clickAddCart = driver.findElement(By.xpath("//span[contains(text(),'Add to cart')]"));
         clickAddCart.click();
 
+        //wait until element is visible
+        String locatorCartLayer = "#layer_cart > div.clearfix > div.layer_cart_product.col-xs-12.col-md-6 > h2";
+        WebDriverWait driverWithMoreWait = new WebDriverWait(driver,20);
+        driverWithMoreWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(locatorCartLayer)));
 
-       /* String result = driver.findElement(By.className("//span[@id='layer_cart_product_title']")).getText();
-        System.out.println(result);
+        WebElement productCart = driver.findElement(By.cssSelector(locatorCartLayer));
 
-        Assert.assertEquals("White, L", result );*/
+        Assert.assertEquals("Product successfully added to your shopping cart", productCart.getText());
     }
     @Test
-    public void atc06AgregarReviewFrankPage() {
+    public void atc06AgregarReviewFrankPage() throws InterruptedException {
         //En la caja de busqueda poner blo y seleccionar lo pre-buscado
         System.out.println("Test Case 6");
         //cargar page
@@ -182,22 +190,29 @@ public class AutomationPractice {
         WebElement writeComment = driver.findElement(By.xpath("//*[@id=\"comment\"]"));
         writeComment.sendKeys("lorem ipsum lorem ipsum lorem ipsum");
 
-        WebElement writeName = driver.findElement(By.xpath("//input[@id='author']"));
-        writeName.sendKeys("Diego");
+        WebElement writeName = driver.findElement(By.xpath("//input[@id=\"author\"]"));
+        writeName.sendKeys("DiegoY");
 
         WebElement writeEmail = driver.findElement(By.xpath("//input[@id='email']"));
-        writeName.sendKeys("diego@tsoft.cl");
+        writeEmail.sendKeys("diegotsoft@gmail.cl");
+
+        WebElement checkboxClick = driver.findElement(By.xpath("//*[@id=\"wp-comment-cookies-consent\"]"));
+        checkboxClick.click();
 
         WebElement submitClick = driver.findElement(By.xpath("//input[@id='submit']"));
         submitClick.click();
 
-        /*//element string text information
-        String titleTextValidate = driver.findElement
-                (By.xpath("")).getText();
 
-        //validate text msg
-        Assert.assertEquals(titleTextValidate,"");*/
+        String textResult = driver.findElement( By.xpath("//div[@class=\"wp-die-message\"]")).getText();
+        System.out.println(textResult);
+
+
+        //validate msg
+        String msgExpected = "Your review is awaiting approval";
+        Assert.assertEquals(msgExpected,textResult);
+
     }
+
 
     @After
     public void close(){
