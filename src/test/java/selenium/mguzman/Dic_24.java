@@ -13,7 +13,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class PageBabytuto {
+
+public class Dic_24 {
 
     private WebDriver driver;
 
@@ -28,25 +29,27 @@ public class PageBabytuto {
         System.out.println("instanciar");
         driver = new ChromeDriver();
         //Page practice
-        driver.get("https://www.babytuto.com/");
+        driver.get("https://www.amazon.com/-/es/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @Test
-    public void atc_extra(){
-        //Cerramos la pestaña de suscripción
-        driver.findElement(By.xpath("//button[@class=\"close\"]")).click();
-        //Seleccionamos la pestaña de coches
-        driver.findElement(By.xpath("//div//ul//a[@href=\"javascript:;\"]")).click();
-        //Seleccionamos accesorios para coche
-        driver.findElement( By.xpath("//ul//a[@href=\"/categoria/accesorios-para-coches\"]")).click();
-        //Filtramos por BBpro
-        driver.findElement(By.xpath("//div[@class=\"filter\"][4]/ul/li[5]/a/span[@class=\"lbl\"]")).click();
-        //Busca el path de BBpro
-        String bbpro = driver.findElement(By.xpath("//div[@class=\"items lst-vertical\"]/div//div[2]/div/a")).getText();
-        //comprueba que es BBpro el articulo
-        Assert.assertEquals("BBPRO",bbpro);
-    }
+    public void N24_Dic(){
+        //Body Page
+        driver.findElement(By.xpath("/html/body")).click();
+        //Click en tarjetas de regalo
+        driver.findElement(By.xpath("//div[@id=\"nav-xshop\"]/a[4]")).click();
+        //Filtramos por marca
+        driver.findElement(By.xpath("//a[@data-nav-key=\"ab:gc-subnav-flyout-content-5,gc-subnav-flyout-promo-5:verticalstores-subnav-flyout\"]")).click();
+        //Seleccionamos Google play
+        driver.findElement(By.xpath("//div[@id=\"s-refinements\"]/div[3]/ul/li[2]")).click();
+        //Creamos una lista para ver cuantos articulos hay relacionado con el resultado de la pagina
+        List<WebElement> result = driver.findElements(By.xpath("//h2//span[@class=\"a-size-base-plus a-color-base a-text-normal\"]"));
+        //Realizamos el hacer para comprobar la prueba
+        Assert.assertEquals(11,result.size());
 
+
+
+    }
 }

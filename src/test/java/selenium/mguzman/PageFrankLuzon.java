@@ -30,7 +30,7 @@ public class PageFrankLuzon {
         //Page practice
         driver.get("http://automation.frankluzon.com/");
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 
 
@@ -50,9 +50,9 @@ public class PageFrankLuzon {
         driver.findElement(By.xpath("//input[@id=\"email\"]")).sendKeys("manuguz73@gmail.com");
         //Click submit
         driver.findElement(By.xpath("//input[@id=\"submit\"]")).click();
-
+        //captura el msj
         String Text = driver.findElement( By.xpath("//div[@class=\"wp-die-message\"]")).getText();
-
+        //Comprueba que sea el mismo
         Assert.assertEquals("Duplicate comment detected; it looks as though you’ve already said that!", Text);
     }
 }
