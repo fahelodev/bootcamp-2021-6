@@ -1,11 +1,15 @@
 package selenium.dYanez;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.hamcrest.core.StringContains;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -23,6 +27,9 @@ public class AutomationPractice {
     public void init(){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        //wait implicit for list result visible cada vez que vaya a buscar al elemento
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
     }
 
     @Test
@@ -68,7 +75,8 @@ public class AutomationPractice {
         //validate Results
 
         List<WebElement> resultSearch = driver.findElements(By.xpath("//*[@id='center_column']/ul/li"));
-
+        Boolean isPresent = driver.findElements(By.xpath("//*[@id='center_column']/ul/li")).size() > 0;
+        System.out.println(isPresent);
         //firts element title product
         String resultProductExpected = resultSearch.get(0).findElement(By.xpath("//a[contains(@class, 'product-name')]")).getText();
 
@@ -106,19 +114,16 @@ public class AutomationPractice {
     }
 
     @Test
-    public void atc04FindProductInListDymanic() throws InterruptedException {
+    public void atc04FindProductInListDymanic() {
         //En la caja de busqueda poner blo y seleccionar lo pre-buscado
         System.out.println("Test Case 4");
         //cargar page
         driver.get("http://automationpractice.com/");
-
-
         //Poner en caja de busqueda la palabra blo
         String wordSearchDress = "blo";
         WebElement searchFieldDress = driver.findElement(By.cssSelector("#search_query_top"));
         searchFieldDress.sendKeys(wordSearchDress);
-        //wait implicit for list result visible
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
         //click in list result
         driver.findElement(By.xpath("//ul/li[@class=\"ac_even\"]")).click();
         //get text for validate product name reference is visible
@@ -126,6 +131,88 @@ public class AutomationPractice {
         Assert.assertEquals("Model demo_2", result );
 
     }
+
+
+    @Test
+    public void atc05FindProductInListDymanic() {
+        //En la caja de busqueda poner blo y seleccionar lo pre-buscado
+        System.out.println("Test Case 5");
+        //cargar page
+        driver.get("http://automationpractice.com/");
+        //Poner en caja de busqueda la palabra blo
+        String wordSearchDress = "blo";
+        WebElement searchFieldDress = driver.findElement(By.cssSelector("#search_query_top"));
+        searchFieldDress.sendKeys(wordSearchDress);
+        //click in list result
+        driver.findElement(By.xpath("//ul/li[@class=\"ac_even\"]")).click();
+
+        //click list sizes
+        WebElement sizeL = driver.findElement(By.xpath("//*[@id=\"group_1\"]"));
+        sizeL.click();
+
+        //click in size L
+        WebElement clickSizeL = driver.findElement(By.xpath("//*[@id=\"group_1\"]/option[3]"));
+        clickSizeL.click();
+        //click in color white
+        WebElement clickColorWhiteL = driver.findElement(By.cssSelector("#color_8"));
+        clickColorWhiteL.click();
+        //click add product to cart
+        WebElement clickAddCart = driver.findElement(By.xpath("//span[contains(text(),'Add to cart')]"));
+        clickAddCart.click();
+
+        //wait until element is visible
+        String locatorCartLayer = "#layer_cart > div.clearfix > div.layer_cart_product.col-xs-12.col-md-6 > h2";
+        WebDriverWait driverWithMoreWait = new WebDriverWait(driver,20);
+        driverWithMoreWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(locatorCartLayer)));
+
+        WebElement productCart = driver.findElement(By.cssSelector(locatorCartLayer));
+
+        Assert.assertEquals("Product successfully added to your shopping cart", productCart.getText());
+    }
+    @Test
+    public void atc06AgregarReviewFrankPage() throws InterruptedException {
+        //En la caja de busqueda poner blo y seleccionar lo pre-buscado
+        System.out.println("Test Case 6");
+        //cargar page
+        driver.get("http://automation.frankluzon.com/");
+
+        WebElement productClick = driver.findElement(By.xpath("//*[@id=\"post-27\"]/div/div[3]/ul/li[1]/a/div[1]/img"));
+        productClick.click();
+
+
+        WebElement reviewClick = driver.findElement(By.xpath("//*[@id=\"tab-title-reviews\"]/a"));
+        reviewClick.click();
+
+        WebElement startRatingClick = driver.findElement(By.xpath("//*[@id=\"commentform\"]/div/p/span/a[4]"));
+        startRatingClick.click();
+
+
+        WebElement writeComment = driver.findElement(By.xpath("//*[@id=\"comment\"]"));
+        writeComment.sendKeys("lorem ipsum lorem ipsum lorem ipsum");
+
+        WebElement writeName = driver.findElement(By.xpath("//input[@id=\"author\"]"));
+        writeName.sendKeys("DiegoY");
+
+        WebElement writeEmail = driver.findElement(By.xpath("//input[@id='email']"));
+        writeEmail.sendKeys("diegotsoft@gmail.cl");
+
+        WebElement checkboxClick = driver.findElement(By.xpath("//*[@id=\"wp-comment-cookies-consent\"]"));
+        checkboxClick.click();
+
+        WebElement submitClick = driver.findElement(By.xpath("//input[@id='submit']"));
+        submitClick.click();
+
+
+        String textResult = driver.findElement( By.xpath("//div[@class=\"wp-die-message\"]")).getText();
+        System.out.println(textResult);
+
+
+        //validate msg
+        String msgExpected = "Your review is awaiting approval";
+        Assert.assertEquals(msgExpected,textResult);
+
+    }
+
 
     @After
     public void close(){
