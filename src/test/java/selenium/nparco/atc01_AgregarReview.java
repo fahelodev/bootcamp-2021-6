@@ -10,7 +10,6 @@ public class atc01_AgregarReview {
     public static void setup(){
         //System.out.println("Setup necesario antes de Instanciar");
         WebDriverManager.chromedriver().setup();
-
     }
 
     @Before
