@@ -7,7 +7,12 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.ISelect;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -24,7 +29,8 @@ public class AutomationPractice {
     public void init(){
         System.out.println("init para instanciar");
         driver = new ChromeDriver();
-        driver.get("http://automationpractice.com/");
+        //driver.get("http://automationpractice.com/");
+        driver.get("https://www.amazon.com/");
         driver.manage().window().maximize();
     }
 
@@ -94,18 +100,68 @@ public class AutomationPractice {
 
         driver.findElement(By.xpath("//*[@id=\"search_query_top\"]")).sendKeys("blo");
 
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-        driver.findElement(By.xpath("//*[@id=\"search_query_top\"]")).sendKeys(Keys.ARROW_DOWN);
-        //driver.findElement(By.xpath("//*[@id=\"search\"]/div[2]/ul/li")).click();
-        //driver.findElement(By.xpath("//*[@id=\'searchbox\']/button")).click();
+        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(5));
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#index > div.ac_results")));
+
+
+        driver.findElement(By.xpath("//*[@id=\"search_query_top\"]")).sendKeys(Keys.DOWN);
+        driver.findElement(By.xpath("//*[@id=\"search_query_top\"]")).sendKeys(Keys.ENTER);
+
+
+        Assert.assertEquals("Model demo_2",driver.findElement(By.cssSelector("#product_reference")).getText());
     }
+
+    @Test
+    public void atc05_AgregarProductoCambiandoTallaYColor() throws InterruptedException {
+
+        driver.findElement(By.xpath("//*[@id=\"search_query_top\"]")).sendKeys("blo");
+
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(5));
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#index > div.ac_results")));
+
+        driver.findElement(By.xpath("//*[@id=\"search_query_top\"]")).sendKeys(Keys.DOWN);
+        driver.findElement(By.xpath("//*[@id=\"search_query_top\"]")).sendKeys(Keys.ENTER);
+
+        Select talle = new Select(driver.findElement(By.xpath("//*[@id=\"group_1\"]")));
+        talle.selectByVisibleText("L");
+
+        driver.findElement(By.xpath("//*[@id=\"color_8\"]")).click();
+
+        driver.findElement(By.xpath("//*[@id=\"add_to_cart\"]/button/span")).click();
+
+        String text = driver.findElement(By.xpath("//*[@id=\'layer_cart\']/div[1]/div[1]/h2")).getText();
+
+        //Assert.assertEquals("Product successfully added to your shopping cart", text);
+
+    }
+
+
+    @Test
+    public void FiltroMarcaTarjetasdeRegalo() throws InterruptedException {
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//*[@id=\"nav-hamburger-menu\"]")).click();
+
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[@id=\"hmenu-content\"]/ul[1]/li[7]/a")).click();
+        driver.findElement(By.xpath("//*[@id=\"hmenu-content\"]/ul[5]/li[3]/a")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[@id=\"nav-xshop\"]/a[4]")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[@id=\"nav-subnav\"]/a[7]/span[1] + ")).click();
+
+    }
+
+
 
     @After
     public void close(){
         if(driver != null){
             System.out.println("Close");
-            driver.close();
+            //driver.close();
         }
 
     }
