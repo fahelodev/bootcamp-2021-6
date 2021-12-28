@@ -1,4 +1,4 @@
-package selenium.nmarinucci;
+package selenium.mvargas.nmarinucci;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
