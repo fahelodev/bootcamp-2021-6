@@ -2,19 +2,16 @@ package selenium.iromero;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
-import org.junit.experimental.theories.Theories;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class Amazon {
+public class    Amazon {
     private WebDriver driver;
 
     @BeforeClass
@@ -77,7 +74,7 @@ public class Amazon {
         String[] num = result.split(" ");
 
         //convertir de string a entero
-        int number = Integer.parseInt(new String(num[0]));
+        int number = Integer.parseInt((num[0]));
 
         //obtener todos elementos que contenga un texto "Google"
         List<WebElement> result_search = driver.findElements(By.xpath("//div[@class=\"sg-col-inner\"]//div[contains(@class,\"s-result-list\")]//span[contains(text(),\"Google\")]"));
