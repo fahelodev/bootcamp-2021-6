@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -24,7 +25,7 @@ public class AutomationPractice {
         System.out.println("init para instanciar");
         driver = new ChromeDriver();
         // Definimos un implicit wait de 4 segundos
-        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
     }
 
     @Test
@@ -151,6 +152,52 @@ public class AutomationPractice {
 
         // Se espera que la referencia sea igual a "Model demo_2"
         Assert.assertEquals("Model demo_2", referenciaProducto);
+    }
+
+    @Test
+    public void atc05_agregarProductoCambiandoTallaYColor(){
+        System.out.println("atc05_agregarProductoCambiandoTallaYColor");
+
+        driver.get("http://automationpractice.com/");
+
+        // Ingresamos el texto "blo" en el campo de busqueda y guardamos los li correspondientes a la lista dinamica
+        driver.findElement(By.xpath("//*[@id=\'search_query_top\']")).sendKeys("blo");
+        List<WebElement> resultados = driver.findElements(By.xpath("//*[@class=\'ac_results\']//li"));
+
+        //Iteramos sobre las sugerencias y hacemos click en ella en caso de que alguna coincida con "Blouses > Blouse"
+        for (int i = 0; i < resultados.size(); i++) {
+            if (resultados.get(i).getText().equals("Blouses > Blouse")) {
+                resultados.get(i).click();
+                break;
+            }
+        }
+
+        //Seleccionamos la talla L
+        Select selectTalla = new Select(driver.findElement(By.xpath("//select[@id=\'group_1\']")));
+        selectTalla.selectByVisibleText("L");
+
+        // Obtenemos los colores disponibles
+        List<WebElement> colores = driver.findElements(By.xpath("//*[@id=\'color_to_pick_list\']//li"));
+
+        // Clickeamos en el primer color que no esté seleccionado
+        for (int i = 0; i < colores.size(); i++) {
+            if (colores.get(i).getAttribute("class").contains("selected")) {
+                continue;
+            } else {
+                colores.get(i).click();
+                break;
+            }
+        }
+
+        // clickeamos en agregar al carro y proceder con el pago
+        driver.findElement(By.xpath("//*[@class=\'exclusive\']")).click();
+        driver.findElement(By.xpath("//a[@title=\'Proceed to checkout\']")).click();
+
+        // Obtenemos el nombre del producto en el carro de compras
+        String texto = driver.findElement(By.cssSelector("td.cart_description .product-name")).getText();
+
+        // Verificamos que corresponda a "Blouse"
+        Assert.assertEquals("Blouse", texto);
     }
 
     @After

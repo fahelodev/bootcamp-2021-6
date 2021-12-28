@@ -6,6 +6,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.Keys;
 
 import java.util.List;
 
@@ -29,16 +32,18 @@ public class AutomationPractice {
         @Test
         public void atc01CargarPaginaPrincipal(){
             System.out.println("Test Case 1: Busqueda de Palabra Clave");
+
+                // Cargar la página y validar.
             driver.get("http://automationpractice.com/");
-            //1) Cargar la página y validar
-            driver.get("http://automationpractice.com/");
-            System.out.println(driver.getCurrentUrl());
-            //2) Localizar el cuadro de busqueda e introducir "dress" en el campo de busqueda
+
+                // Localizar el cuadro de busqueda e introducir "dress" en el campo de busqueda
             driver.findElement(By.id("search_query_top")).sendKeys("dress");
-            //3)Localizar el boton de busqueda y hacer click.
+
+                // Localizar el boton de busqueda y hacer click.
             WebElement searchIcon = driver.findElement(By.name("submit_search"));//name locator for next button
             searchIcon.click();
-            //4)Buscar elementos atravez de las listas ul/li y validar
+
+                // Buscar elementos atravez de las listas ul/li y validar
             List<WebElement> allElements = driver.findElements(By.xpath("//div[@id='center_column']/ul/li"));
             Assert.assertEquals(7, allElements.size());
         }
@@ -46,43 +51,101 @@ public class AutomationPractice {
         @Test
         public void atc01CargarPaginaPrincipal1css(){
             System.out.println("Test Case 1: Busqueda de palabra clave con css");
+
+                // Cargar la página y validar.
             driver.get("http://automationpractice.com/");
-            //2) Localizar el cuadro de busqueda e introducir "dress" en el campo de busqueda
+
+                // Localizar el cuadro de busqueda e introducir "dress" en el campo de busqueda
             driver.findElement(By.cssSelector("#search_query_top")).sendKeys("dress");
-            //3)Localizar el boton de busqueda y hacer click.
+
+                // Localizar el boton de busqueda y hacer click.
             WebElement searchIcon = driver.findElement(By.cssSelector("#search_block_top .btn.button-search"));
             searchIcon.click();
-            //4)Buscar elementos atravez de las listas ul/li y validar
+
+                // Buscar elementos atravez de las listas ul/li y validar.
             List<WebElement> allElements = driver.findElements(By.cssSelector("ul.product_list.grid.row>li"));
             Assert.assertEquals(7,allElements.size());
         }
 
         @Test
-        public void atc01CargarPaginaPrincipal2(){
+        public void atc02CargarPaginaPrincipal2(){
             System.out.println("Test Case 2: Busqueda directa producto existente");
+
+                // Cargar la página y validar.
             driver.get("http://automationpractice.com/");
-            //3)Localizar el boton de busqueda y hacer click.
-            WebElement searchIcon = driver.findElement(By.name("submit_search"));//name locator for next button
+
+                // Localizar el boton de busqueda y hacer click.
+            WebElement searchIcon = driver.findElement(By.name("submit_search"));
             searchIcon.click();
-            //Producto del primer elemento
+
+                // Producto del primer elemento
             String resultProduct = driver.findElement(By.xpath("//a[contains(@class, 'product-name')]")).getText();
             Assert.assertEquals("Printed Chiffon Dress",resultProduct);
         }
-    // Busqueda directa producto existente con css
+
         @Test
-        public void atc01CargarPaginaPrincipal2css(){
+        public void atc02CargarPaginaPrincipal2css(){
             System.out.println("Test Case 2: Busqueda directa producto existente con css");
             driver.get("http://automationpractice.com/");
-            //2) Localizar el cuadro de busqueda e introducir "printed chicffon dress" en el campo de busqueda
+
+                // Localizar el cuadro de busqueda e introducir "printed chicffon dress" en el campo de busqueda
             driver.findElement(By.cssSelector("#search_query_top")).sendKeys("printed chiffon dress");
-            //3)Localizar el boton de busqueda y hacer click.
+
+                // Localizar el boton de busqueda y hacer click.
             WebElement searchIcon = driver.findElement(By.cssSelector("#search_block_top .btn.button-search"));
             searchIcon.click();
-            //4)Obtener texto del primer elemento
+
+                // Obtener texto del primer elemento.
             String ResultTitle = driver.findElement(By.cssSelector("ul.product_list.grid.row li:nth-of-type(1) a.product-name")).getText();
             Assert.assertEquals("Printed Chiffon Dress",ResultTitle);
         }
 
+        @Test
+        public void atc03CargarPaginaPrincipal(){
+            System.out.println("Test Case 3: Mensaje de producto no encontrado");
+
+                // Cargar la página y validar.
+            driver.get("http://automationpractice.com/");
+            System.out.println(driver.getCurrentUrl());
+
+                // Localizar el cuadro de busqueda e introducir "liquido matapulgas" en el campo de busqueda.
+            driver.findElement(By.id("search_query_top")).sendKeys("liquido matapulgas");
+
+                // Localizar el boton de busqueda y hacer click.
+            WebElement searchIcon = driver.findElement(By.name("submit_search"));
+            searchIcon.click();
+
+                // Validacion del producto que no se encontro.
+            String palabraBuscada = "liquido matapulgas";
+            String resultado = driver.findElement(By.xpath("//p[@class='alert alert-warning']")).getText();
+            Assert.assertEquals("No results were found for your search "+"\""+palabraBuscada+"\"",resultado);
+        }
+
+       @Test
+        public void atc04CargarPaginaPrincipal4(){
+            System.out.println("Test Case 4: Busqueda directa producto existente");
+
+                // Cargar la página y validar.
+            driver.get("http://automationpractice.com/");
+
+                // Localizar el cuadro de busqueda e introducir "blo" en el campo de busqueda
+            WebElement buscador = driver.findElement(By.id("search_query_top"));
+            buscador.sendKeys("blo");
+
+                // Establecer una espera explicita, para seleccionar la opcion suferida.
+           WebDriverWait tiempo = new WebDriverWait(driver, 20);
+           tiempo.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='ac_results']")));
+
+                // Movemos la seleccion de la busqueda con el teclado.
+           buscador.sendKeys(Keys.DOWN);
+
+                // Presionamos enter.
+           buscador.sendKeys(Keys.ENTER);
+
+                // Validar resultado.
+           String resultado = driver.findElement(By.xpath("//p[@id='product_reference']")).getText();
+           Assert.assertEquals("Model demo_2",resultado);
+        }
 
 
         @After
