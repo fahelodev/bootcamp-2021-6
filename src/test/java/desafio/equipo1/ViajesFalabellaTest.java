@@ -41,7 +41,32 @@ public class ViajesFalabellaTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"sbox-button\")]//a"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"filter-tags-wrapper\"]//span[contains(text(),\"Estrellas\")]"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(@class,\"-show-tooltip\")]//em[contains(text(),\"5\")and contains(@class,\"filter-name\")]"))).click();
+
     }
+
+    @Test
+    public void atc01_PaqueteBasico(){
+
+    }
+
+    @Test
+    public void atc01_TrasladoBasico(){
+
+    }
+
+    @Test
+    public void atc02_AlojamientoMedio(){
+    }
+
+    @Test
+    public void atc02_PaqueteMedio(){
+
+    }
+    @Test
+    public void atc02_TrasladoMedio(){
+
+    }
+
     @Test
     public void atc03_AlojamientoComplejo(){
         WebDriverWait wait = new WebDriverWait(driver, 5);
@@ -63,10 +88,22 @@ public class ViajesFalabellaTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"guests-container\")]/div"))).click();
 
     }
+
+    @Test
+    public void atc03_PaqueteComplejo(){
+
+    }
+    @Test
+    public void atc03_TrasladoComplejo(){
+
+    }
     @After
     public void close(){
         if (driver != null) {
             driver.close();
         }
     }
+
+
+
 }
