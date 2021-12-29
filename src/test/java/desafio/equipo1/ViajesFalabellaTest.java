@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -28,7 +29,7 @@ public class ViajesFalabellaTest {
     public void initial() {
         driver = new ChromeDriver();
         driver.get("https://www.viajesfalabella.cl/");
-
+        driver.manage().window().maximize();
     }
     @Test
     public void atc01_AlojamientoBasico() throws InterruptedException {
@@ -76,7 +77,7 @@ public class ViajesFalabellaTest {
     }
 
     @Test
-    public void atc02_AlojamientoMedio() throws InterruptedException {
+    public void atc02_AlojamientoMedio() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Alojamientos\")]"))).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@class,\"destination\")]"))).sendKeys("Rio");
@@ -118,7 +119,7 @@ public class ViajesFalabellaTest {
     }
 
     @Test
-    public void atc03_AlojamientoComplejo(){
+    public void atc03_AlojamientoComplejo() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Alojamientos\")]"))).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@class,\"destination\")]"))).sendKeys("Rio");
@@ -133,10 +134,34 @@ public class ViajesFalabellaTest {
         }
 
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class,\"month-active\")]//span[contains(@class,\"number\")])[1]"))).click();
+        Thread.sleep(500);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class,\"month-active\")]//span[contains(@class,\"number\")])[31]"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(@class,\"button-apply\")]"))).click();
 
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"guests-container\")]/div"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"medium\")]/a[contains(text(),\"Añadir\")]"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"stepper-minors\")]//a[not(contains(@class,\"disable\"))]"))).click();
+        Select age = new Select(wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"select-container\"]/select"))));
+        age.selectByIndex(15);
+
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class=\"_pnlpk-itemBlock\"]//a[contains(@class,\"plus\")])[3]"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class,\"stepper-minors\")]//a[not(contains(@class,\"disable\"))])[3]"))).click();
+
+        Select ageSecond = new Select(wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class=\"select-container\"]/select)[8]"))));
+        ageSecond.selectByIndex(18);
+
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"medium-down\")]/a[contains(@class,\"link-right\")]"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"sbox-button\"]//a"))).click();
+        Thread.sleep(2000);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"results-toolbar\")]//div[contains(@class,\"right-buttons\")]//label"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"input-container\"]/input[contains(@placeholder,\"lugares\")]"))).sendKeys("Copacabana");
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"tooltip-container\")]//ul/li"))).click();
+        Actions act = new Actions(driver);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class=\"marker-container\"]//span[contains(@class,\"marker-text\")])[4]")));
+        act.doubleClick(element).perform();
+
+        List <WebElement> hotels = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@class=\"hotel-marker\"]//span[contains(@class,\"marker-text\")]")));
+        System.out.println(hotels.size());
 
     }
 
@@ -148,7 +173,7 @@ public class ViajesFalabellaTest {
     public void atc03_TrasladoComplejo(){
 
     }
-   @After
+   //@After
     public void close(){
         if (driver != null) {
             driver.quit();
