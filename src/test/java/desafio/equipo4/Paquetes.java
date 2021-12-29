@@ -57,6 +57,7 @@ public class Paquetes {
         driver.findElement(By.cssSelector("a.date-box")).click();
 
         //Cambiar de pestaña
+        //TODO: al momento de refactorizar habria que convertir 'tabs' en un metodo externo.
         ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
         driver.close();
         driver.switchTo().window(tabs.get(1));
@@ -71,42 +72,50 @@ public class Paquetes {
     public void atc02BusquedaEspecificaDesayuno() throws InterruptedException {
 
         WebDriverWait espera = new WebDriverWait(driver,15);
+        String desayuno = "Desayuno";
 
         //Seleccionar modulo PACKAGES
         driver.findElement(By.cssSelector("a.shifu-3-button-circle.PACKAGES.paint-circle")).click();
 
-        //Ingresamos origen
+        //Ingresar origen
         WebElement origen = driver.findElement(By.xpath("//input[@placeholder='Ingresa una ciudad']"));
         origen.sendKeys("bue");
         espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='ac-group-items']")));
-        origen.sendKeys(Keys.DOWN);
         origen.sendKeys(Keys.ENTER);
 
+        //Ingresar destino
         WebElement destino = driver.findElement(By.xpath("(//input[@placeholder='Ingresa una ciudad'])[2]"));
         destino.sendKeys("ams");
         espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='ac-group-items']")));
-        destino.sendKeys(Keys.DOWN);
         destino.sendKeys(Keys.ENTER);
 
         //Seleccionar fecha de ida
+        driver.findElement(By.xpath("//input[@placeholder='Ida']")).click();
+        WebElement mesActual = driver.findElement(By.xpath("(//div[contains(@class,'--month-active')]//div[contains(@class,'--dates')])[3]"));
+        mesActual.findElement(By.cssSelector("._dpmg2--today + ._dpmg2--date")).click();
 
-        //Seleccionar fecha de vuelta
+        //Seleccionar fecha de vuelta y click en aplicar
+        driver.findElement(By.xpath("//div[contains(@class,'has-limit-date')] //span[contains(text(),'18')]")).click();
+        driver.findElement(By.xpath("(//button[contains(@class,'_dpmg2--desktopFooter-button')])[10]")).click();
 
-        //driver.findElement(By.xpath("//em[@class='_dpmg2--desktopFooter-button-apply-text btn-text']")).click();
+        //Añadir habitacione
+        driver.findElement(By.xpath("(//div[@class='input-container'])[3]")).click();
+        driver.findElement(By.xpath("(//a[contains(@class,'_pnlpk-panel__button')])[5]")).click();
 
-        //Modificar habitaciones
-        //driver.findElement(By.xpath("//div[@class='imput-container']")).click();
-        //driver.findElement(By.xpath("a [contains (@class, '_pnlpk-panel__button']")).click();
-        //driver.findElement(By.xpath("//a[@class='steppers-icon-right']")).click();
-        //driver.findElement(By.xpath("//a[@class='_pnlpk-apply-button']")).click();
+        //Modificar cantidad de personas
+        driver.findElement(By.xpath("(//a[contains(@class,'steppers-icon-right')])[3]")).click();
+        driver.findElement(By.xpath("(//a[contains(@class,'_pnlpk-apply-button')])[2]")).click();
 
+        //Buscar
+        driver.findElement(By.xpath("//a[contains(@class,'sbox-search')]")).click();
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//span[contains(@class,'filters')])[3]")));
 
-        Thread.sleep(2000);
+        //Seleccionar filtro desayuno
+        driver.findElement(By.xpath("(//span[contains(@class,'filters')])[3]")).click();
 
-
-        //Ingresamos destino
-
-
+        //Validacion filtro desayuno
+        String filtro = driver.findElement(By.xpath("(//div[contains(@class,'-eva-3-bold')])[3]")).getText();
+        Assert.assertTrue(filtro.contains(desayuno));
     }
 
     @Test
