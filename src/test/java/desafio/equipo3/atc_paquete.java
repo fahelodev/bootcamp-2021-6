@@ -149,7 +149,7 @@ public class atc_paquete {
     }
 
     @Test
-    public void atc06_PaqueteFamiliaVueloMasDosAlojamientos() throws InterruptedException {
+    public void atc06_PaqueteFamiliaVueloMasDosAlojamientos() {
 
         String ciudadOrigen = "coquimbo";
         String ciudadDestino = "punta arenas";
@@ -177,7 +177,6 @@ public class atc_paquete {
         String popupHabitaciones = "//*[@class='distpicker distpicker-rooms-packages sbox-v4-components']";
         By lessIcon = By.xpath(popupHabitaciones + "//label[.='Menores']/../../..//a[@class='steppers-icon-right sbox-3-icon-plus']");
         Select ageBrocaCochi = new Select(driver.findElement(By.xpath(popupHabitaciones + "//*[@class='select-tag']")));
-        By selectKids = By.xpath("//*[@class='distpicker distpicker-rooms-packages sbox-v4-components']//select");
         By buttonBuscar = By.xpath("//em[.='Buscar']");
 
         // Opción de Vuelo más 2 Alojamientos (V.H.H.)
@@ -213,10 +212,20 @@ public class atc_paquete {
         delay.until(ExpectedConditions.visibilityOfElementLocated(calendar));
         driver.findElement(spanDiaHastaDestinoUno).click();
 
-        // Sumar menores de edad al viaje.
+        // Sumar dos personas menores de edad al viaje.
+        // Click en la habitación
         driver.findElement(divHabitaciones).click();
+
+        // Primer menor de edad.
         driver.findElement(lessIcon).click();
+        Thread.sleep(5000);
         ageBrocaCochi.selectByValue(edadMenores[0]);
+
+        // Segundo menor de edad.
+        driver.findElement(lessIcon).click();
+        ageBrocaCochi = new Select(driver.findElement(
+                        By.xpath("//*[@class='_pnlpk-minors-age-select-wrapper']/div[2]//select")));
+        ageBrocaCochi.selectByValue(edadMenores[1]);
 
         // Buscar
         driver.findElement(buttonBuscar).click();
