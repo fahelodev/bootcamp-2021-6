@@ -160,7 +160,7 @@ public class ViajesFalabellaTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='input-container']//input[contains(@placeholder, 'Arribo')]"))).click();
         while(true){
             String active = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[contains(@class,'month-active')])[2]//span[contains(@class,\"title-month\")]"))).getText();
-           
+
             if (!active.equals("Febrero")){
                 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='_dpmg2--controls-next'])[2]"))).click();
             }else
@@ -171,7 +171,7 @@ public class ViajesFalabellaTest {
 
     @Test
     public void atc03_AlojamientoComplejo() throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Alojamientos\")]"))).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@class,\"destination\")]"))).sendKeys("Rio");
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"ac-group-container\"]/ul/li"))).click();
@@ -212,7 +212,12 @@ public class ViajesFalabellaTest {
         act.doubleClick(element).perform();
 
         List <WebElement> hotels = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@class=\"hotel-marker\"]//span[contains(@class,\"marker-text\")]")));
-        System.out.println(hotels.size());
+        for (int i=1;i<=hotels.size();i++){
+
+            String price = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class=\"hotel-marker\"]//span[contains(@class,\"marker-text\")])["+i+"]"))).getText();
+            System.out.println(price);
+
+        }
 
     }
 
