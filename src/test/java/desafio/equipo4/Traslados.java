@@ -66,6 +66,53 @@ public class Traslados {
         Assert.assertEquals(mensaje_esperado, mensaje_actual);
     }
 
+    @Test
+    public void atc02_opcionTransferencia(){
+        driver.get("http://www.viajesfalabella.cl");
+        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        //Seleccionamos el modulo traslados, 'Desde el aeropuerto' e ingresamos un aeropuerto en 'desde'
+        driver.findElement(By.xpath("//*[text()='Traslados']")).click();
+        driver.findElement(By.xpath("//span[contains(text(),'Desde el aeropuerto')]")).click();
+        driver.findElement(By.xpath("//input[@placeholder='Ingresa un aeropuerto']")).sendKeys("Santiago");
+
+        //esperamos a que la sugerencia aparezca y presionamos Enter para elegirla
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='ac-group-items']")));
+        driver.findElement(By.xpath("//input[@placeholder='Ingresa un aeropuerto']")).sendKeys(Keys.ENTER);
+
+        //Ingresamos una direccion en 'Hasta', esperamos que aparezca la sugerencia y presionamos Enter para elegirla
+        driver.findElement(By.xpath("//input[@placeholder='Ingresa un hotel o dirección adónde quieras ir']")).sendKeys("Santiago");
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='ac-group-items']")));
+        driver.findElement(By.xpath("//input[@placeholder='Ingresa un hotel o dirección adónde quieras ir']")).sendKeys(Keys.ENTER);
+
+        //Hacemos click en 'Arribo' que se encuentra en 'fecha', esperamos y elegimos la fecha actual
+        driver.findElement(By.xpath("//input[@placeholder='Arribo']")).click();
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'datepicker-transfers sbox')]//div[contains(@class, 'controlsWrapper')]")));
+        driver.findElement(By.xpath("//div[contains(@class, 'datepicker-transfers sbox')]//span[contains(@class, 'available _dpmg2--today')]")).click();
+
+        //Seleccionamos una hora utilizando la clase 'Select'
+        WebElement horas = driver.findElement(By.xpath("//select[@class='select-tag sbox-time-arrival']"));
+        Select select = new Select(horas);
+        select.selectByVisibleText("21:30");
+
+        //Hacemos click en 'Buscar' y esperamos al boton de comprar en la otra pagona
+        driver.findElement(By.xpath("//em[contains(text(),'Buscar')]")).click();
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'xxlg')]//em[contains(text(), 'Comprar')]")));
+
+        //Hacemos click en comprar en el primer resultado y esperamos
+        driver.findElement(By.xpath("//div[contains(@class, 'xxlg')]//em[contains(text(), 'Comprar')]")).click();
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Transferencia Bancaria']")));
+
+        //Seleccionamos 'Transferencia Bancaria' y guardamos el texto para corroborar que aparece la sección
+        //de transferencia bancaria para cargar los datos.
+        driver.findElement(By.xpath("//span[text()='Transferencia Bancaria']")).click();
+
+        String mensaje_esperado = "Transferencia Bancaria";
+        String mensaje_actual = driver.findElement(By.xpath("//em[contains(text(),'Transfe')]")).getText();
+
+        Assert.assertEquals(mensaje_esperado, mensaje_actual);
+    }
+
 
     @After
     public void close(){
