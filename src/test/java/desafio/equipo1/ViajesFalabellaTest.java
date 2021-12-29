@@ -69,9 +69,9 @@ public class ViajesFalabellaTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='select-container']//option[text()='18:00'])[2]"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='select-container']//select[contains(@class, 'time')])[2]"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='sbox-button-container']"))).click();
-        String value = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='sub-nav-container']//label/span[contains(text(), '24.021')]"))).getText();
+        String value = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='sub-nav-container']//label/span[2]"))).getText();
         String [] arr = value.split(" ");
-        String value2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='pricebox-value']/span[contains(text(), '24.021')]"))).getText();
+        String value2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='pricebox-value']/span[2]"))).getText();
         Assert.assertEquals(arr[1], value2);
     }
 
@@ -148,7 +148,7 @@ public class ViajesFalabellaTest {
     public void atc03_TrasladoComplejo(){
 
     }
-   // @After
+   @After
     public void close(){
         if (driver != null) {
             driver.quit();
