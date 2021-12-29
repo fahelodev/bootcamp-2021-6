@@ -113,6 +113,76 @@ public class Traslados {
         Assert.assertEquals(mensaje_esperado, mensaje_actual);
     }
 
+    @Test
+    public void atc03_mensajeError_cuponInvalido(){
+        driver.get("http://www.viajesfalabella.cl");
+        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        //Seleccionamos el modulo traslados, hacemos click en 'desde el aeropuerto' e ingreamos un aeropuerto
+        driver.findElement(By.xpath("//*[text()='Traslados']")).click();
+        driver.findElement(By.xpath("//span[contains(text(),'Desde el aeropuerto')]")).click();
+        driver.findElement(By.xpath("//input[@placeholder='Ingresa un aeropuerto']")).sendKeys("Santiago");
+
+        //esperamos a que la sugerencia aparezca y luego presionamos Enter para elegirla
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='ac-group-items']")));
+        driver.findElement(By.xpath("//input[@placeholder='Ingresa un aeropuerto']")).sendKeys(Keys.ENTER);
+
+        //Ingresamos una direccion en 'Hasta', esperamos la sugerencia y luego presionamos Enter para elegirla.
+        driver.findElement(By.xpath("//input[@placeholder='Ingresa un hotel o dirección adónde quieras ir']")).sendKeys("Santiago");
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='ac-group-items']")));
+        driver.findElement(By.xpath("//input[@placeholder='Ingresa un hotel o dirección adónde quieras ir']")).sendKeys(Keys.ENTER);
+
+        //Hacemos click en 'Arribo' que se encuentra en 'fecha', esperamos a que aparezca y seleccionamos la fecha actual
+        driver.findElement(By.xpath("//input[@placeholder='Arribo']")).click();
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'datepicker-transfers sbox')]//div[contains(@class, 'controlsWrapper')]")));
+        driver.findElement(By.xpath("//div[contains(@class, 'datepicker-transfers sbox')]//span[contains(@class, 'available _dpmg2--today')]")).click();
+
+        //Guardamos el elemento web para elegir las horas en la variable "horas"
+        WebElement horas = driver.findElement(By.xpath("//select[@class='select-tag sbox-time-arrival']"));
+
+        //Instanciamos un objeto del tipo Select con el elemento web horas
+        Select select = new Select(horas);
+
+        //seleccionamos la hora: 21:30
+        select.selectByVisibleText("21:30");
+
+        //Hacemos click en 'Pasajeros', esperamos que aparezca la ventana y agregamos un adulto más.
+        driver.findElement(By.xpath("//div[@class='sbox-row sbox-distribution-picker-wrapper-ui']")).click();
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'stepper-adults')]//a[contains(@class, 'icon-plus')]")));
+        driver.findElement(By.xpath("//div[contains(@class, 'stepper-adults')]//a[contains(@class, 'icon-plus')]")).click();
+
+        //Hacemos click para agregar un menor, y seleccionamos la edad del menor con la clase Select
+        driver.findElement(By.xpath("//div[contains(@class, 'stepper-minors')]//a[contains(@class, 'icon-plus')]")).click();
+        WebElement edad_menor = driver.findElement(By.xpath("//div[contains(@class, 'select-minor-age')]//select"));
+        select = new Select(edad_menor);
+        select.selectByIndex(3);
+
+        //Hacemos click en Aplicar y luego en 'Buscar'
+        driver.findElement(By.xpath("//a[contains(text(),'Aplicar')]")).click();
+        driver.findElement(By.xpath("//em[contains(text(),'Buscar')]")).click();
+
+        //esperamos que aparezca el boton de comprar en la otra pagina y Clickeamos en comprar en el primer resultado
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'xxlg')]//em[contains(text(), 'Comprar')]")));
+        driver.findElement(By.xpath("//div[contains(@class, 'xxlg')]//em[contains(text(), 'Comprar')]")).click();
+
+        //Esperamos a que cargue la página para seleccionar la opción del Cupón y hacemos click en Cupon.
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'medium')]//i[contains(@class, 'down')]")));
+        driver.findElement(By.xpath("//div[contains(@class, 'medium')]//i[contains(@class, 'down')]")).click();
+
+        //Esperamos y luego ingresamos un email y un cupón inválido en la sección de cupón y hacemos click en 'Validar'
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='coupon-email']")));
+        driver.findElement(By.xpath("//input[@id='coupon-email']")).sendKeys("jose@email.com");
+        driver.findElement(By.xpath("//input[@id='coupon-code']")).sendKeys("123123");
+        driver.findElement(By.xpath("//em[contains(text(),'Validar')]")).click();
+
+        //esperamos a que aparezca el mensaje de código invalido y luego lo guardamos en una variable
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h5[contains(text(),'El email')]")));
+
+        String mensaje_esperado = "El email o código ingresados son incorrectos";
+        String mensaje_actual = driver.findElement(By.xpath("//h5[contains(text(),'El email')]")).getText();
+
+        Assert.assertEquals(mensaje_esperado, mensaje_actual);
+    }
 
     @After
     public void close(){
