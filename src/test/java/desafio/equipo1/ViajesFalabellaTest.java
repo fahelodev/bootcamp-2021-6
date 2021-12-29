@@ -3,6 +3,7 @@ package desafio.equipo1;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,6 +11,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.Locale;
 
 import java.time.Duration;
 import java.util.List;
@@ -51,7 +53,40 @@ public class ViajesFalabellaTest {
 
     @Test
     public void atc01_PaqueteBasico(){
-
+        // Sincronizacion explicita
+        WebDriverWait d = new WebDriverWait(driver,5);
+        driver.get("https://www.viajesfalabella.cl/");
+        // Instanciar objeto desplegable origen
+        WebElement origen = driver.findElement(By.cssSelector(".sbox-origin"));
+        origen.sendKeys("Arturo Merino");
+        d.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".item-text")));
+        origen.sendKeys(Keys.ENTER);
+        // Instanciar objeto desplegable destino
+        WebElement destino = driver.findElement(By.cssSelector(".sbox-destination"));
+        destino.sendKeys("Lima");
+        d.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".-active")));
+        destino.sendKeys(Keys.ENTER);
+        // Click al boton swtich "Todavía no he decidido la fecha"
+        WebElement switch1 = driver.findElement(By.cssSelector(".switch-container"));
+        switch1.click();
+        // Seleccionamos el mes de enero en el SELECT
+        Select m = new Select(driver.findElement(By.cssSelector(".sbox-month-seletor")));
+        m.selectByValue("2022-01");
+        // Click boton BUSCAR
+        WebElement btn = driver.findElement(By.cssSelector("a.-md"));
+        btn.click();
+        // Click filtro noches
+        WebElement filter = driver.findElement(By.cssSelector("span.filter-tags-wrapper:nth-child(2) > div:nth-child(1)"));
+        filter.click();
+        // Click en boton "Mas 8 noches"
+        WebElement filter_btn = driver.findElement(By.cssSelector(".filters-tooltip > div:nth-child(1) > div:nth-child(1) > div:nth-child(5)"));
+        filter_btn.click();
+        // Click boton Aplicar
+        WebElement add = driver.findElement(By.cssSelector(".filters-tooltip > div:nth-child(2) > a:nth-child(2)"));
+        add.click();
+        d.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".DESTINATION")));
+        String text = driver.findElement(By.cssSelector("div.offer-container:nth-child(1) > div:nth-child(2) > div:nth-child(2) > span:nth-child(1) > span:nth-child(1)")).getText();
+        Assert.assertEquals("11 DÍAS / 10 NOCHES", text);
     }
 
     @Test
@@ -63,7 +98,7 @@ public class ViajesFalabellaTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ac-group-container']//span[@class='item-text']"))).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div//input[contains(@placeholder, 'hotel')]"))).sendKeys("Amerian Park Hotel");
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ac-container']//span[contains(text(), 'Amerian Córdoba')]"))).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='input-container']//input[contains(@placeholder, 'Partida')]"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='input-container']//input[contains(@placeholder, 'Arribo')]"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='_dpmg2--dates']//span[contains(text(), '11')])[2]"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='_dpmg2--date-footer']//em[contains(@class, 'apply')]"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='select-container']//select[@class='select-tag sbox-time-departure']"))).click();
@@ -115,7 +150,21 @@ public class ViajesFalabellaTest {
     }
     @Test
     public void atc02_TrasladoMedio(){
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Traslados\")]"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div//input[contains(@placeholder, 'aeropuerto')]"))).sendKeys("Córdoba");
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ac-group-container']//span[@class='item-text']"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div//input[contains(@placeholder, 'hotel')]"))).sendKeys("Amerian Park Hotel");
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ac-container']//span[contains(text(), 'Amerian Córdoba')]"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='input-container']//input[contains(@placeholder, 'Arribo')]"))).click();
+        while(true){
+            String active = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='_dpmg2--months']//div[contains(@class, '-month-title')]/span"))).getText();
+            if (!active.equals("Febrero")){
+                wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='_dpmg2--controls-next'])[2]"))).click();
+            }else
+                {break;
+                }
+        }
     }
 
     @Test
@@ -176,7 +225,7 @@ public class ViajesFalabellaTest {
    //@After
     public void close(){
         if (driver != null) {
-            driver.quit();
+            //driver.quit();
         }
     }
 
