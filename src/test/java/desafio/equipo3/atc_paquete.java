@@ -5,6 +5,7 @@ import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -148,7 +149,77 @@ public class atc_paquete {
     }
 
     @Test
-    public void atc06_PaqueteFamiliaVueloMasDosAlojamientos() {
+    public void atc06_PaqueteFamiliaVueloMasDosAlojamientos() throws InterruptedException {
+
+        String ciudadOrigen = "coquimbo";
+        String ciudadDestino = "punta arenas";
+        String ciudadDestinoDos = "ushuaia";
+        String diaIda = "14";
+        String diaVuelta = "20";
+        String diaHastaDestinoUno = "17";
+        String[] edadMenores = {"5","10"};
+
+        WebDriverWait delay = new WebDriverWait(driver,8);
+
+        // Locators
+        By calendar = By.xpath("//*[@class='datepicker-packages sbox-v4-components']");
+        By dropdownCities = By.xpath("//i[@class='suggester-icon-xsm suggester-icon-city']");
+        By inputOrigen = By.xpath("//label[normalize-space()='Origen']/following-sibling::input");
+        By inputDestino = By.xpath("//label[normalize-space()='Destino']/following-sibling::input");
+        By inputFechaIda = By.xpath("//input[@placeholder='Ida']");
+        By inputFechaVuelta = By.xpath("//input[@placeholder='Vuelta']");
+        By spanDiaIda = By.xpath("//*[@class='datepicker-packages sbox-v4-components']//span[@class='_dpmg2--date _dpmg2--available']//span[.='" + diaIda + "']");
+        By spanDiaVuelta = By.xpath("//span[@class='_dpmg2--date _dpmg2--available _dpmg2--nights-tooltip']//span[.='" + diaVuelta + "']");
+        By inputDestinoDos = By.xpath("//label[.='Segundo destino']/../input");
+        By inputFechaHastaDestinoUno = By.xpath("//input[@placeholder='Hasta']");
+        By spanDiaHastaDestinoUno = By.xpath("//span[@class='_dpmg2--date _dpmg2--available _dpmg2--nights-tooltip']//span[.='" + diaHastaDestinoUno + "']");
+        By divHabitaciones = By.xpath("//*[@class='sbox-passengers-container']/../..");
+        String popupHabitaciones = "//*[@class='distpicker distpicker-rooms-packages sbox-v4-components']";
+        By lessIcon = By.xpath(popupHabitaciones + "//label[.='Menores']/../../..//a[@class='steppers-icon-right sbox-3-icon-plus']");
+        Select ageBrocaCochi = new Select(driver.findElement(By.xpath(popupHabitaciones + "//*[@class='select-tag']")));
+        By selectKids = By.xpath("//*[@class='distpicker distpicker-rooms-packages sbox-v4-components']//select");
+        By buttonBuscar = By.xpath("//em[.='Buscar']");
+
+        // Opción de Vuelo más 2 Alojamientos (V.H.H.)
+        driver.findElement(By.xpath("//input[@value='vhh']")).click();
+
+        // Ciudad de origen
+        driver.findElement(inputOrigen).sendKeys(ciudadOrigen);
+        delay.until(ExpectedConditions.visibilityOfElementLocated(dropdownCities));
+        driver.findElement(inputOrigen).sendKeys(Keys.RETURN);
+
+        // Ciudad de destino
+        driver.findElement(inputDestino).sendKeys(ciudadDestino);
+        delay.until(ExpectedConditions.visibilityOfElementLocated(dropdownCities));
+        driver.findElement(inputDestino).sendKeys(Keys.RETURN);
+
+        // Fecha de ida del viaje
+        driver.findElement(inputFechaIda).click();
+        delay.until(ExpectedConditions.visibilityOfElementLocated(calendar));
+        driver.findElement(spanDiaIda).click();
+
+        // Fecha de vuelta del viaje
+        driver.findElement(inputFechaVuelta).click();
+        delay.until(ExpectedConditions.visibilityOfElementLocated(calendar));
+        driver.findElement(spanDiaVuelta).click();
+
+        // Ciudad de segundo destino
+        driver.findElement(inputDestinoDos).sendKeys(ciudadDestinoDos);
+        delay.until(ExpectedConditions.visibilityOfElementLocated(dropdownCities));
+        driver.findElement(inputDestinoDos).sendKeys(Keys.RETURN);
+
+        // Fecha de vuelta del primer destino
+        driver.findElement(inputFechaHastaDestinoUno).click();
+        delay.until(ExpectedConditions.visibilityOfElementLocated(calendar));
+        driver.findElement(spanDiaHastaDestinoUno).click();
+
+        // Sumar menores de edad al viaje.
+        driver.findElement(divHabitaciones).click();
+        driver.findElement(lessIcon).click();
+        ageBrocaCochi.selectByValue(edadMenores[0]);
+
+        // Buscar
+        driver.findElement(buttonBuscar).click();
     }
 
     @After
