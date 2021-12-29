@@ -82,6 +82,69 @@ public class atc_paquete {
     @Test
     public void atc05_PaqueteFamiliaVueloMasAlojamiento() {
 
+        String ciudadOrigen = "La Rioja";
+        String ciudadDestino = "Ushuaia";
+        String ciudadAlojamiento = "Porvenir";
+        String diaIda = "12";
+        String diaVuelta = "18";
+        String edadMenor = "8";
+
+        WebDriverWait delay = new WebDriverWait(driver,8);
+
+        // Locators
+        By calendar = By.xpath("//*[@class='datepicker-packages sbox-v4-components']");
+        By dropdownCities = By.xpath("//i[@class='suggester-icon-xsm suggester-icon-city']");
+        By inputOrigen = By.xpath("//label[normalize-space()='Origen']/following-sibling::input");
+        By inputDestino = By.xpath("//label[normalize-space()='Destino']/following-sibling::input");
+        By inputFechaIda = By.xpath("//input[@placeholder='Ida']");
+        By inputFechaVuelta = By.xpath("//input[@placeholder='Vuelta']");
+        By spanDiaIda = By.xpath("//*[@class='datepicker-packages sbox-v4-components']//span[@class='_dpmg2--date _dpmg2--available']//span[.='" + diaIda + "']");
+        By spanDiaVuelta = By.xpath("//span[@class='_dpmg2--date _dpmg2--available _dpmg2--nights-tooltip']//span[.='" + diaVuelta + "']");
+        By divHabitaciones = By.xpath("//*[@class='sbox-passengers-container']/../..");
+        String popupHabitaciones = "//*[@class='distpicker distpicker-rooms-packages sbox-v4-components']";
+        By lessIcon = By.xpath(popupHabitaciones + "//label[.='Menores']/../../..//a[@class='steppers-icon-right sbox-3-icon-plus']");
+        Select ageBrocaCochi = new Select(driver.findElement(By.xpath(popupHabitaciones + "//*[@class='select-tag']")));
+        By inputOpcinesAvanzadas = By.xpath("//input[@class='sbox-advanced-options']");
+        By checkboxAlojamientoOtraCiudad = By.xpath("//label[@data-for='sbox-hotel-another-city-check']");
+        By inputCiudadAlojamiento = By.xpath("//div[@class='sbox-advanced-options-col']//input[@type='text']");
+        By buttonBuscar = By.xpath("//em[.='Buscar']");
+
+        // Ciudad de origen
+        driver.findElement(inputOrigen).sendKeys(ciudadOrigen);
+        delay.until(ExpectedConditions.visibilityOfElementLocated(dropdownCities));
+        driver.findElement(inputOrigen).sendKeys(Keys.RETURN);
+
+        // Ciudad de destino
+        driver.findElement(inputDestino).sendKeys(ciudadDestino);
+        delay.until(ExpectedConditions.visibilityOfElementLocated(dropdownCities));
+        driver.findElement(inputDestino).sendKeys(Keys.RETURN);
+
+        // Fecha de ida
+        driver.findElement(inputFechaIda).click();
+        delay.until(ExpectedConditions.visibilityOfElementLocated(calendar));
+        driver.findElement(spanDiaIda).click();
+
+        // Fecha de vuelta
+        driver.findElement(inputFechaVuelta).click();
+        delay.until(ExpectedConditions.visibilityOfElementLocated(calendar));
+        driver.findElement(spanDiaVuelta).click();
+
+        // Sumar un menor de edad al viaje.
+        driver.findElement(divHabitaciones).click();
+        driver.findElement(lessIcon).click();
+        ageBrocaCochi.selectByValue(edadMenor);
+
+        // Ir a opciones avanzadas.
+        driver.findElement(inputOpcinesAvanzadas).click();
+        driver.findElement(checkboxAlojamientoOtraCiudad).click();
+
+        // Añadir lugar de alojamiento.
+        driver.findElement(inputCiudadAlojamiento).sendKeys(ciudadAlojamiento);
+        delay.until(ExpectedConditions.visibilityOfElementLocated(dropdownCities));
+        driver.findElement(inputCiudadAlojamiento).sendKeys(Keys.RETURN);
+
+        // Buscar
+        driver.findElement(buttonBuscar).click();
     }
 
     @Test
