@@ -63,7 +63,7 @@ public class ViajesFalabellaTest {
     @Test
     public void atc01_PaqueteBasico() {
         // Sincronizacion explicita
-        WebDriverWait d = new WebDriverWait(driver, 5);
+        WebDriverWait d = new WebDriverWait(driver, Duration.ofSeconds(5));
         // Instanciar objeto desplegable origen
         WebElement origen = driver.findElement(By.cssSelector(".sbox-origin"));
         origen.sendKeys("Arturo Merino");
@@ -188,7 +188,7 @@ public class ViajesFalabellaTest {
     @Test
     public void atc02_PaqueteMedio() {
         // Sincronizacion explicita
-        WebDriverWait d = new WebDriverWait(driver, 5);
+        WebDriverWait d = new WebDriverWait(driver, Duration.ofSeconds(5));
         // Instanciar objeto desplegable origen
         WebElement origen = driver.findElement(By.cssSelector(".sbox-origin"));
         origen.sendKeys("bue");
