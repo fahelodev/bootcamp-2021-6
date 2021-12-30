@@ -70,6 +70,52 @@ public class Alojamientos {
         Assert.assertEquals( nombreAlojamientoEsperado, nombreAlojamientoEncontrado);
     }
 
+    @Test
+    public void atc02_busquedaEspecifica() throws InterruptedException {
+        System.out.println("Test Case atc02_busquedaEspecifica");
+
+        driver.get("http://www.viajesfalabella.cl");
+
+
+        // navegamos por el menu lateral
+        driver.findElement(By.xpath("//li[contains(@class,'header-product-item')]//label[contains(text(),'Alojamientos')]")).click();
+
+        // Enviamos texto al input de destino y seleccionamos la primera sugerencia del autocompletado
+        driver.findElement(By.xpath("//input[contains(@class,'sbox-destination')]")).sendKeys("Nueva York");
+        driver.findElement(By.xpath("//span[contains(@class,'item-text')]")).click();
+
+        // seleccionamos fecha de entrada y salida
+        driver.findElement(By.xpath("//input[contains(@class,'sbox-checkin-date')]")).click();
+        driver.findElement(By.cssSelector("._dpmg2--today")).click();
+        driver.findElement(By.xpath("//div[contains(@class,'_dpmg2--has-limit-date')]//span[contains(text(),'12')]")).click();
+        driver.findElement(By.xpath("//button[contains(@class,'_dpmg2--desktopFooter-button-apply')]")).click();
+
+        // añadimos habitaciones y un adulto
+        driver.findElement(By.xpath("//div[contains(@class,'sbox-distribution ')]")).click();
+        driver.findElement(By.xpath("//div[contains(@class,'_pnlpk-panel--popup')]//a[contains(text(),'Añadir habitación')]")).click();
+        driver.findElement(By.xpath("//div[contains(@class,'_pnlpk-panel--popup')]//a[contains(@class,'sbox-3-icon-plus')]")).click();
+        driver.findElement(By.cssSelector("._pnlpk-apply-button")).click();
+
+        // realizamos la busqueda
+        driver.findElement(By.cssSelector(".sbox-search")).click();
+
+        WebDriverWait espera = new WebDriverWait(driver,10);
+        espera.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".cluster-container")));
+
+        List<WebElement> resultados = driver.findElements(By.cssSelector("aloha-location-name span"));
+
+        boolean allInNuevaYork = true;
+
+        for (int i = 0; i < resultados.size(); i++) {
+            if (!resultados.get(i).getText().contains("Nueva York")) {
+                allInNuevaYork = false;
+                break;
+            }
+        }
+
+        Assert.assertTrue(allInNuevaYork);
+    }
+
     @After
     public void close(){
         if(driver != null){
