@@ -11,8 +11,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.util.Locale;
-
 import java.time.Duration;
 import java.util.List;
 
@@ -33,6 +31,7 @@ public class ViajesFalabellaTest {
         driver.get("https://www.viajesfalabella.cl/");
         driver.manage().window().maximize();
     }
+
     @Test
     public void atc01_AlojamientoBasico() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -47,14 +46,14 @@ public class ViajesFalabellaTest {
 
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(@class,\"-show-tooltip\")]//em[contains(text(),\"Aplicar\")]"))).click();
         Thread.sleep(1000);
-        List <WebElement> stars = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("(//div[contains(@class,\"card-rating\")])[1]//i")));
-        Assert.assertEquals(5,stars.size());
+        List<WebElement> stars = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("(//div[contains(@class,\"card-rating\")])[1]//i")));
+        Assert.assertEquals(5, stars.size());
     }
 
     @Test
-    public void atc01_PaqueteBasico(){
+    public void atc01_PaqueteBasico() {
         // Sincronizacion explicita
-        WebDriverWait d = new WebDriverWait(driver,5);
+        WebDriverWait d = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.get("https://www.viajesfalabella.cl/");
         // Instanciar objeto desplegable origen
         WebElement origen = driver.findElement(By.cssSelector(".sbox-origin"));
@@ -90,7 +89,7 @@ public class ViajesFalabellaTest {
     }
 
     @Test
-    public void atc01_TrasladoBasico(){
+    public void atc01_TrasladoBasico() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         //Seleccionamos opción traslado
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Traslados\")]"))).click();
@@ -114,7 +113,7 @@ public class ViajesFalabellaTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='sbox-button-container']"))).click();
         //Crear variable y array para comparar los precios
         String value = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='sub-nav-container']//label/span[2]"))).getText();
-        String [] arr = value.split(" ");
+        String[] arr = value.split(" ");
         String value2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='pricebox-value']/span[2]"))).getText();
         Assert.assertEquals(arr[1], value2);
     }
@@ -127,11 +126,13 @@ public class ViajesFalabellaTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"ac-group-container\"]/ul/li"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"checkin-date\")]"))).click();
 
-        while(true){
+        while (true) {
             String active = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class,\"month-active\")]/div[contains(@class,\"month-title\")]/span"))).getText();
             if (!active.equals("Mayo")) {
                 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"controls-next\")]"))).click();
-            }else{break;}
+            } else {
+                break;
+            }
         }
 
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class,\"month-active\")]//span[contains(@class,\"number\")])[1]"))).click();
@@ -150,15 +151,16 @@ public class ViajesFalabellaTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//aloha-checkbox-filter/ul/li//span[contains(text(),\"Desayuno\")]"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//aloha-checkbox-filter//em/i"))).click();
         String specf = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"pricebox-top-container\"]//p[contains(text(),\"3 personas\")]"))).getText();
-        Assert.assertEquals("30 noches, 3 personas",specf);
+        Assert.assertEquals("30 noches, 3 personas", specf);
     }
 
     @Test
-    public void atc02_PaqueteMedio(){
+    public void atc02_PaqueteMedio() {
 
     }
+
     @Test
-    public void atc02_TrasladoMedio(){
+    public void atc02_TrasladoMedio() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         //Seleccionamos opción traslado
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Traslados\")]"))).click();
@@ -170,63 +172,74 @@ public class ViajesFalabellaTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ac-container']//span[contains(text(), 'Amerian Córdoba')]"))).click();
         //Escogemos el mes
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='input-container']//input[contains(@placeholder, 'Arribo')]"))).click();
-        while(true){
-            String dates = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[contains(@class,'month-active')])[2]//span[contains(@class,\"title-month\")]"))).getText();
-            if (!dates.equals("Febrero")){
-                wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='_dpmg2--controls-next'])[2]"))).click();
-            }else
-                {break;}
+        while (true) {
+
+            String active = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[contains(@class,'month-active')])[2]//span[contains(@class,\"title-month\")]"))).getText();
+
+            if (!active.equals("Febrero")) {
+
+                String dates = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[contains(@class,'month-active')])[2]//span[contains(@class,\"title-month\")]"))).getText();
+                if (!dates.equals("Febrero")) {
+
+                    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='_dpmg2--controls-next'])[2]"))).click();
+                } else {
+                    break;
+                }
+            }
+            //Seleccionamos la fecha
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("((//div[contains(@class,'month-active')])[2]//span[contains(@class, 'number')])[7]"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class,'btn-container')])[2]/button[contains(@class, 'apply')]"))).click();
+            //Seleccionamos la hora
+            Select hour = new Select(wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='sbox-moment-input']//select[contains(@class, 'arrival')]"))));
+            hour.selectByIndex(16);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//select[contains(@class, 'arrival')]"))).click();
+            //Clickeamos el checkbox "Quiero agregar el regreso"
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class, 'places-check')]//i"))).click();
+            //Seleccionamos la fecha de regreso
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='sbox-row'])[2]//input"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("((//div[contains(@class, 'month-active')])[2]//span[contains(@class, 'number')])[21]"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class, 'btn-container')])[2]/button[contains(@class, 'apply')]"))).click();
+            //Seleccionamos la hora de regreso
+            Select hour2 = new Select(wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='sbox-row'])[2]//select"))));
+            hour2.selectByIndex(40);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='sbox-row'])[2]//select"))).click();
+            //Añadimos un menor de edad a los pasajeros
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='sbox-distri-container']//div[@class='input-container']"))).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class,'number-picker')])[2]//a[contains(@class, 'plus')]"))).click();
+            //Escogemos la edad del menor de edad
+            Select age = new Select(wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,'minors-age')]//select"))));
+            age.selectByIndex(18);
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div/a[contains(@class, 'apply')]"))).click();
+            //Clickeamos el boton de busqueda
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='sbox-button']//a"))).click();
+            //Creamos variables y array para la validacion
+            String person = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("((//div[contains(@class,'re-search')])[2]//span[@class='item-container'])[3]"))).getText();
+            String person2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='item'])[1]/span[contains(text(), 'personas')]"))).getText();
+            String[] arr = person2.split(" ");
+            String num = arr[0];
+            //Transformamos a int los Strings para comparar
+            int passengerTravel = Integer.parseInt(num);
+            int passengerCar = Integer.parseInt(person);
+            Assert.assertTrue(passengerCar >= passengerTravel);
         }
-        //Seleccionamos la fecha
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("((//div[contains(@class,'month-active')])[2]//span[contains(@class, 'number')])[7]"))).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class,'btn-container')])[2]/button[contains(@class, 'apply')]"))).click();
-        //Seleccionamos la hora
-        Select hour = new Select(wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='sbox-moment-input']//select[contains(@class, 'arrival')]"))));
-        hour.selectByIndex(16);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//select[contains(@class, 'arrival')]"))).click();
-        //Clickeamos el checkbox "Quiero agregar el regreso"
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class, 'places-check')]//i"))).click();
-        //Seleccionamos la fecha de regreso
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='sbox-row'])[2]//input"))).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("((//div[contains(@class, 'month-active')])[2]//span[contains(@class, 'number')])[21]"))).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class, 'btn-container')])[2]/button[contains(@class, 'apply')]"))).click();
-        //Seleccionamos la hora de regreso
-        Select hour2 = new Select(wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='sbox-row'])[2]//select"))));
-        hour2.selectByIndex(40);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='sbox-row'])[2]//select"))).click();
-        //Añadimos un menor de edad a los pasajeros
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='sbox-distri-container']//div[@class='input-container']"))).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class,'number-picker')])[2]//a[contains(@class, 'plus')]"))).click();
-        //Escogemos la edad del menor de edad
-        Select age = new Select (wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,'minors-age')]//select"))));
-        age.selectByIndex(18);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div/a[contains(@class, 'apply')]"))).click();
-        //Clickeamos el boton de busqueda
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='sbox-button']//a"))).click();
-        //Creamos variables y array para la validacion
-        String person = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("((//div[contains(@class,'re-search')])[2]//span[@class='item-container'])[3]"))).getText();
-        String person2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='item'])[1]/span[contains(text(), 'personas')]"))).getText();
-        String [] arr  = person2.split(" ");
-        String num = arr[0];
-        //Transformamos a int los Strings para comparar
-        int passengerTravel = Integer.parseInt(num);
-        int passengerCar = Integer.parseInt(person);
-        Assert.assertTrue(passengerCar>=passengerTravel);
+
     }
 
     @Test
     public void atc03_AlojamientoComplejo() throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Alojamientos\")]"))).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@class,\"destination\")]"))).sendKeys("Rio");
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"ac-group-container\"]/ul/li"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"checkin-date\")]"))).click();
 
-        while(true){
+        while (true) {
             String active = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class,\"month-active\")]/div[contains(@class,\"month-title\")]/span"))).getText();
             if (!active.equals("Mayo")) {
                 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"controls-next\")]"))).click();
-            }else{break;}
+            } else {
+                break;
+            }
         }
 
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class,\"month-active\")]//span[contains(@class,\"number\")])[1]"))).click();
@@ -256,17 +269,23 @@ public class ViajesFalabellaTest {
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class=\"marker-container\"]//span[contains(@class,\"marker-text\")])[4]")));
         act.doubleClick(element).perform();
 
-        List <WebElement> hotels = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@class=\"hotel-marker\"]//span[contains(@class,\"marker-text\")]")));
-        System.out.println(hotels.size());
+        List<WebElement> hotels = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@class=\"hotel-marker\"]//span[contains(@class,\"marker-text\")]")));
+        for (int i = 1; i <= hotels.size(); i++) {
+
+            String price = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class=\"hotel-marker\"]//span[contains(@class,\"marker-text\")])[" + i + "]"))).getText();
+            System.out.println(price);
+
+        }
 
     }
 
     @Test
-    public void atc03_PaqueteComplejo(){
+    public void atc03_PaqueteComplejo() {
 
     }
+
     @Test
-    public void atc03_TrasladoComplejo(){
+    public void atc03_TrasladoComplejo() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         //Seleccionamos opción traslado
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Traslados\")]"))).click();
@@ -278,12 +297,13 @@ public class ViajesFalabellaTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ac-container']//span[contains(text(), 'Amerian Córdoba')]"))).click();
         //Escogemos el mes
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='input-container']//input[contains(@placeholder, 'Arribo')]"))).click();
-        while(true){
+        while (true) {
             String dates = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[contains(@class,'month-active')])[2]//span[contains(@class,\"title-month\")]"))).getText();
-            if (!dates.equals("Junio")){
+            if (!dates.equals("Junio")) {
                 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='_dpmg2--controls-next'])[2]"))).click();
-            }else
-            {break;}
+            } else {
+                break;
+            }
         }
         //Seleccionamos la fecha
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("((//div[contains(@class,'month-active')])[2]//span[contains(@class, 'number')])[10]"))).click();
@@ -306,7 +326,7 @@ public class ViajesFalabellaTest {
         //Añadimos un menor de edad a los pasajeros
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class,'number-picker')])[2]//a[contains(@class, 'plus')]"))).click();
         //Escogemos la edad del menor de edad
-        Select age = new Select (wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,'minors-age')]//select"))));
+        Select age = new Select(wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,'minors-age')]//select"))));
         age.selectByIndex(11);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div/a[contains(@class, 'apply')]"))).click();
         //Clickeamos el boton de busqueda
@@ -327,19 +347,19 @@ public class ViajesFalabellaTest {
         //Creamos variables y arrays para comparar
         String newDate = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[contains(@class, 're-search')])[2]//span[contains(text(), '19 jun')]"))).getText();
         String finalDate = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='-eva-3-mt-xsm']/span[contains(text(), '19 jun')])[1]"))).getText();
-        String [] arr = newDate.split(" ");
-        String [] arr2 = finalDate.split(" ");
-        String selectDate = arr[2]+arr[3];
-        String getDate = arr2[0]+arr2[1];
+        String[] arr = newDate.split(" ");
+        String[] arr2 = finalDate.split(" ");
+        String selectDate = arr[2] + arr[3];
+        String getDate = arr2[0] + arr2[1];
         Assert.assertEquals(selectDate, getDate);
     }
-   @After
-    public void close(){
+
+    @After
+    public void close() {
         if (driver != null) {
             driver.quit();
         }
     }
-
 
 
 }
