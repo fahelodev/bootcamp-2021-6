@@ -352,7 +352,7 @@ public class ViajesFalabellaTest {
         String getDate = arr2[0] + arr2[1];
         Assert.assertEquals(selectDate, getDate);
     }
-
+//a
     @After
     public void close() {
         if (driver != null) {
