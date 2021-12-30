@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.Locale;
+
 
 import java.time.Duration;
 import java.util.List;
@@ -56,7 +56,7 @@ public class ViajesFalabellaTest {
     @Test
     public void atc01_PaqueteBasico() {
         // Sincronizacion explicita
-        WebDriverWait d = new WebDriverWait(driver, 5);
+        WebDriverWait d = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.get("https://www.viajesfalabella.cl/");
         // Instanciar objeto desplegable origen
         WebElement origen = driver.findElement(By.cssSelector(".sbox-origin"));
