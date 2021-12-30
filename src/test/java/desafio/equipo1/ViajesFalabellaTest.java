@@ -14,7 +14,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-
 public class ViajesFalabellaTest {
     private WebDriver driver;
 
@@ -360,6 +359,5 @@ public class ViajesFalabellaTest {
             driver.quit();
         }
     }
-
-
 }
+
