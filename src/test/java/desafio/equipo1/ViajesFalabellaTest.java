@@ -7,7 +7,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -64,8 +63,7 @@ public class ViajesFalabellaTest {
     @Test
     public void atc01_PaqueteBasico() {
         // Sincronizacion explicita
-        WebDriverWait d = new WebDriverWait(driver, Duration.ofSeconds(5));
-        driver.get("https://www.viajesfalabella.cl/");
+        WebDriverWait d = new WebDriverWait(driver, 5);
         // Instanciar objeto desplegable origen
         WebElement origen = driver.findElement(By.cssSelector(".sbox-origin"));
         origen.sendKeys("Arturo Merino");
@@ -95,8 +93,11 @@ public class ViajesFalabellaTest {
         WebElement add = driver.findElement(By.cssSelector(".filters-tooltip > div:nth-child(2) > a:nth-child(2)"));
         add.click();
         d.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".DESTINATION")));
-        String text = driver.findElement(By.cssSelector("div.offer-container:nth-child(1) > div:nth-child(2) > div:nth-child(2) > span:nth-child(1) > span:nth-child(1)")).getText();
-        Assert.assertEquals("11 DÍAS / 10 NOCHES", text);
+        // Verificar que los filtros esten aplicados
+        String text1 = driver.findElement(By.cssSelector("span.filter-tags-wrapper:nth-child(1) > div:nth-child(1) > p:nth-child(1)")).getText();
+        String text2 = driver.findElement(By.cssSelector("span.filter-tags-wrapper:nth-child(2) > div:nth-child(1) > p:nth-child(1)")).getText();
+        Assert.assertEquals("Enero", text1);
+        Assert.assertEquals("Más de 8 noches", text2);
     }
 
     @Test
@@ -186,7 +187,44 @@ public class ViajesFalabellaTest {
 
     @Test
     public void atc02_PaqueteMedio() {
-
+        // Sincronizacion explicita
+        WebDriverWait d = new WebDriverWait(driver, 5);
+        // Instanciar objeto desplegable origen
+        WebElement origen = driver.findElement(By.cssSelector(".sbox-origin"));
+        origen.sendKeys("bue");
+        d.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".item-text")));
+        origen.sendKeys(Keys.ENTER);
+        // Instanciar objeto desplegable destino
+        WebElement destino = driver.findElement(By.cssSelector(".sbox-destination"));
+        destino.sendKeys("mia");
+        d.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".-active")));
+        destino.sendKeys(Keys.ENTER);
+        // Click en box fechas
+        WebElement fechas = driver.findElement(By.cssSelector(".sbox-checkin-date"));
+        fechas.click();
+        d.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("._dpmg2--show > div:nth-child(2)")));
+        WebElement ida_nro = driver.findElement(By.cssSelector("._dpmg2--show > div:nth-child(5) > div:nth-child(2) > div:nth-child(4) > span:nth-child(11) > span:nth-child(1)"));
+        ida_nro.click();
+        WebElement vuelta_nro = driver.findElement(By.cssSelector("._dpmg2--show > div:nth-child(5) > div:nth-child(2) > div:nth-child(4) > span:nth-child(25) > span:nth-child(1)"));
+        vuelta_nro.click();
+        // Click boton aplicar
+        WebElement btn = driver.findElement(By.cssSelector("._dpmg2--show > div:nth-child(6) > div:nth-child(2) > button:nth-child(2) > em:nth-child(1)"));
+        btn.click();
+        // Click en box habitaciones
+        WebElement room = driver.findElement(By.cssSelector(".sbox-distri-input > div:nth-child(1)"));
+        room.click();
+        // Agregar adulto
+        WebElement plus = driver.findElement(By.cssSelector("div._pnlpk-dynamicContent:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > a:nth-child(4)"));
+        plus.click();
+        // Click en boton Aplicar
+        WebElement btn1 = driver.findElement(By.cssSelector("._pnlpk-panel--show > div:nth-child(2) > a:nth-child(1)"));
+        btn1.click();
+        // Click boton Buscar
+        WebElement search = driver.findElement(By.cssSelector("em.btn-text:nth-child(2)"));
+        search.click();
+        d.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h3.package-title:nth-child(1)")));
+        String text = driver.findElement(By.cssSelector("h3.package-title:nth-child(1)")).getText();
+        Assert.assertEquals("Este es el paquete perfecto para tí. ¡Empieza a vivir tu viaje!", text);
     }
 
     @Test
@@ -418,5 +456,3 @@ public class ViajesFalabellaTest {
 
 
 }
-
-
