@@ -238,16 +238,15 @@ public class ViajesFalabellaTest {
         //Escribimos el hotel
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div//input[contains(@placeholder, 'hotel')]"))).sendKeys("Amerian Park Hotel");
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ac-container']//span[contains(text(), 'Amerian Córdoba')]"))).click();
-        //Escogemos el mes
+        //Escogemos el mes a través de un bucle
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='input-container']//input[contains(@placeholder, 'Arribo')]"))).click();
         while (true) {
-
-
+            //se crea un string con los meses
             String dates = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[contains(@class,'month-active')])[2]//span[contains(@class,\"title-month\")]"))).getText();
+            //se crea la condicion de que si el nombre del mes no es igual a Febrero haga click
             if (!dates.equals("Febrero")) {
-
                 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='_dpmg2--controls-next'])[2]"))).click();
-            } else {
+            } else {//sale del bucle al cumplirse la condicion
                 break;
             }
         }
@@ -388,13 +387,15 @@ public class ViajesFalabellaTest {
         //Escribimos el hotel
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div//input[contains(@placeholder, 'hotel')]"))).sendKeys("Amerian Park Hotel");
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ac-container']//span[contains(text(), 'Amerian Córdoba')]"))).click();
-        //Escogemos el mes
+        //Escogemos el mes a través de un bucle
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='input-container']//input[contains(@placeholder, 'Arribo')]"))).click();
         while (true) {
+            //se crea un string con los meses
             String dates = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[contains(@class,'month-active')])[2]//span[contains(@class,\"title-month\")]"))).getText();
+            //se crea la condicion de que si el nombre del mes no es igual a Febrero haga click
             if (!dates.equals("Junio")) {
                 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='_dpmg2--controls-next'])[2]"))).click();
-            } else {
+            } else {//sale del bucle al cumplirse la condicion
                 break;
             }
         }
