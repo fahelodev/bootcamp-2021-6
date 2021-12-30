@@ -34,19 +34,30 @@ public class ViajesFalabellaTest {
 
     @Test
     public void atc01_AlojamientoBasico() throws InterruptedException {
+        //instancia de wait en 5 seg
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        //click en seccion de alojamiento
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Alojamientos\")]"))).click();
+        //escritura en destino
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@class,\"destination\")]"))).sendKeys("Rio");
+        //click en primera coincidencia con el destino ingresado
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"ac-group-container\"]/ul/li"))).click();
+        //click en checkbox como no esta definido el dia de viaje ni personas
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"checkbox\")]//label"))).click();
+        //click en boton de buscar
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"sbox-button\")]//a"))).click();
+        //click en filtro de estrella
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"filter-tags-wrapper\"]//span[contains(text(),\"Estrellas\")]"))).click();
+        //click en 5 estrellas
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(@class,\"-show-tooltip\")]//em[contains(text(),\"5\")and contains(@class,\"filter-name\")]"))).click();
 
-
+        //click de aplicar filtro
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(@class,\"-show-tooltip\")]//em[contains(text(),\"Aplicar\")]"))).click();
+        //sleep ya realiza demasiado rapido la obtencion del siguiente elemento
         Thread.sleep(1000);
+        //obtencion de cantidad de estrellas
         List<WebElement> stars = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("(//div[contains(@class,\"card-rating\")])[1]//i")));
+
         Assert.assertEquals(5, stars.size());
     }
 
@@ -120,36 +131,55 @@ public class ViajesFalabellaTest {
 
     @Test
     public void atc02_AlojamientoMedio() throws InterruptedException {
+        //instancia de wait con 5 seg
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        //click en seccion de alojamiento
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Alojamientos\")]"))).click();
+        //introducir texto en busqueda
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@class,\"destination\")]"))).sendKeys("Rio");
+        //click en primera opcion mostrada relacionado a la busqueda
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"ac-group-container\"]/ul/li"))).click();
+        //click en dias
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"checkin-date\")]"))).click();
-
+        //bucle para obtencion de mes deseado
         while (true) {
+            //guardando el nombre del mes que este activo
             String active = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class,\"month-active\")]/div[contains(@class,\"month-title\")]/span"))).getText();
+            //condicional si es que el nombre buscado no es el mes que esta activo hace click para pasar al siguiente mes
             if (!active.equals("Mayo")) {
                 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"controls-next\")]"))).click();
             } else {
+                //sale del ciclo ya que el mes buscado esta como activo
                 break;
             }
         }
-
+        //click en fecha de ida
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class,\"month-active\")]//span[contains(@class,\"number\")])[1]"))).click();
         Thread.sleep(555);
+        //click en fecha de vuelta
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class,\"month-active\")]//span[contains(@class,\"number\")])[31]"))).click();
+        //click en boton de aplicar fecha
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(@class,\"button-apply\")]"))).click();
-
+        //click en personas que alojan
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"guests-container\")]/div"))).click();
+        //click para agregar un menor
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"stepper-minors\")]//a[not(contains(@class,\"disable\"))]"))).click();
+        //uso de select para seleccionar la opcion de la edad
         Select age = new Select(wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"select-container\"]/select"))));
         age.selectByIndex(15);
+        //click para aplicar cantidad de personas
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"medium-down\")]/a[contains(@class,\"link-right\")]"))).click();
+        //click en busqueda
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"sbox-button\"]//a"))).click();
+        //seleccion para tipo de orden de ver alojamiento y hoteles
         Select order = new Select(wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//aloha-select[contains(@class,\"sorting\")]//select"))));
         order.selectByIndex(2);
+
+        //click en opcion de filtro Desayuno
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//aloha-checkbox-filter/ul/li//span[contains(text(),\"Desayuno\")]"))).click();
+        //click en cantidad de estrellas
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//aloha-checkbox-filter//em/i"))).click();
+        //obtencion de especificacion que cumple el hotel
         String specf = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"pricebox-top-container\"]//p[contains(text(),\"3 personas\")]"))).getText();
         Assert.assertEquals("30 noches, 3 personas", specf);
     }
@@ -360,7 +390,6 @@ public class ViajesFalabellaTest {
             driver.quit();
         }
     }
-
 
 
 }
