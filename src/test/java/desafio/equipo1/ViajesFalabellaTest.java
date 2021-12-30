@@ -354,9 +354,7 @@ public class ViajesFalabellaTest {
                 priceInt = Integer.parseInt(elemtOne.replace(".", ""));
             }
             if (priceInt > priceAfterInt) {
-                if (count != 0) {
-                    count = count;
-                } else {
+                if (count ==0){
                     count = i;
                 }
             }
