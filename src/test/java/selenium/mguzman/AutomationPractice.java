@@ -28,7 +28,7 @@ public class AutomationPractice {
         //Page practice.
         driver.get("http://automationpractice.com/");
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 
     @Test
@@ -89,7 +89,10 @@ public class AutomationPractice {
         driver.findElement(By.xpath("//input[@class=\"search_query form-control ac_input\"]")).sendKeys("liquido matapulgas" + Keys.RETURN);
         //Obtener texto
         String m = driver.findElement(By.xpath("//div//p[@class=\"alert alert-warning\"]")).getText();
+        String n = driver.findElement(By.xpath("//*[@id=\"center_column\"]/h1/span")).getText();
         Assert.assertEquals("No results were found for your search \"liquido matapulgas\"", m);
+        Assert.assertEquals("0 results have been found.",n);
+
     }
 
     @Test
@@ -117,6 +120,7 @@ public class AutomationPractice {
             WebElement Talla = driver.findElement( By.xpath("//select[@id=\"group_1\"]"));
             Select select = new Select(Talla);
             select.selectByVisibleText("L");
+        //Seleccionar color blanco
         driver.findElement(By.xpath("(//a[@id=\"color_8\"])[@name=\"White\"]")).click();
         driver.findElement(By.xpath("(//button[@class=\"exclusive\"])[@name=\"Submit\"]")).click();
 
