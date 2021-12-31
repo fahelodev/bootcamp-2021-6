@@ -161,7 +161,7 @@ public class Alojamiento {
 
 
     @Test
-    public void tc_003_alojamientoPrecioRango() throws InterruptedException {
+    public void tc_003_alojamientoPrecioRango() {
 
         //Cargar la página
         driver.get("https://www.viajesfalabella.cl/");
