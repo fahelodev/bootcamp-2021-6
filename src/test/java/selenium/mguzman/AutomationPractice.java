@@ -25,7 +25,7 @@ public class AutomationPractice {
     public void init() {
         System.out.println("instanciar");
         driver = new ChromeDriver();
-        //Page practice
+        //Page practice.
         driver.get("http://automationpractice.com/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

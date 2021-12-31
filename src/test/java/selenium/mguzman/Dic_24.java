@@ -35,7 +35,7 @@ public class Dic_24 {
     public void N24_Dic(){
         //Body Page
         driver.findElement(By.xpath("/html/body")).click();
-        //click menu
+        //click menu.
         driver.findElement(By.xpath("//*[@id=\"nav-hamburger-menu\"]")).click();
         //click en electronico
         driver.findElement(By.xpath("//*[@id=\"hmenu-content\"]/ul[1]/li[7]/a")).click();
