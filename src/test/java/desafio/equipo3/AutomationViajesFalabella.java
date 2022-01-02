@@ -37,9 +37,12 @@ public class AutomationViajesFalabella {
 
         String lugarDestino = "Rio de janeiro";
 
+        WebDriverWait espera = new WebDriverWait(driver,4);
+
         By alojamientos = By.xpath("//label[.='Alojamientos']");
         By casilla = By.xpath("//label[@class='checkbox-label']");
         By inputDestino = By.xpath("//label[.='Destino']/../input");
+        By desplegableCiudades = By.xpath("//i[@class='suggester-icon-xsm suggester-icon-city']");
         By buscador = By.xpath("//em[.='Buscar']");
 
         //seleccionamos alojamiento
@@ -51,28 +54,30 @@ public class AutomationViajesFalabella {
         //escribe el destino
         WebElement destino = driver.findElement(inputDestino);
         destino.sendKeys(lugarDestino);
+        espera.until(ExpectedConditions.visibilityOfElementLocated(desplegableCiudades));
         destino.sendKeys(Keys.ENTER);
 
         //Buscador
         driver.findElement(buscador).click();
 
-        /*
         //Devuelve resultados según disponibilidad.
-        String urlEsperada = "https://www.viajesfalabella.cl/accommodations/results/";
+        String urlEsperada = "https://www.viajesfalabella.cl/hoteles/";
         String urlResultados = driver.getCurrentUrl();
 
-        System.out.println(urlResultados);
+        new WebDriverWait(driver, 10).until(ExpectedConditions.urlContains(urlEsperada));
 
         Assert.assertTrue(urlResultados.startsWith(urlEsperada));
-        */
     }
 
     @Test
     public void atc02_AlojamientoConFechas() {
 
+        WebDriverWait espera = new WebDriverWait(driver,4);
+
         By alojamientos = By.xpath("//label[.='Alojamientos']");
         By buscador = By.xpath("//em[.='Buscar']");
         By fecha = By.xpath("//input[@placeholder='Entrada']");
+        By desplegableCiudades = By.xpath("//i[@class='suggester-icon-xsm suggester-icon-city']");
 
         //seleccionamos alojamiento
         driver.findElement(alojamientos).click();
@@ -80,6 +85,7 @@ public class AutomationViajesFalabella {
         //escribe el destino
         WebElement destino= driver.findElement(By.xpath("//label[.='Destino']/../input"));
         destino.sendKeys("Rio de janeiro");
+        espera.until(ExpectedConditions.visibilityOfElementLocated(desplegableCiudades));
         destino.sendKeys(Keys.ENTER);
 
         //fecha
@@ -102,14 +108,25 @@ public class AutomationViajesFalabella {
 
         //Buscador
         driver.findElement(buscador).click();
+
+        //Devuelve resultados según disponibilidad.
+        String urlEsperada = "https://www.viajesfalabella.cl/accommodations/results/";
+        String urlResultados = driver.getCurrentUrl();
+
+        new WebDriverWait(driver, 10).until(ExpectedConditions.urlContains(urlEsperada));
+
+        Assert.assertTrue(urlResultados.startsWith(urlEsperada));
     }
 
     @Test
     public void atc03_AlojamientoParaDosFamilias() {
 
+        WebDriverWait espera = new WebDriverWait(driver,4);
+
         By alojamientos = By.xpath("//label[.='Alojamientos']");
         By buscador = By.xpath("//em[.='Buscar']");
         By fecha = By.xpath("//*[@id=\"searchbox\"]/div/div/div/div[3]/div[2]/div[2]/div/div/div[1]/div/input");
+        By desplegableCiudades = By.xpath("//i[@class='suggester-icon-xsm suggester-icon-city']");
 
         //seleccionamos alojamiento
         driver.findElement(alojamientos).click();
@@ -117,6 +134,7 @@ public class AutomationViajesFalabella {
         //escribe el destino
         WebElement destino= driver.findElement(By.xpath("//label[.='Destino']/../input"));
         destino.sendKeys("Rio de janeiro");
+        espera.until(ExpectedConditions.visibilityOfElementLocated(desplegableCiudades));
         destino.sendKeys(Keys.ENTER);
 
         //fecha
@@ -185,6 +203,14 @@ public class AutomationViajesFalabella {
 
         //Buscador
         driver.findElement(buscador).click();
+
+        //Devuelve resultados según disponibilidad.
+        String urlEsperada = "https://www.viajesfalabella.cl/accommodations/results/";
+        String urlResultados = driver.getCurrentUrl();
+
+        new WebDriverWait(driver, 10).until(ExpectedConditions.urlContains(urlEsperada));
+
+        Assert.assertTrue(urlResultados.startsWith(urlEsperada));
     }
 
     @Test
