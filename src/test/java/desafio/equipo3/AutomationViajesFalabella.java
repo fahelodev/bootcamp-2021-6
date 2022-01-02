@@ -74,37 +74,50 @@ public class AutomationViajesFalabella {
 
         WebDriverWait espera = new WebDriverWait(driver,4);
 
+        String lugarDestino = "Rio de janeiro";
+        String diaInicio = "18";
+        String diaRetorno = "26";
+
         By alojamientos = By.xpath("//label[.='Alojamientos']");
+        By inputDestino = By.xpath("//label[.='Destino']/../input");
         By buscador = By.xpath("//em[.='Buscar']");
         By fecha = By.xpath("//input[@placeholder='Entrada']");
+        By fechaInicio = By.xpath("//*[@data-month=\"2022-02\"]//span[.='" + diaInicio + "']");
+        By FechaFin = By.xpath("//*[@data-month=\"2022-02\"]//span[.='" + diaRetorno + "']");
+        By aplicar = By.xpath("//em[.='Aplicar']");
         By desplegableCiudades = By.xpath("//i[@class='suggester-icon-xsm suggester-icon-city']");
+        By iconoSumar = By.xpath("//label[.='Menores']/../../..//a[@class='steppers-icon-right sbox-3-icon-plus']");
+        By habitaciones = By.xpath("//div[@class='sbox-passengers-container']/../..");
+        By sumarMenor = By.xpath("//select");
+        By edadMenor = By.xpath("//select/option[5]");
+        By aplicarHabitacion = By.xpath("//a[.='Aplicar']");
 
         //seleccionamos alojamiento
         driver.findElement(alojamientos).click();
 
         //escribe el destino
-        WebElement destino= driver.findElement(By.xpath("//label[.='Destino']/../input"));
-        destino.sendKeys("Rio de janeiro");
+        WebElement destino= driver.findElement(inputDestino);
+        destino.sendKeys(lugarDestino);
         espera.until(ExpectedConditions.visibilityOfElementLocated(desplegableCiudades));
         destino.sendKeys(Keys.ENTER);
 
         //fecha
         driver.findElement(fecha).click();
-        driver.findElement(By.xpath("//*[@data-month=\"2022-02\"]//span[.='18']")).click();
-        driver.findElement(By.xpath("//*[@data-month=\"2022-02\"]//span[.='26']")).click();
-        driver.findElement(By.xpath("//em[.='Aplicar']")).click();
+        driver.findElement(fechaInicio).click();
+        driver.findElement(FechaFin).click();
+        driver.findElement(aplicar).click();
 
         //habitaciones
-        driver.findElement(By.xpath("//div[@class='sbox-passengers-container']/../..")).click();
+        driver.findElement(habitaciones).click();
 
         // Sumar un menor
-        driver.findElement(By.xpath("//label[.='Menores']/../../..//a[@class='steppers-icon-right sbox-3-icon-plus']")).click();
+        driver.findElement(iconoSumar).click();
 
         // Edad del menor
-        driver.findElement(By.xpath("//select")).click();
-        driver.findElement(By.xpath("//select/option[5]")).click();
+        driver.findElement(sumarMenor).click();
+        driver.findElement(edadMenor).click();
 
-        driver.findElement(By.xpath("//a[.='Aplicar']")).click();
+        driver.findElement(aplicarHabitacion).click();
 
         //Buscador
         driver.findElement(buscador).click();
