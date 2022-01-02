@@ -37,22 +37,22 @@ public class ATC_Traslados {
 
 
         String locatorTraslados = "//i[@title='Traslados']";
-        String fieldDesde = "//header-wrapper/div[@id='']/div[1]/sbox[1]/div[1]/searchbox[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]";
-        String fieldHasta = "//header-wrapper/div[@id='']/div[1]/sbox[1]/div[1]/searchbox[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/input[1]";
-        String fieldFecha = "//header-wrapper/div[@id='']/div[1]/sbox[1]/div[1]/searchbox[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]";
+        String fieldDesde = "//input[@placeholder='Ingresa un aeropuerto']";
+        String fieldHasta = "//input[@placeholder='Ingresa un hotel o dirección adónde quieras ir']";
+        String fieldFecha = "//input[@placeholder='Arribo']";
         String numberDateIda = "//body/div[3]/div[1]/div[5]/div[2]/div[4]/span[4]/span[1]";
         String numberDateRegreso = "//body/div[3]/div[1]/div[5]/div[2]/div[4]/span[8]/span[1]";
-        String btnComprar = "//header-wrapper/div[@id='']/div[1]/sbox[1]/div[1]/searchbox[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[2]/div[5]/div[1]/a[1]";
         String checkboxRegreso = "//i[@class='checkbox-check sbox-3-icon-checkmark -mr1 sbox-ui-icon']";
-        String locatorHoraIda = "//header-wrapper/div[@id='']/div[1]/sbox[1]/div[1]/searchbox[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/select[1]";
-        String locatorHoraRegreso = "//header-wrapper/div[@id='']/div[1]/sbox[1]/div[1]/searchbox[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[2]/div[3]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/select[1]";
-        String locatorPasajeros = "//header-wrapper/div[@id='']/div[1]/sbox[1]/div[1]/searchbox[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[2]/div[4]/div[1]/div[1]/div[2]/div[1]/div[1]";
-        String locatorMenorEdad = "//body/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/a[2]";
-        String locatorDropMenorEdad = "//body/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/select[1]";
-        String locatorComprar = "/html/body/app-root/results/div/div[4]/div[1]/transfer-cluster/div/div/div[2]/ds-cluster-pricebox/div/div[1]/div[2]/button";
+        String locatorHoraIda = "//*[contains(@class, 'sbox-time-arrival')]";
+        String locatorHoraRegreso = ".sbox-time-departure";
+        String locatorPasajeros = "//*[contains(@class, 'sbox-distri-input')]//*[contains(@class, 'input-container')]";
+        String locatorMenorEdad = "//*[contains(@class, '_pnlpk-stepper-minors')]//*[contains(@class, 'steppers-icon-right')]";
+        String locatorDropMenorEdad = "//*[contains(@class, '_pnlpk-minor-age-select-last-item')]//*[contains(@class, 'select-tag')]";
+        String btnComprar = "//em[contains(text(),'Buscar')]";
+        String locatorComprar = "//*[contains(@class, '-eva-3-mb-lg')]//*[contains(@class, 'eva-3-btn')]";
         String locatorVerMapa = "//a[contains(text(),'Ver mapa')]";
-        String locatorMenosZoom = "//body/app-root[1]/results[1]/div[1]/div[2]/div[1]/transfers-map[1]/section[1]/map-modal[1]/div[1]/div[2]/gmap[1]/div[1]/div[1]/div[1]/div[8]/div[1]/div[1]/div[1]/button[2]";
-        String locatorCerrarMapa = "//body/app-root[1]/results[1]/div[1]/div[2]/div[1]/transfers-map[1]/section[1]/map-modal[1]/div[1]/div[1]/i[1]";
+        String locatorMenosZoom = "//button[@title='Alejar']";
+        String locatorCerrarMapa = "//*[contains(@class, 'map')]//*[contains(@class, 'modal-close')]";
 
         System.out.println("Test Case 1");
 
@@ -70,7 +70,7 @@ public class ATC_Traslados {
         String wordDesdeLocation = "Aeropuerto Arturo Merino Benitez, Santiago de Chile, Chile";
         WebElement searchFieldLocationDesde = driverWithMoreWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(fieldDesde)));
         searchFieldLocationDesde.sendKeys(wordDesdeLocation);
-        Thread.sleep(2000);
+        Thread.sleep(500);
         searchFieldLocationDesde.sendKeys(Keys.DOWN);
         searchFieldLocationDesde.sendKeys(Keys.ENTER);
 
@@ -78,7 +78,7 @@ public class ATC_Traslados {
         String wordHaciaLocation = "Hyatt Centric Las Condes Santiago - Enrique Foster, Las Condes, Chile";
         WebElement searchFieldLocationHacia = driverWithMoreWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(fieldHasta)));
         searchFieldLocationHacia.sendKeys(wordHaciaLocation);
-        Thread.sleep(2000);
+        Thread.sleep(500);
         searchFieldLocationHacia.sendKeys(Keys.DOWN);
         searchFieldLocationHacia.sendKeys(Keys.ENTER);
 
@@ -98,7 +98,7 @@ public class ATC_Traslados {
         horaIda.selectByValue("450");
 
         //dropdown Hora Regreso
-        Select horaRegreso = new Select(driver.findElement(By.xpath(locatorHoraRegreso)));
+        Select horaRegreso = new Select(driver.findElement(By.cssSelector(locatorHoraRegreso)));
         horaRegreso.selectByValue("600");
 
         //click en pasajeros
@@ -150,17 +150,17 @@ public class ATC_Traslados {
 
 
         String locatorTraslados = "//i[@title='Traslados']";
-        String checkHacia = "//header-wrapper/div[@id='']/div[1]/sbox[1]/div[1]/searchbox[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[2]/div[1]/div[2]/span[2]/label[1]/i[1]";
+        String checkHacia = "//span[2]//label[1]//i[1]";
         String fieldDesde = "//input[@placeholder='Ingresa un hotel o dirección adónde quieras ir']";
         String fieldHasta = "//input[@placeholder='Ingresa un aeropuerto']";
         String fieldFecha= "//input[@placeholder='Partida']";
         String numberDateIda = "//div[@class='datepicker-transfers-hotel-to-airport sbox-v4-components']//div[2]//div[4]//span[14]";
-        String aplicar = "//div[@class='_dpmg2--wrapper _dpmg2--onlyway _dpmg2--show-info _dpmg2--show']//button[@class='_dpmg2--desktopFooter-button _dpmg2--desktopFooter-button-apply sbox-3-btn -lg -primary']";
-        String locatorHoraIda = "//header-wrapper/div[@id='']/div[1]/sbox[1]/div[1]/searchbox[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[2]/div[3]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/select[1]";
-        String locatorPasajeros = "//header-wrapper/div[@id='']/div[1]/sbox[1]/div[1]/searchbox[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[2]/div[4]/div[1]/div[1]/div[2]/div[1]/div[1]";
-        String locatorMenorEdad = "//div[@class='_pnlpk-itemRow__item _pnlpk-stepper-minors -medium-down-to-lg']//a[@class='steppers-icon-right sbox-3-icon-plus']";
-        String locatorDropMenorEdad = "//div[@class='_pnlpk-itemRow _pnlpk-minor-age-select _pnlpk-minor-age-select-last-item']//select[@class='select-tag']";
-        String btnHaciaBuscar = "//header-wrapper/div[@id='']/div[1]/sbox[1]/div[1]/searchbox[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[2]/div[5]/div[1]/a[1]";
+        String aplicar = "//*[contains(@class, '_dpmg2--show')]//*[contains(@class, '_dpmg2--desktopFooter-button-apply')]";
+        String locatorHoraIda = ".sbox-time-departure";
+        String locatorPasajeros = ".sbox-distri-input .input-container";
+        String locatorMenorEdad = "//*[contains(@class, '_pnlpk-stepper-minors')]//*[contains(@class, 'steppers-icon-right')]";
+        String locatorDropMenorEdad = "//*[contains(@class, '_pnlpk-minor-age-select-last-item')]//*[contains(@class, 'select-tag')]";
+        String btnHaciaBuscar = "//*[contains(@class, 'sbox-search')]";
 
 
         System.out.println("Test Case 2");
@@ -180,9 +180,8 @@ public class ATC_Traslados {
         //check Traslados desde hotel
         String wordHaciaLocation = "santiago marriot chile";
         WebElement searchFieldLocationHacia = driverWithMoreWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(fieldDesde)));
-        Thread.sleep(200);
         searchFieldLocationHacia.sendKeys(wordHaciaLocation);
-        Thread.sleep(2000);
+        Thread.sleep(500);
         searchFieldLocationHacia.sendKeys(Keys.DOWN);
         searchFieldLocationHacia.sendKeys(Keys.ENTER);
 
@@ -190,7 +189,7 @@ public class ATC_Traslados {
         String wordDesdeLocation = "Aeropuerto Arturo Merino Benitez";
         WebElement searchFieldLocationDesde = driverWithMoreWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(fieldHasta)));
         searchFieldLocationDesde.sendKeys(wordDesdeLocation);
-        Thread.sleep(2000);
+        Thread.sleep(500);
         searchFieldLocationDesde.sendKeys(Keys.DOWN);
         searchFieldLocationDesde.sendKeys(Keys.ENTER);
 
@@ -202,11 +201,11 @@ public class ATC_Traslados {
         driverWithMoreWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(aplicar))).click();
 
         //dropdown Hora Ida
-        Select horaIda = new Select(driver.findElement(By.xpath(locatorHoraIda)));
+        Select horaIda = new Select(driver.findElement(By.cssSelector(locatorHoraIda)));
         horaIda.selectByValue("450");
 
         //click en pasajeros
-        driverWithMoreWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locatorPasajeros))).click();
+        driverWithMoreWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(locatorPasajeros))).click();
 
 
         //agregar menor de edad
@@ -252,10 +251,7 @@ public class ATC_Traslados {
 
 
         String locatorTraslados = "//i[@title='Traslados']";
-        String cardAuto = "//body/app-root[1]/div[1]/div[5]/div[1]/offers[1]/div[1]/div[2]/div[1]/offer-card[1]/div[1]/a[1]/div[1]";
-        String modificar = "//em[@class='btn-text -eva-3-hide-small']";
-        String dolar= "//select[@id='currency-select']";
-        String comprar = "//em[normalize-space()='Comprar']";
+        String cardAuto = "//html/body/app-root/div/div[5]/div/offers/div/div[2]/div/offer-card/div/a/div/div/img";
         String locatorBtnVerMas = "//em[@class='btn-text'][contains(text(),'Ver más ofertas')]";
         String btnModificar = "//span[@class='eva-3-btn -secondary -md -icon -eva-3-hide-small']";
         String dolarChange = "#currency-select";
@@ -304,7 +300,6 @@ public class ATC_Traslados {
         String textValidateMoneda = driverWithMoreWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='eva-3-container results-container -eva-3-pt-lg']//div[1]//transfer-cluster[1]//div[1]//div[1]//div[2]//ds-cluster-pricebox[1]//div[1]//div[1]//div[1]//div[2]//span[1]"))).getText();
         //Validate Traslado de Hotel a Eropuerto
         Assert.assertEquals("US$", textValidateMoneda);
-
 
     }
 
