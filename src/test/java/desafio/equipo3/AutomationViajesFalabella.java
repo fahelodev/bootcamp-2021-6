@@ -272,9 +272,13 @@ public class AutomationViajesFalabella {
         // Buscar
         driver.findElement(buttonBuscar).click();
 
-        // Obervar si hay resultados.
-        System.out.println(driver.findElements(By.className("empty-state-message-content")).size());
-        System.out.println(driver.findElements(By.id("clusters")).size());
+        //Devuelve resultados según disponibilidad.
+        String urlEsperada = "https://www.viajesfalabella.cl/trip/flight/";
+        String urlResultados = driver.getCurrentUrl();
+
+        new WebDriverWait(driver, 10).until(ExpectedConditions.urlContains(urlEsperada));
+
+        Assert.assertTrue(urlResultados.startsWith(urlEsperada));
     }
 
     @Test
@@ -343,6 +347,14 @@ public class AutomationViajesFalabella {
 
         // Buscar
         driver.findElement(buttonBuscar).click();
+
+        //Devuelve resultados según disponibilidad.
+        String urlEsperada = "https://www.viajesfalabella.cl/trip/";
+        String urlResultados = driver.getCurrentUrl();
+
+        new WebDriverWait(driver, 10).until(ExpectedConditions.urlContains(urlEsperada));
+
+        Assert.assertTrue(urlResultados.startsWith(urlEsperada));
     }
 
     @Test
@@ -425,6 +437,14 @@ public class AutomationViajesFalabella {
 
         // Buscar
         driver.findElement(buttonBuscar).click();
+
+        //Devuelve resultados según disponibilidad.
+        String urlEsperada = "https://www.viajesfalabella.cl/trip/";
+        String urlResultados = driver.getCurrentUrl();
+
+        new WebDriverWait(driver, 10).until(ExpectedConditions.urlContains(urlEsperada));
+
+        Assert.assertTrue(urlResultados.startsWith(urlEsperada));
     }
 
     @Test
@@ -472,6 +492,14 @@ public class AutomationViajesFalabella {
 
         //6) Click en buscar
         driver.findElement(buscar).click();
+
+        //Devuelve resultados según disponibilidad.
+        String urlEsperada = "https://www.viajesfalabella.cl/transfers/search/";
+        String urlResultados = driver.getCurrentUrl();
+
+        new WebDriverWait(driver, 10).until(ExpectedConditions.urlContains(urlEsperada));
+
+        Assert.assertTrue(urlResultados.startsWith(urlEsperada));
     }
 
     @Test
@@ -542,6 +570,14 @@ public class AutomationViajesFalabella {
 
         //9) Click en buscar
         driver.findElement(buscar).click();
+
+        //Devuelve resultados según disponibilidad.
+        String urlEsperada = "https://www.viajesfalabella.cl/transfers/search/";
+        String urlResultados = driver.getCurrentUrl();
+
+        new WebDriverWait(driver, 10).until(ExpectedConditions.urlContains(urlEsperada));
+
+        Assert.assertTrue(urlResultados.startsWith(urlEsperada));
     }
 
 
@@ -641,6 +677,13 @@ public class AutomationViajesFalabella {
         //16) Click en "Buscar"
         driver.findElement(buscar).click();
 
+        //Devuelve resultados según disponibilidad.
+        String urlEsperada = "https://www.viajesfalabella.cl/transfers/search/";
+        String urlResultados = driver.getCurrentUrl();
+
+        new WebDriverWait(driver, 10).until(ExpectedConditions.urlContains(urlEsperada));
+
+        Assert.assertTrue(urlResultados.startsWith(urlEsperada));
     }
 
     @After
