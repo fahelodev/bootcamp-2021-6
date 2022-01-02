@@ -11,11 +11,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.Arrays;
-import java.util.Locale;
-
 import java.time.Duration;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 
@@ -25,14 +24,14 @@ public class ViajesFalabellaTest {
     @BeforeClass
     public static void setup() {
         WebDriverManager.chromedriver().setup();
-
     }
 
     //se instancia el driver y se le entrega la url a testear
     @Before
-    public void initial() {
+    public void init() {
         driver = new ChromeDriver();
         driver.get("https://www.viajesfalabella.cl/");
+        driver.manage().window().maximize();
 
     }
     @Test
@@ -219,9 +218,12 @@ public class ViajesFalabellaTest {
     }
 
     @Test
-    public void atc03_PaqueteComplejo(){
+    public void atc03_PaqueteComplejo() throws InterruptedException {
+
+
 
     }
+
     @Test
     public void atc03_TrasladoComplejo(){
 
