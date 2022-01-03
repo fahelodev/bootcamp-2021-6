@@ -29,7 +29,7 @@ public class PageBabytuto {
 
     @Test
     public void atc_extra(){
-        //Cerramos la pestaña de suscripción
+        //Cerramos la pestaña de suscripción.
         driver.findElement(By.xpath("//button[@class=\"close\"]")).click();
         //Seleccionamos la pestaña de coches
         driver.findElement(By.xpath("//div//ul//a[@href=\"javascript:;\"]")).click();
