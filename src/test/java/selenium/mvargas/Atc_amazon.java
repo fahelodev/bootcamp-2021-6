@@ -1,4 +1,4 @@
-package selenium.mvargas;
+package desafio.equipo2.selenium.mvargas;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;

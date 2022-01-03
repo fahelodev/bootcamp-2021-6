@@ -1,4 +1,4 @@
-package selenium.mguzman;
+package desafio.equipo2.selenium.mguzman;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
 import org.openqa.selenium.By;

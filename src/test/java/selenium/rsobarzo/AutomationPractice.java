@@ -1,4 +1,4 @@
-package selenium.rsobarzo;
+package desafio.equipo2.selenium.rsobarzo;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.lang.RandomStringUtils;

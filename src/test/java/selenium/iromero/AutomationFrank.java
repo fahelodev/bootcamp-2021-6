@@ -1,4 +1,4 @@
-package selenium.iromero;
+package desafio.equipo2.selenium.iromero;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;

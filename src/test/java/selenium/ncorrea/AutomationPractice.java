@@ -1,4 +1,4 @@
-package selenium.ncorrea;
+package desafio.equipo2.selenium.ncorrea;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;

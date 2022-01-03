@@ -1,4 +1,4 @@
-package selenium.fmercado;
+package desafio.equipo2.selenium.fmercado;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

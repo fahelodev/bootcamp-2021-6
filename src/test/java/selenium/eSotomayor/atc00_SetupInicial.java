@@ -1,4 +1,4 @@
-package selenium.eSotomayor;
+package desafio.equipo2.selenium.eSotomayor;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

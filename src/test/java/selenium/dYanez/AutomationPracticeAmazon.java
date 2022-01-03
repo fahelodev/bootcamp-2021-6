@@ -1,4 +1,4 @@
-package selenium.dYanez;
+package desafio.equipo2.selenium.dYanez;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.hamcrest.core.StringContains;

@@ -1,4 +1,4 @@
-package selenium.msabattini;
+package desafio.equipo2.selenium.msabattini;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;

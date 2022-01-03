@@ -1,4 +1,4 @@
-package selenium.ifuentes;
+package desafio.equipo2.selenium.ifuentes;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
