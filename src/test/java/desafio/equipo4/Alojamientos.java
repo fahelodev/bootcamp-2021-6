@@ -35,6 +35,7 @@ public class Alojamientos {
     @Test
     public void atc01_alojamientoSugerido() {
         System.out.println("Test Case atc01_alojamientoSugerido");
+        WebDriverWait espera = new WebDriverWait(driver,10);
 
         String tituloSeccion = "Despierta en algun lugar de Chile";
 
@@ -63,6 +64,7 @@ public class Alojamientos {
         }
 
         // cambiamos el driver a la nueva pestaña y cerramos la anterior
+        espera.until(ExpectedConditions.numberOfWindowsToBe(2));
         ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
         driver.close();
         driver.switchTo().window(tabs.get(1));
@@ -79,7 +81,7 @@ public class Alojamientos {
         System.out.println("Test Case atc02_busquedaEspecifica");
 
         String destino = "Nueva York";
-        String diaSalida = "12"; //corresponde al dia a seleccionar en el mes siguiente al actual
+        String diaSalida = "1"; //corresponde al dia a seleccionar en el mes siguiente al actual
 
         // seleccionamos Alojamientos en la barra de navegacion
         driver.findElement(By.xpath("//li[contains(@class,'header-product-item')]//label[contains(text(),'Alojamientos')]")).click();
@@ -130,7 +132,8 @@ public class Alojamientos {
         System.out.println("Test Case atc03_mediosDePago");
 
         String destino = "Nueva York";
-        String diaSalida = "12"; //corresponde al dia a seleccionar en el mes siguiente al actual
+        //corresponde al dia a seleccionar en el mes siguiente al actual (max 30 dias)
+        String diaSalida = "1";
 
         // seleccionamos Alojamientos en la barra de navegacion
         driver.findElement(By.xpath("//li[contains(@class,'header-product-item')]//label[contains(text(),'Alojamientos')]")).click();
@@ -166,6 +169,7 @@ public class Alojamientos {
         driver.findElement(By.xpath("//aloha-button//em[contains(text(),'Ver detalle')]")).click();
 
         // cambio driver a la nueva pestaña
+        espera.until(ExpectedConditions.numberOfWindowsToBe(2));
         ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
         driver.close();
         driver.switchTo().window(tabs.get(1));
