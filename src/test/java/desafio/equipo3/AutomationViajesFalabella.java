@@ -136,83 +136,60 @@ public class AutomationViajesFalabella {
 
         WebDriverWait espera = new WebDriverWait(driver,4);
 
+        String ciudadDestino = "Rio de janeiro";
+        String diaInicio = "10";
+        String diaRetorno = "15";
+        String[] edad_menores_habitacion1 = {"5 años", "7 años","9 años", "12 años", "14 años"};
+        String[] edad_menores_habitacion2 = {"2 años", "10 años","15 años", "17 años"};
+
         By alojamientos = By.xpath("//label[.='Alojamientos']");
+        By inputDestino = By.xpath("//label[.='Destino']/../input");
         By buscador = By.xpath("//em[.='Buscar']");
-        By fecha = By.xpath("//*[@id=\"searchbox\"]/div/div/div/div[3]/div[2]/div[2]/div/div/div[1]/div/input");
+        By fecha = By.xpath("//input[@placeholder='Entrada']");
+        By fechaInicio = By.xpath("//*[@data-month=\"2022-02\"]//span[.='" + diaInicio + "']");
+        By FechaFin = By.xpath("//*[@data-month=\"2022-02\"]//span[.='" + diaRetorno + "']");
+        By aplicar = By.xpath("//em[.='Aplicar']");
         By desplegableCiudades = By.xpath("//i[@class='suggester-icon-xsm suggester-icon-city']");
+        By otraHabitacion = By.xpath("//a[.='Añadir habitación']");
+        By aplicarHabitacion = By.xpath("//a[.='Aplicar']");
 
         //seleccionamos alojamiento
         driver.findElement(alojamientos).click();
 
         //escribe el destino
-        WebElement destino= driver.findElement(By.xpath("//label[.='Destino']/../input"));
-        destino.sendKeys("Rio de janeiro");
+        WebElement destino= driver.findElement(inputDestino);
+        destino.sendKeys(ciudadDestino);
         espera.until(ExpectedConditions.visibilityOfElementLocated(desplegableCiudades));
         destino.sendKeys(Keys.ENTER);
 
         //fecha
         driver.findElement(fecha).click();
-        driver.findElement(By.xpath("/html/body/div[1]/div/div[5]/div[2]/div[4]/span[10]/span[1]")).click();
-        driver.findElement(By.xpath("/html/body/div[1]/div/div[5]/div[2]/div[4]/span[15]/span[1]")).click();
-        driver.findElement(By.xpath("/html/body/div[1]/div/div[6]/div[2]/button[2]/em")).click();
+        driver.findElement(fechaInicio).click();
+        driver.findElement(FechaFin).click();
+        driver.findElement(aplicar).click();
 
         //habitaciones
-        driver.findElement(By.xpath("//*[@id=\"searchbox\"]/div/div/div/div[3]/div[2]/div[3]/div/div/div[2]/div/div")).click();
+        driver.findElement(By.xpath("//*[@class='sbox-row sbox-distribution-picker-wrapper-ui']")).click();
 
-        //click en menores 5
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[1]/div[2]/div[2]/div[2]/div/a[2]")).click();
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[1]/div[2]/div[2]/div[2]/div/a[2]")).click();
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[1]/div[2]/div[2]/div[2]/div/a[2]")).click();
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[1]/div[2]/div[2]/div[2]/div/a[2]")).click();
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[1]/div[2]/div[2]/div[2]/div/a[2]")).click();
+        //sumar menores habitación 1 y agregar edades
 
-        //1 menor
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[2]/div/div/select")).click();
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[2]/div/div/select/option[5]")).click();
-
-        //2menor
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[1]/div[2]/div[3]/div[2]/div[2]/div/div")).click();
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[1]/div[2]/div[3]/div[2]/div[2]/div/div/select/option[9]")).click();
-
-        //3menor
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[1]/div[2]/div[3]/div[3]/div[2]/div/div/select")).click();
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[1]/div[2]/div[3]/div[3]/div[2]/div/div/select/option[11]")).click();
-
-        //4menor
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[1]/div[2]/div[3]/div[4]/div[2]/div/div/select")).click();
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[1]/div[2]/div[3]/div[4]/div[2]/div/div/select/option[14]")).click();
-
-        //5menor
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[1]/div[2]/div[3]/div[5]/div[2]/div/div/select")).click();
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[1]/div[2]/div[3]/div[5]/div[2]/div/div/select/option[16]")).click();
+        for (int i = 1; i <edad_menores_habitacion1.length; i++) {
+            driver.findElement(By.xpath("//label[.='Menores']/../../..//*[@class='steppers-icon-right sbox-3-icon-plus']")).click();
+            driver.findElement(By.xpath("//*[@class='_pnlpk-minors-age-select-wrapper']/div[" + i + "]//select")).click();
+            driver.findElement(By.xpath("//*[@class='_pnlpk-minors-age-select-wrapper']/div[" + i + "]//select/option[.='"+edad_menores_habitacion1[i-1]+"']")).click();
+        }
 
         //otra habitacion
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/a[2]")).click();
+        driver.findElement(otraHabitacion).click();
 
-        //sumar 4 menores de edad
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[2]/div[2]/div/a[2]")).click();
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[2]/div[2]/div/a[2]")).click();
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[2]/div[2]/div/a[2]")).click();
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[2]/div[2]/div/a[2]")).click();
-
-        //1 menor
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div/div/select")).click();
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div/div/select/option[4]")).click();
-
-        //2 menor
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[3]/div[2]/div[2]/div/div/select")).click();
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[3]/div[2]/div[2]/div/div/select/option[12]")).click();
-
-        //3 menor
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[3]/div[3]/div[2]/div/div/select")).click();
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[3]/div[3]/div[2]/div/div/select/option[17]")).click();
-
-        //4menor
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[3]/div[4]/div[2]/div/div/select")).click();
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[3]/div[4]/div[2]/div/div/select/option[19]")).click();
+        for (int i = 1; i <edad_menores_habitacion2.length; i++) {
+            driver.findElement(By.xpath("//div[@class='_pnlpk-panel-scroll']/div[2]/div[2]//label[.='Menores']/../../..//*[@class='steppers-icon-right sbox-3-icon-plus']")).click();
+            driver.findElement(By.xpath("//div[@class='_pnlpk-panel-scroll']/div[2]/div[2]//*[@class='_pnlpk-minors-age-select-wrapper']/div[" + i + "]//select")).click();
+            driver.findElement(By.xpath("//div[@class='_pnlpk-panel-scroll']/div[2]/div[2]//*[@class='_pnlpk-minors-age-select-wrapper']/div[" + i + "]//select/option[.='"+edad_menores_habitacion2[i-1]+"']")).click();
+        }
 
         //aplicar
-        driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/a[1]")).click();
+        driver.findElement(aplicarHabitacion).click();
 
         //Buscador
         driver.findElement(buscador).click();
@@ -588,10 +565,7 @@ public class AutomationViajesFalabella {
         String aeropuerto = "Aeropuerto Desierto de Atacama, Copiapo, Chile";
         String hotel = "Hampton by Hilton Antofagasta - Avenida Edmundo Pérez Zujovic, Antofagasta, Chile";
         String horaArribo = "12:00";
-        String edad_menor1 = "10 años";
-        String edad_menor2 = "9 años";
-        String edad_menor3 = "12 años";
-        String edad_menor4 = "9 años";
+        String[] edad_menores = {"10 años","9 años","12 años","9 años"};
         String fecha_regreso = "28";
         String hora_regreso = "16:00";
 
@@ -641,40 +615,33 @@ public class AutomationViajesFalabella {
         //7) Seleccionamos 2 adultos y 4 menores
         driver.findElement(pasajeros).click();
         espera.until(ExpectedConditions.visibilityOfElementLocated(opciones_pasajeros));
-        for(int i=0; i<4; i++) driver.findElement(sumar_menores).click();
+        //for(int i=0; i<4; i++) driver.findElement(sumar_menores).click();
 
-        //8) Seleccionarmos una edad para el menor 1
-        Select select_edad_menor1 = new Select(driver.findElement(By.xpath("//*[@class='_pnlpk-minors-age-select-wrapper']/div[1]//select")));
-        select_edad_menor1.selectByVisibleText(edad_menor1);
 
-        //9) Seleccionamos una edad para el menor 2
-        Select select_edad_menor2 = new Select(driver.findElement(By.xpath("//*[@class='_pnlpk-minors-age-select-wrapper']/div[2]//select")));
-        select_edad_menor2.selectByVisibleText(edad_menor2);
+        //8) Añadimos y seleccionamos la edad de los menores
+        for (int i = 1; i <edad_menores.length; i++) {
+            driver.findElement(By.xpath("//label[.='Menores']/../../..//*[@class='steppers-icon-right sbox-3-icon-plus']")).click();
+            driver.findElement(By.xpath("//*[@class='_pnlpk-minors-age-select-wrapper']/div[" + i + "]//select")).click();
+            driver.findElement(By.xpath("//*[@class='_pnlpk-minors-age-select-wrapper']/div[" + i + "]//select/option[.='"+edad_menores[i-1]+"']")).click();
+        }
 
-        //10) Seleccionamos una edad para el menor 3
-        Select select_edad_menor3 = new Select(driver.findElement(By.xpath("//*[@class='_pnlpk-minors-age-select-wrapper']/div[3]//select")));
-        select_edad_menor3.selectByVisibleText(edad_menor3);
 
-        //11) Seleccionamos una edad para el menor 4
-        Select select_edad_menor4 = new Select(driver.findElement(By.xpath("//*[@class='_pnlpk-minors-age-select-wrapper']/div[4]//select")));
-        select_edad_menor4.selectByVisibleText(edad_menor4);
-
-        //12) Damos click en aplicar
+        //9) Damos click en aplicar
         driver.findElement(aplicar_pasajeros).click();
 
-        //13) Damos click en "Quiero agregar un regreso
+        //10) Damos click en "Quiero agregar un regreso
         driver.findElement(quiero_agregar_regreso).click();
 
-        //14) Seleccionamos un día
+        //11) Seleccionamos un día
         driver.findElement(input_regreso).click();
         espera.until(ExpectedConditions.visibilityOfElementLocated(calendario));
         driver.findElement(spanDia_regreso).click();
 
-        //15) Seleccionamos una hora
+        //12) Seleccionamos una hora
         Select select_hora = new Select(driver.findElement(By.xpath("//*[@class='select-tag sbox-time-departure']")));
         select_hora.selectByVisibleText(hora_regreso); //hora
 
-        //16) Click en "Buscar"
+        //13) Click en "Buscar"
         driver.findElement(buscar).click();
 
         //Devuelve resultados según disponibilidad.
