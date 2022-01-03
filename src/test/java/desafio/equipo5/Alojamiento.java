@@ -32,6 +32,7 @@ public class Alojamiento {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
+
     }
 
 
@@ -39,7 +40,7 @@ public class Alojamiento {
 
     public void tc_001_AlojamientoFiltroEstrellas()  {
 
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(6));
 
 
         //Cargar la página
@@ -91,19 +92,20 @@ public class Alojamiento {
         //click en boton de Alojamiento
         driver.findElement(By.xpath("//label[.='Alojamientos']")).click();
 
-        // Hacer la búsqueda introduciendo la palabra "coyh"
-        driver.findElement(By.xpath("//input[@class='input-tag sbox-main-focus sbox-destination sbox-primary undefined']")).sendKeys("coyh");
+        // Hacer la búsqueda introduciendo la palabra "puc"
+        driver.findElement(By.xpath("//input[@class='input-tag sbox-main-focus sbox-destination sbox-primary undefined']")).sendKeys("puc");
 
-        //Selecciona la primera opcion "Coyhaique, Aysén, Chile"
+        //Selecciona la primera opcion "Pucón, Araucanía, Chile"
         driver.findElement(By.xpath("//span[@class='item-text']")).click();
 
-        //En fecha de entrada selecionar "Sab, 1 ene 2022"
+        //En fecha de entrada selecionar "Sab, 5 mar 2022"
         driver.findElement(By.xpath("//input[@class='input-tag sbox-checkin-date']")).click();
-        driver.findElement(By.xpath("//div[@class='_dpmg2--months']/div[2]//span[@class='_dpmg2--date _dpmg2--available _dpmg2--weekend']/span[.='1']")).click();
+        driver.findElement(By.xpath("//div[@class='_dpmg2--controls-next']/i[@class='_dpmg2--icon-ico-arrow']")).click();
+        driver.findElement(By.xpath("//div[@class='_dpmg2--months']/div[3]//span[@class='_dpmg2--date _dpmg2--available _dpmg2--weekend']/span[.='5']")).click();
 
-        // En fecha de salida selecionar "Mar, 4 ene 2022"
+        // En fecha de salida selecionar "Mar, 19 mar 2022"
         driver.findElement(By.xpath("//input[@class='input-tag sbox-checkout-date']")).click();
-        driver.findElement(By.xpath("//div[@class='_dpmg2--month _dpmg2--o-6 _dpmg2--has-start-range _dpmg2--has-limit-date _dpmg2--month-active']//span[.='4']")).click();
+        driver.findElement(By.xpath("//div[@class='_dpmg2--month _dpmg2--o-2 _dpmg2--month-active']//span[@class='_dpmg2--date _dpmg2--available _dpmg2--weekend']/span[.='19']")).click();
 
         //Seleccionar cantidad de 6 (Adultos)
         driver.findElement(By.xpath("//label[@class='sbox-input-label sbox-3-label-form sbox-label-dynamic-text']")).click();
@@ -168,10 +170,10 @@ public class Alojamiento {
         //click en boton de Alojamiento
         driver.findElement(By.xpath("//label[.='Alojamientos']")).click();
 
-        // Hacer la búsqueda introduciendo la palabra "flor"
-        driver.findElement(By.xpath("//input[@class='input-tag sbox-main-focus sbox-destination sbox-primary undefined']")).sendKeys("flor");
+        // Hacer la búsqueda introduciendo la palabra "chill"
+        driver.findElement(By.xpath("//input[@class='input-tag sbox-main-focus sbox-destination sbox-primary undefined']")).sendKeys("chill");
 
-        //selecciona el destino Florianópolis, Santa Catarina, Brasil
+        //selecciona el destino Chillan, Ñuble, Chile
         driver.findElement(By.xpath("//span[@class='item-text']")).click();
 
         //Hacer click en "Todavía no he decidido la fecha"
@@ -186,12 +188,12 @@ public class Alojamiento {
         //Mover deslizante para elegir el rango de precio
         WebElement menor = driver.findElement(By.xpath("//div[@class='slider-handler -left']"));
         Actions moveSlider = new Actions(driver);
-        Action action = moveSlider.dragAndDropBy(menor, 40, 0).build();
+        Action action = moveSlider.dragAndDropBy(menor, 90, 0).build();
         action.perform();
 
         WebElement may = driver.findElement(By.xpath("//div[@class='slider-handler -right']"));
         Actions moveSlide = new Actions(driver);
-        Action actionn = moveSlider.dragAndDropBy(may, -60, 0).build();
+        Action actionn = moveSlider.dragAndDropBy(may, -90, 0).build();
         actionn.perform();
 
         //click en rango seleccionado

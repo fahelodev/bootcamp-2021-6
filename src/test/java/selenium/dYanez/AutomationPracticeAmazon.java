@@ -22,6 +22,8 @@ public class AutomationPracticeAmazon{
     @Before
     public void init(){
         driver = new ChromeDriver();
+        //cargar page
+        driver.get("http://amazon.com/");
         driver.manage().window().maximize();
         //wait implicit for list result visible cada vez que vaya a buscar al elemento
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -32,8 +34,6 @@ public class AutomationPracticeAmazon{
     public void atcAmazon() throws InterruptedException {
         //En la caja de busqueda poner blo y seleccionar lo pre-buscado
         System.out.println("Test Case 7");
-        //cargar page
-        driver.get("http://amazon.com/");
 
        /* 1.- Seleccionar categoria: Electrónicos, Accesorios y Suministros
         2.- Seleccionar Tarjetas de Regalo

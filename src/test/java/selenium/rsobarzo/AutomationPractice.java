@@ -1,6 +1,7 @@
 package selenium.rsobarzo;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.lang.RandomStringUtils;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -11,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 public class AutomationPractice {
@@ -103,6 +105,77 @@ public class AutomationPractice {
         driver.findElement(By.cssSelector("#search_query_top")).sendKeys(Keys.ENTER);
         Assert.assertEquals(productoEsperado,driver.findElement(By.cssSelector("#product_reference")).getText());
     }
+
+
+    @Test
+    public void atc05_AgregarProductoCambiandoTallaYColor(){
+        driver.get("http://automationpractice.com/");
+
+        String busquedaPrimerResultado = ("blo");
+        driver.findElement(By.cssSelector("#search_query_top")).sendKeys(busquedaPrimerResultado);
+        driver.findElement(By.cssSelector("[name='submit_search']")).click();
+
+        List<WebElement> resultados = driver.findElements(By.cssSelector("ul.product_list.grid.row>li"));
+        String texto = resultados.get(0).findElement(By.cssSelector(".product-name")).getText();
+        System.out.println(texto);
+        driver.findElement(By.xpath("//*[@id=\"color_7\"]")).click();
+        System.out.println("paso x cambio de color");
+        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(5));
+        driver.findElement(By.xpath("//*[@id=\"center_column\"]/ul/li/div/div[2]/div[2]/a[1]/span")).click();
+
+        System.out.println("add to cart");
+       // Assert.assertEquals(texto, busquedaPrimerResultado);
+    }
+
+    @Test
+    public void atc01_AgregarReview() throws InterruptedException {
+        driver.get("http://automation.frankluzon.com/");
+        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(3));
+        //ingreamos 'CAP' en el search box.
+
+        String cajaBusqueda = "CAP";
+
+        driver.findElement(By.xpath("//*[@id=\"woocommerce-product-search-field-0\"]")).sendKeys(cajaBusqueda);
+
+        // enter en el search box.
+        driver.findElement(By.xpath("//*[@id=\"woocommerce-product-search-field-0\"]")).sendKeys(Keys.ENTER);
+
+        // click reviews
+        driver.findElement(By.xpath("//*[@id=\"tab-title-reviews\"]/a")).click();
+
+        // click en la estrella 3
+        driver.findElement(By.xpath("//*[@id=\"commentform\"]/div/p/span/a[3]")).click();
+
+        // genera cadena de texto aleatorio
+        String comment = RandomStringUtils.randomAlphabetic(10);
+
+        //Ingresamos un comentario en el review
+        driver.findElement(By.xpath("//*[@id=\"comment\"]")).sendKeys(comment);
+
+        //ingresamos el nombre del autor
+        String creadorComentario = "Rodolfo Sobarzo Biere";
+        driver.findElement(By.xpath("//*[@id=\"author\"]")).sendKeys(creadorComentario);
+
+        //ingresamos un correo valido
+        String emailComentario = "rodolfo.sobarzo@gmail.com";
+        driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(emailComentario);
+
+        // click en submit
+        driver.findElement(By.xpath("//*[@id=\"submit\"]")).click();
+
+        //espera carga comentario
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.description")));
+
+        //obtenemos mensaje
+        String webComment = driver.findElement(By.cssSelector("div.description")).getText();
+
+        System.out.println(comment);
+        System.out.println(webComment);
+
+        Assert.assertEquals(comment, webComment);
+    }
+
+
 
 
     @After
