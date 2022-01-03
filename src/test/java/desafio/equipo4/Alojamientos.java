@@ -158,10 +158,10 @@ public class Alojamientos {
         driver.findElement(By.cssSelector(".sbox-search")).click();
 
         WebDriverWait espera = new WebDriverWait(driver,15);
-        espera.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".currency-selection select")));
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class,'filters-column')]")));
 
         // Cambiamos la moneda a USD
-        Select select = new Select(driver.findElement(By.cssSelector(".currency-selection select")));
+        Select select = new Select(driver.findElement(By.xpath("//div[contains(@class,'filters-column')]//select[contains(@class,'select-tag')]")));
         select.selectByValue("USD");
 
         // click en ver detalle del primer resultado
