@@ -30,7 +30,7 @@ public class PageFrankLuzon {
 
     @Test
     public void atc06_Xpath() {
-        //Ingresar CAP en el buscador
+        //Ingresar CAP en el buscador.
         driver.findElement(By.xpath("//input[@class=\"search-field\"]")).sendKeys("CAP"+Keys.RETURN);
         //click en reviews
         driver.findElement(By.xpath("//a[@href=\"#tab-reviews\"]")).click();
