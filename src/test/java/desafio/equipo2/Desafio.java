@@ -1,4 +1,4 @@
-package Test_Falabella;
+package desafio.equipo2;
 
 public class Desafio {
     //hola

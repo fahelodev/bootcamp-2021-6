@@ -1,4 +1,4 @@
-package Test_Falabella;
+package desafio.equipo2;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import net.bytebuddy.asm.Advice;
 import org.junit.*;
