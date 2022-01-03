@@ -34,7 +34,7 @@ public class Traslados {
         driver = new ChromeDriver();
         driver.get("https://www.viajesfalabella.cl/");
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
     }
 
     @Test
@@ -144,49 +144,6 @@ public class Traslados {
         String text = driver.findElement(By.xpath("//span[.='Minivan Estándar']")).getText();
 
         Assert.assertEquals("Minivan Estándar",text);
-
-    }
-
-    @Test
-    public void TC004_TrasladoFalabella(){
-
-        //Seleccion de la seccion de traslados
-        driver.findElement(By.xpath("//i[@class='shifu-icon-product shifu-3-icon-traslate']")).click();
-        //Click en el boton "ver mas"
-        driver.findElement(By.xpath("//div[@class='content-wrapper eva-3-container module-MultiproductOffersModule section section-4']//em[@class='btn-text']\n")).click();
-
-        //Seleccion el packete de punta cana
-        driver.findElement(By.xpath("//div[.='Traslado en Punta Cana']\n")).click();
-
-        // Realizar las acciones en una nueva ventana
-
-        //nombre de la ventana
-        //System.out.println(driver.getTitle());
-
-
-        //Selecion de "Traslados compartidos"
-        //driver.findElement(By.xpath("//*[@id="currency-select"]")).click();
-
-        //Selecion de moneda
-        //Select moneda = new Select();
-
-
-        //
-    }
-
-    @Test
-    public void PruebaDePestañas(){
-
-        String mainTab = driver.getWindowHandle();
-        System.out.println("MainTab" + mainTab);
-
-        Set<String> handles = driver.getWindowHandles();
-
-        for (String actual: handles) {
-            System.out.println("--- Handled ID: " + actual);
-            driver.switchTo().window(actual);
-            //newTab = actual;
-        }
 
     }
 

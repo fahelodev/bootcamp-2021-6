@@ -31,7 +31,7 @@ public class Alojamiento {
         System.out.println("init para instanciar");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
     }
 
 
@@ -158,7 +158,6 @@ public class Alojamiento {
 
 
     }
-
 
     @Test
     public void tc_003_alojamientoPrecioRango() {
