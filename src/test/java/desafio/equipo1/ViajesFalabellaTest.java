@@ -190,7 +190,7 @@ public class ViajesFalabellaTest {
     @Test
     public void atc02_PaqueteMedio() {
         // Sincronizacion explicita
-        WebDriverWait d = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait d = new WebDriverWait(driver, Duration.ofSeconds(10));
         // Instanciar objeto desplegable origen
         WebElement origen = driver.findElement(By.cssSelector(".sbox-origin"));
         origen.sendKeys("bue");
@@ -522,7 +522,7 @@ public class ViajesFalabellaTest {
     @After
     public void close() {
         if (driver != null) {
-            //driver.quit();
+            driver.quit();
         }
     }
 
