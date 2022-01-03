@@ -71,8 +71,20 @@ public class ATC_Alojamientos {
         driver.findElement(By.cssSelector("a.eva-3-btn.-md.-primary")).click();
         driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
         //Seleccionar primera opcion
-        driver.findElement(By.cssSelector("[title='Amaru Express'] .swiper-slide-active > media-picture > div > div > img")).click();
-        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+        driver.findElement(By.xpath("//*[@title='Amaru Express']//div[text()='Amaru Express']")).click();
+        //Switch entre tabs
+        String mainTab= driver.getWindowHandle();
+        Set<String> handles = driver.getWindowHandles();
+        for (String actual: handles){
+            if(!actual.equalsIgnoreCase(mainTab)){
+                driver.switchTo().window(actual);
+                Thread.sleep(2000);
+            }
+        }
+        //AssertEquals
+        String result = driver.findElement(By.xpath("//span[text()='Amaru Express']")).getText();
+        Assert.assertEquals("Amaru Express", result);
+
     }
     @Test
     public void TC003_CheckoutAlojamientoInternacional() throws InterruptedException {
@@ -136,11 +148,14 @@ public class ATC_Alojamientos {
         //driver.findElement(By.id("iu6v8hnhxmdt2q4iwilqi")).sendKeys("Mionel_LessiARG@gmail.com");
         //driver.findElement(By.id("mxvuvfrwjcfnn24hyzt4rj")).click();
         //driver.findElement(By.xpath("//span[text()='Argentina (54)']")).click();
-        driver.findElement(By.xpath("//*[@name='formData.contactData.phones[0].areaCode']")).sendKeys("1234");
-        driver.findElement(By.xpath("//*[@name='formData.contactData.phones[0].number']")).sendKeys("1234567");
-        driver.findElement(By.xpath("//*[contains(@class, 'terms-checkbox')]//*[contains(@class, 'checkbox-check')]")).click();
-
+        //driver.findElement(By.xpath("//*[@name='formData.contactData.phones[0].areaCode']")).sendKeys("1234");
+        //driver.findElement(By.xpath("//*[@name='formData.contactData.phones[0].number']")).sendKeys("1234567");
+        //driver.findElement(By.xpath("//*[contains(@class, 'terms-checkbox')]//*[contains(@class, 'checkbox-check')]")).click();
+        //Comparacion de resultados
+        String result = driver.findElement(By.cssSelector(".dm-title-container .eva-3-h3")).getText();
+        Assert.assertEquals("Royalty Barra Hotel", result);
     }
+
     @After
     public void close () {
         if (driver != null) {
