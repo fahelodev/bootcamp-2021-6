@@ -93,9 +93,9 @@ public class Alojamiento {
         driver.findElement(By.xpath("//label[.='Alojamientos']")).click();
 
         // Hacer la búsqueda introduciendo la palabra "puc"
-        driver.findElement(By.xpath("//input[@class='input-tag sbox-main-focus sbox-destination sbox-primary undefined']")).sendKeys("puc");
+        driver.findElement(By.xpath("//input[@class='input-tag sbox-main-focus sbox-destination sbox-primary undefined']")).sendKeys("coyh");
 
-        //Selecciona la primera opcion "Pucón, Araucanía, Chile"
+        //Selecciona la primera opcion "Coyhaique, Aysén, Chile"
         driver.findElement(By.xpath("//span[@class='item-text']")).click();
 
         //En fecha de entrada selecionar "Sab, 5 mar 2022"
@@ -105,7 +105,7 @@ public class Alojamiento {
 
         // En fecha de salida selecionar "Mar, 19 mar 2022"
         driver.findElement(By.xpath("//input[@class='input-tag sbox-checkout-date']")).click();
-        driver.findElement(By.xpath("//div[@class='_dpmg2--month _dpmg2--o-2 _dpmg2--month-active']//span[@class='_dpmg2--date _dpmg2--available _dpmg2--weekend']/span[.='19']")).click();
+        driver.findElement(By.xpath("//div[@class='_dpmg2--month _dpmg2--o-2 _dpmg2--has-start-range _dpmg2--month-active']//span[.='9']")).click();
 
         //Seleccionar cantidad de 6 (Adultos)
         driver.findElement(By.xpath("//label[@class='sbox-input-label sbox-3-label-form sbox-label-dynamic-text']")).click();
@@ -188,14 +188,13 @@ public class Alojamiento {
         //Mover deslizante para elegir el rango de precio
         WebElement menor = driver.findElement(By.xpath("//div[@class='slider-handler -left']"));
         Actions moveSlider = new Actions(driver);
-        Action action = moveSlider.dragAndDropBy(menor, 90, 0).build();
+        Action action = moveSlider.dragAndDropBy(menor, 70, 0).build();
         action.perform();
 
         WebElement may = driver.findElement(By.xpath("//div[@class='slider-handler -right']"));
         Actions moveSlide = new Actions(driver);
-        Action actionn = moveSlider.dragAndDropBy(may, -90, 0).build();
+        Action actionn = moveSlider.dragAndDropBy(may, -120, 0).build();
         actionn.perform();
-
         //click en rango seleccionado
         driver.findElement(By.xpath("//eva-button[2]/a[.='Aplicar']")).click();
 
