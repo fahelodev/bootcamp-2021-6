@@ -37,7 +37,7 @@ public class ATC_Traslados {
 
 
         String locatorTraslados = "//i[@title='Traslados']";
-        String fieldDesde = "//input[@placeholder='Ingresa un aeropuerto']";
+        String fieldDesde = ".sbox-origin";
         String fieldHasta = "//input[@placeholder='Ingresa un hotel o dirección adónde quieras ir']";
         String fieldFecha = "//input[@placeholder='Arribo']";
         String numberDateIda = "//body/div[3]/div[1]/div[5]/div[2]/div[4]/span[4]/span[1]";
@@ -68,7 +68,7 @@ public class ATC_Traslados {
 
         // form element field "desde"
         String wordDesdeLocation = "Aeropuerto Arturo Merino Benitez, Santiago de Chile, Chile";
-        WebElement searchFieldLocationDesde = driverWithMoreWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(fieldDesde)));
+        WebElement searchFieldLocationDesde = driverWithMoreWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(fieldDesde)));
         searchFieldLocationDesde.sendKeys(wordDesdeLocation);
         Thread.sleep(500);
         searchFieldLocationDesde.sendKeys(Keys.DOWN);
@@ -150,7 +150,7 @@ public class ATC_Traslados {
 
 
         String locatorTraslados = "//i[@title='Traslados']";
-        String checkHacia = "//span[2]//label[1]//i[1]";
+        String checkHacia = ".sbox-radio-buttons > span:nth-of-type(2) > label > i";
         String fieldDesde = "//input[@placeholder='Ingresa un hotel o dirección adónde quieras ir']";
         String fieldHasta = "//input[@placeholder='Ingresa un aeropuerto']";
         String fieldFecha= "//input[@placeholder='Partida']";
@@ -175,7 +175,7 @@ public class ATC_Traslados {
         driverWithMoreWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locatorTraslados))).click();
 
         //check Traslados desde hotel
-        driverWithMoreWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(checkHacia))).click();
+        driverWithMoreWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(checkHacia))).click();
 
         //check Traslados desde hotel
         String wordHaciaLocation = "santiago marriot chile";
