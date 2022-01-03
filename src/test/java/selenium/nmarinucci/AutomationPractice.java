@@ -1,4 +1,4 @@
-package selenium.nmarinucci;
+package selenium.mvargas.nmarinucci;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
@@ -141,12 +141,41 @@ public class AutomationPractice{
         driver.findElement(By.id("add_to_cart")).click();
 
         //espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='layer_cart_cart']")));
+        //TODO: Por algun motivo al espera explicita rompe el codigo en esta linea, pero el Thread.sleep tiene mejor resultado.
         Thread.sleep(3000);
 
         //Validar resultado
         String resultado = driver.findElement(By.xpath("//span[@class='ajax_cart_product_txt ']")).getText();
         Assert.assertEquals("There is 1 item in your cart.",resultado);
 
+    }
+
+    @Test
+    public void atc01FrankLuzonAgregarReview() throws InterruptedException {
+        driver.get("http://automation.frankluzon.com/");
+
+        String review = "Nice Cap";
+        WebDriverWait espera = new WebDriverWait(driver, 4);
+
+        //Ingreso de nombre de profucto en recuadro de busqueda + ENTER para confirmar busqueda.
+        driver.findElement(By.xpath("//*[@id=\"woocommerce-product-search-field-0\"]")).sendKeys("CAP", Keys.ENTER);
+
+        //ingreso a Reviews para completar los campos.
+        driver.findElement(By.xpath("//*[@id=\"tab-title-reviews\"]/a")).click();
+        driver.findElement(By.xpath("//*[@id=\"commentform\"]/div/p/span/a[4]")).click();
+        driver.findElement(By.xpath("//*[@id=\"comment\"]")).sendKeys(review);
+        driver.findElement(By.xpath("//*[@id=\"author\"]")).sendKeys("Nicolas");
+        driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys("nmlede1988@gmail.com");
+
+        //Click en el boton submit.
+        driver.findElement(By.xpath("//*[@id=\"submit\"]")).click();
+
+        //Espera explicita hasta que aparezca el cuadro de la review.
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.description")));
+
+        //Almacenamos nuestra review para validar si se realizo correctamente mediante un asserEquals.
+        String texto_verificacion = driver.findElement(By.cssSelector("div.description")).getText();
+        Assert.assertEquals(review, texto_verificacion);
     }
 
     @After
