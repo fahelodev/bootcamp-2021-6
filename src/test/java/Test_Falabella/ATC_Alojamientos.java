@@ -72,7 +72,19 @@ public class ATC_Alojamientos {
         driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
         //Seleccionar primera opcion
         driver.findElement(By.xpath("//*[@title='Amaru Express']//div[text()='Amaru Express']")).click();
-        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+        //Switch entre tabs
+        String mainTab= driver.getWindowHandle();
+        Set<String> handles = driver.getWindowHandles();
+        for (String actual: handles){
+            if(!actual.equalsIgnoreCase(mainTab)){
+                driver.switchTo().window(actual);
+                Thread.sleep(2000);
+            }
+        }
+        //AssertEquals
+        String result = driver.findElement(By.xpath("//span[text()='Amaru Express']")).getText();
+        Assert.assertEquals("Amaru Express", result);
+
     }
     @Test
     public void TC003_CheckoutAlojamientoInternacional() throws InterruptedException {
