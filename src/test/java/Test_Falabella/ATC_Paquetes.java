@@ -77,7 +77,7 @@ public class ATC_Paquetes {
         driver.findElement(By.xpath("//em[text()='Buscar']")).click();
 
         Thread.sleep(3000);
-        driver.findElement(By.xpath("//*[contains(@class, 'results-items-wrapper')]/aloha-list-view-container/div[2]/aloha-cluster-container/div/div/div[2]/aloha-cluster-pricebox-container/div/div[2]/div[2]/aloha-button/button/em")).click();
+        /*driver.findElement(By.xpath("//*[contains(@class, 'results-items-wrapper')]/aloha-list-view-container/div[2]/aloha-cluster-container/div/div/div[2]/aloha-cluster-pricebox-container/div/div[2]/div[2]/aloha-button/button/em")).click();
 
         String mainTab= driver.getWindowHandle();
         Set<String> handles = driver.getWindowHandles();
@@ -86,7 +86,7 @@ public class ATC_Paquetes {
                 driver.switchTo().window(actual);
                 Thread.sleep(2000);
             }
-        }
+        }*/
 
     }
 
@@ -116,7 +116,7 @@ public class ATC_Paquetes {
         Thread.sleep(2000);
 
         //clic en ventana popup //popup //div[text()='11 NOCHES']
-        WebElement popUp = driver.findElement(By.xpath("//div[text()='11 NOCHES']"));
+        WebElement popUp = driver.findElement(By.xpath("//span[@class='eva-3-h3']"));
         popUp.click();
         Thread.sleep(2000);
 
@@ -125,16 +125,23 @@ public class ATC_Paquetes {
         for (String actual: handles){
             if(!actual.equalsIgnoreCase(mainTab)){
                 driver.switchTo().window(actual);
-                Thread.sleep(2000);
             }
         }
 
+        Thread.sleep(3000);
         //modifica destino
         String mod_destino = "Santiago de Chile, Chile";
 
         //html/body/aloha-app-root/aloha-results/div/div/div[2]/div/aloha-old-research/div/div/div/div[3]/div[2]/div[2]/div[2]/div/div/div/div/input
-        WebElement txtDestino = driver.findElement(By.xpath("//html/body/aloha-app-root/aloha-results/div/div/div[2]/div/aloha-old-research/div/div/div/div[3]/div[2]/div[2]/div[2]/div/div/div/div/input"));
+        WebElement txtDestino = driver.findElement(By.xpath("//input[@class='input-tag sbox-main-focus sbox-destination sbox-secondary sbox-places-second places-inline']"));
+        //Limpiar textBox
+        txtDestino.sendKeys(Keys.CONTROL + "A");
+        txtDestino.sendKeys(Keys.CLEAR);
+        //Insertar nuevo destino
         txtDestino.sendKeys(mod_destino);
+        Thread.sleep(2000);
+        WebElement Prediccion= driver.findElement(By.xpath("/html/body/div[9]/div/div[1]/ul/li[1]/span"));
+        Prediccion.click();
         txtDestino.sendKeys(Keys.DOWN);
         txtDestino.sendKeys(Keys.ENTER);
         Thread.sleep(2000);
@@ -166,7 +173,7 @@ public class ATC_Paquetes {
         10. Añadir cantidad de habitaciones y adultos
         11. Hacer click en el botón buscar */
 
-        // paquete vuelo 2 alojamientos //*[contains(@class, 'sbox-radio-vhh')]
+        // paquete vuelo 2 alojamientos
         driver.findElement(By.xpath("//*[contains(@class, 'sbox-radio-vhh')]")).click();
         Thread.sleep(2000);
 
@@ -174,7 +181,7 @@ public class ATC_Paquetes {
         String txtDestinoPaquete = "Rio de Janeiro, Rio de Janeiro, Brasil";
         String txtSegundoDestino = "San Pablo, San Pablo, Brasil";
 
-        //setear origen //html/body/app-root/div/header-wrapper/div/div/sbox/div/searchbox/div/div/div/div/div[3]/div[2]/div[2]/div/div/div/div/input
+        //setear origen
         WebElement origenPaquete = driver.findElement(By.xpath("//html/body/app-root/div/header-wrapper/div/div/sbox/div/searchbox/div/div/div/div/div[3]/div[2]/div[2]/div/div/div/div/input"));
         origenPaquete.sendKeys(txtOrigenPaquete);
         origenPaquete.sendKeys(Keys.DOWN);
@@ -182,50 +189,47 @@ public class ATC_Paquetes {
         Thread.sleep(2000);
 
 
-        // destino //html/body/app-root/div/header-wrapper/div/div/sbox/div/searchbox/div/div/div/div/div[3]/div[2]/div[2]/div[2]/div/div/div/div/input
-        // .sbox-destination
-
         WebElement destinoPaquete = driver.findElement(By.cssSelector(".sbox-destination"));
         destinoPaquete.sendKeys(txtDestinoPaquete);
         destinoPaquete.sendKeys(Keys.DOWN);
         destinoPaquete.sendKeys(Keys.ENTER);
         Thread.sleep(2000);
 
-        // clic caja fecha ida //*[contains(@class, 'sbox-checkin-date')]
+        // clic caja fecha ida
         driver.findElement(By.xpath("//*[contains(@class, 'sbox-checkin-date')]")).click();
 
-        // fecha ida 7 enero  //html/body/div[5]/div/div[5]/div/div[4]/span[7]/span
+        // fecha ida 7 enero
         driver.findElement(By.xpath("//html/body/div[5]/div/div[5]/div/div[4]/span[7]/span")).click();
 
-        // clic caja fecha retorno //*[contains(@class, 'sbox-checkout-date')]
+        // clic caja fecha retorno
         driver.findElement(By.xpath("//*[contains(@class, 'sbox-checkout-date')]")).click();
 
-        // fecha retorno 13 enero //html/body/div[5]/div/div[5]/div/div[4]/span[13]/span
+        // fecha retorno 13 enero
         driver.findElement(By.xpath("//html/body/div[5]/div/div[5]/div/div[4]/span[13]/span")).click();
 
-        // boton aplicar fechas  //html/body/div[7]/div/div[6]/div[2]/button[2]/em
+        // boton aplicar fechas
         driver.findElement(By.xpath("//html/body/div[7]/div/div[6]/div[2]/button[2]/em")).click();
 
-        // fecha hasta primer destino //*[contains(@class, 'sbox-hotel-first-checkout-date')]
+        // fecha hasta primer destino
         driver.findElement(By.xpath("//*[contains(@class, 'sbox-hotel-first-checkout-date')]")).click();
 
-        // setear fecha 11 de enero //*[contains(@class, '_dpmg2--show')]//*[contains(@class, '_dpmg2--has-start-range')]/div[4]/span[11]/span
+        // setear fecha 11 de enero
         driver.findElement(By.xpath("//*[contains(@class, '_dpmg2--show')]//*[contains(@class, '_dpmg2--has-start-range')]/div[4]/span[11]/span")).click();
 
-        //boton aplicar segunda fecha //*[contains(@class, '_dpmg2--show')]//em[text()='Aplicar']
+        //boton aplicar segunda fecha
         driver.findElement(By.xpath("//*[contains(@class, '_dpmg2--show')]//em[text()='Aplicar']")).click();
 
-        //segundo destino  //html/body/app-root/div/header-wrapper/div/div/sbox/div/searchbox/div/div/div/div/div[3]/div[2]/div[7]/div[2]/div[2]/div/div/div/div/div/input
+        //segundo destino
         WebElement segundoDestinoPaquete = driver.findElement(By.xpath("//html/body/app-root/div/header-wrapper/div/div/sbox/div/searchbox/div/div/div/div/div[3]/div[2]/div[7]/div[2]/div[2]/div/div/div/div/div/input"));
         segundoDestinoPaquete.sendKeys(txtSegundoDestino);
         segundoDestinoPaquete.sendKeys(Keys.DOWN);
         segundoDestinoPaquete.sendKeys(Keys.ENTER);
         Thread.sleep(2000);
 
-        // boton aplicar habitaciones //*[contains(@class, '_pnlpk-panel--show')]//a[text()='Aplicar']
+        // boton aplicar habitaciones
         driver.findElement(By.xpath("//*[contains(@class, '_pnlpk-panel--show')]//a[text()='Aplicar']")).click();
 
-        // boton buscar  //em[text()='Buscar']
+        // boton buscar
         driver.findElement(By.xpath("//em[text()='Buscar'] ")).click();
 
     }
