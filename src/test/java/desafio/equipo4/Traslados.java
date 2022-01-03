@@ -29,8 +29,11 @@ public class Traslados {
 
     @Test
     public void atc01_mensajeDeError() throws InterruptedException {
+        //se recomienda usar estos datos para conseguir el error.
         String desdeAeropuerto = "Copiapo";
-        String hastaHotel = "copiapo"; //se recomienda usar estos datos para conseguir el error.
+        String hastaHotel = "copiapo";
+        String anioMesArribo = "2022-01";
+        String diaArribo = "3";
         String hora = "03:00";
 
         WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -54,7 +57,7 @@ public class Traslados {
         espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'datepicker-transfers sbox')]//div[contains(@class, 'controlsWrapper')]")));
 
         //seleccionamos la fecha actual, luego seleccionamos la hora utilizando la clase Select
-        driver.findElement(By.xpath("//div[contains(@class, 'datepicker-transfers sbox')]//span[contains(@class, 'available _dpmg2--today')]")).click();
+        driver.findElement(By.xpath("//div[contains(@class, 'datepicker-transfers sbox')]//div[contains(@data-month, '"+anioMesArribo+"')]//span[contains(@class, '_dpmg2--date-number')][text()='"+diaArribo+"']")).click();
         WebElement horas = driver.findElement(By.xpath("//select[@class='select-tag sbox-time-arrival']"));
         Select select = new Select(horas);
 
@@ -75,6 +78,9 @@ public class Traslados {
     public void atc02_opcionTransferencia(){
         String desdeAeropuerto = "Santiago";
         String hastaHotel = "Santiago";
+        //Elegir el año actual y los meses debe ser enero o febrero.
+        String anioMesArribo = "2022-02";
+        String diaArribo = "16";
         String hora = "21:30";
 
         WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -96,7 +102,7 @@ public class Traslados {
         //Hacemos click en 'Arribo' que se encuentra en 'fecha', esperamos y elegimos la fecha actual
         driver.findElement(By.xpath("//input[@placeholder='Arribo']")).click();
         espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'datepicker-transfers sbox')]//div[contains(@class, 'controlsWrapper')]")));
-        driver.findElement(By.xpath("//div[contains(@class, 'datepicker-transfers sbox')]//span[contains(@class, 'available _dpmg2--today')]")).click();
+        driver.findElement(By.xpath("//div[contains(@class, 'datepicker-transfers sbox')]//div[contains(@data-month, '"+anioMesArribo+"')]//span[contains(@class, '_dpmg2--date-number')][text()='"+diaArribo+"']")).click();
 
         //Seleccionamos una hora utilizando la clase 'Select'
         WebElement horas = driver.findElement(By.xpath("//select[@class='select-tag sbox-time-arrival']"));
@@ -125,12 +131,15 @@ public class Traslados {
     public void atc03_mensajeError_cuponInvalido(){
         String desdeAeropuerto = "Santiago";
         String hastaHotel = "Santiago";
+        //Elegir el año actual, los meses debe ser enero o febrero.
+        String anioMesArribo = "2022-02";
+        String diaArribo = "16";
         String hora = "21:30";
         int edadMenor = 3;
         String email = "jose@email.com";
         String codigoCupon = "123123";
 
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(15));
 
         //Seleccionamos el modulo traslados, hacemos click en 'desde el aeropuerto' e ingresamos un aeropuerto
         driver.findElement(By.xpath("//*[text()='Traslados']")).click();
@@ -149,9 +158,9 @@ public class Traslados {
         //Hacemos click en 'Arribo' que se encuentra en 'fecha', esperamos a que aparezca y seleccionamos la fecha actual
         driver.findElement(By.xpath("//input[@placeholder='Arribo']")).click();
         espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'datepicker-transfers sbox')]//div[contains(@class, 'controlsWrapper')]")));
-        driver.findElement(By.xpath("//div[contains(@class, 'datepicker-transfers sbox')]//span[contains(@class, 'available _dpmg2--today')]")).click();
+        driver.findElement(By.xpath("//div[contains(@class, 'datepicker-transfers sbox')]//div[contains(@data-month, '"+anioMesArribo+"')]//span[contains(@class, '_dpmg2--date-number')][text()='"+diaArribo+"']")).click();
 
-        //Seleccionamos la hora utilizando la clae Select
+        //Seleccionamos la hora utilizando la clase Select
         WebElement horas = driver.findElement(By.xpath("//select[@class='select-tag sbox-time-arrival']"));
         Select select = new Select(horas);
         select.selectByVisibleText(hora);
@@ -176,8 +185,8 @@ public class Traslados {
         driver.findElement(By.xpath("//div[contains(@class, 'xxlg')]//em[contains(text(), 'Comprar')]")).click();
 
         //Esperamos a que cargue la página para seleccionar la opción del Cupón y hacemos click en Cupon.
-        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'medium')]//a[contains(@class, 'coupon')]")));
-        driver.findElement(By.xpath("//div[contains(@class, 'medium')]//a[contains(@class, 'coupon')]")).click();
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class,'medium')]//a[contains(@class, 'coupon-title')]")));
+        driver.findElement(By.xpath("//div[contains(@class,'medium')]//a[contains(@class, 'coupon-title')]")).click();
 
         //Esperamos y luego ingresamos un email y un cupón inválido en la sección de cupón y hacemos click en 'Validar'
         espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='coupon-email']")));
