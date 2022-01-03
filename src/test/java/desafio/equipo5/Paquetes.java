@@ -31,9 +31,9 @@ public class Paquetes {
     }
 
     @Test
-    public void TC001_PaqueteEconomico() {
+    public void TC001_PaqueteEconomico() throws InterruptedException {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
         //Origen
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"sbox-row -wrap -row-bottom\"]//input"))).sendKeys("rio");
@@ -45,9 +45,9 @@ public class Paquetes {
 
         //Fecha ida
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"sbox-dates-row sbox-row\"]//input"))).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[5]//div//div[2]//span[4][@class=\"_dpmg2--date _dpmg2--available\"]"))).click();
-        //Seleccionar primer elemento de busqueda
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"_dpmg2--month _dpmg2--o-6 _dpmg2--has-start-range _dpmg2--month-active\"]//div[4]/span[11]"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[5]//div//div[1]//span[4][contains(span, '4')]"))).click();
+        //Fecha vuelta
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class=\"_dpmg2--months\"])[3]//div[@class=\"_dpmg2--dates\"]/span[contains(span, '11')]"))).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[7]//div[6]/div[2]/button[2][@class=\"_dpmg2--desktopFooter-button _dpmg2--desktopFooter-button-apply sbox-3-btn -lg -primary\"]"))).click();
 
         //Seleccionar casilla de habitaciones y huspedes
@@ -66,7 +66,7 @@ public class Paquetes {
         WebElement ordenar = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[1]/div/aloha-select/div/div/select")));
         Select select = new Select(ordenar);
         select.selectByVisibleText("Precio: menor a mayor");
-
+        Thread.sleep(3000);
         //Obtener texto de alojamiento
         String location = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[contains(@class,\"cluster-container\")]//aloha-location-name/span)[2]"))).getText();
         String[] arr = location.split(" ");
@@ -80,7 +80,7 @@ public class Paquetes {
     @Test
     public void TC002_PaqueteFiltroMesNoche() {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
         //Origen
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"sbox-row -wrap -row-bottom\"]//input"))).sendKeys("merino");
@@ -130,7 +130,7 @@ public class Paquetes {
     @Test
     public void TC003_PaqueteRecomendado() throws InterruptedException {
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
         //Tipo de paquete Vuelo + Auto
         driver.findElement(By.xpath("//div[@class=\"sbox-bundles\"]/span[3]/input[@type=\"radio\"]")).click();
@@ -145,7 +145,7 @@ public class Paquetes {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-range=\"start\"]//div[@class=\"_dpmg2--controls-next\"]/i"))).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[5]//div[5]/div[2]//span[8]/span[@class=\"_dpmg2--date-number\"]"))).click();
         //Fecha vuelta
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='_dpmg2--month _dpmg2--o-6 _dpmg2--has-start-range _dpmg2--month-active']//span[.='15']"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class=\"_dpmg2--dates\"])[24]//span[contains(span,'15')]"))).click();
         //Aplicar
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[7]//div[6]/div[2]/button[2][@class=\"_dpmg2--desktopFooter-button _dpmg2--desktopFooter-button-apply sbox-3-btn -lg -primary\"]"))).click();
 
@@ -178,8 +178,8 @@ public class Paquetes {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[6]/div/a/em[@class=\"btn-text\"]"))).click();
 
         //Filtrar por Aerolineas
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//filter-group[@data-sfa-id=\"airlines\"]/li/span[contains(@class,\"item-container\")]"))).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//checkbox-filter[@class=\"airlines\"]//checkbox-filter-item[3]//li/span"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//filter-group[@data-sfa-id=\"airlines\"]/li/span[contains(div, 'Aerolíneas')]"))).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//checkbox-filter[@class=\"airlines\"]//checkbox-filter-item//li/span[contains(span,'American Airlines')]"))).click();
         Thread.sleep(3000);
         //Filtrar por equipaje
         driver.findElement(By.xpath("//checkbox-filter[@class=\"baggage\"]//checkbox-filter-item[2]/li/span")).click();
@@ -188,7 +188,7 @@ public class Paquetes {
         WebElement ordenar = driver.findElement(By.xpath("(//div[@class=\"select-container\"])/select[@id=\"eva-select\"]"));
         Select orden = new Select(ordenar);
         orden.selectByVisibleText("Precio");
-
+        Thread.sleep(3000);
         //Obtener Texto "Vuelo mas conveniente"
         String Recomendado = driver.findElement(By.xpath("//div/highlight-level-three//span[contains(text(),\"Vuelo más conveniente\")]")).getText();
         //Validar vuelo mas coveniente
