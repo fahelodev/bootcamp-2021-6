@@ -199,6 +199,7 @@ public class Paquetes {
         driver.findElement(By.xpath("(//a[contains(@class,'-md eva-3-btn')])[2]")).click();
 
         //Tranformar precio String a Int (quitandole el punto)
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='pricebox-sticky-more-info']//div[@class='pricebox-sticky-info-container']//div[contains(@class,'-eva-3-tc-gray')]")));
         String precioPaqueteCompleto = driver.findElement(By.xpath("//div[@class='pricebox-sticky-more-info']//div[@class='pricebox-sticky-info-container']//div[contains(@class,'-eva-3-tc-gray')]")).getText();
 
         //Uso de una regex para quitar el punto del numero.
