@@ -32,8 +32,7 @@ public class ATC_Paquetes {
     
     @Test
     public void TC002_VueloYAlojamiento()throws InterruptedException{
-
-
+        
         /* 1. Seleccionar paquete de Vuelo y Alojamiento
         2. Ingresar Origen
         3. Ingresar Destino nacional
@@ -60,11 +59,11 @@ public class ATC_Paquetes {
 
         driver.findElement(By.cssSelector(".sbox-checkin-date")).click();
 
-        // 3 de enero  //html/body/div[5]/div/div[5]/div/div[4]/span[3]/span
-        driver.findElement(By.xpath("//html/body/div[5]/div/div[5]/div/div[4]/span[3]/span")).click();
+        // 7 de enero  //html/body/div[5]/div/div[5]/div/div[4]/span[7]/span
+        driver.findElement(By.xpath("//html/body/div[5]/div/div[5]/div/div[4]/span[7]/span")).click();
         Thread.sleep(1000);
-        // 8 de enero //html/body/div[5]/div/div[5]/div/div[4]/span[8]/span
-        driver.findElement(By.xpath("//html/body/div[5]/div/div[5]/div/div[4]/span[8]/span")).click();
+        // 13 de enero //html/body/div[5]/div/div[5]/div/div[4]/span[13]/span
+        driver.findElement(By.xpath("//html/body/div[5]/div/div[5]/div/div[4]/span[13]/span")).click();
 
         //btn aplicar fecha //html/body/div[7]/div/div[6]/div[2]/button[2]/em
         driver.findElement(By.xpath("//html/body/div[7]/div/div[6]/div[2]/button[2]/em")).click();
