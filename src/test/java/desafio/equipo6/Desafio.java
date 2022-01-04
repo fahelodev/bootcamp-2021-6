@@ -1,4 +1,4 @@
-package selenium.mvargas;
+package desafio.equipo6;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
@@ -70,26 +70,33 @@ public class Desafio {
     @Test
     public void atc02_ValidarDisponibilidadDeAlojamientoEnFechaConAltaDemanda() throws InterruptedException {
         System.out.println("Test Case 2: Validar Disponibilidad De Alojamiento En Fecha Con Alta Demanda");
+
         // Cargar la página y validar.
         driver.get("https://www.viajesfalabella.cl/");
+
         // Localizar el el boton de Alojamiento y hacer click
         driver.findElement(By.xpath("//a[@title='Alojamientos']")).click();
+
         // Localizar e ingresar en campo ciudad destino "Hotel Club La Serena, La Serena, Chile".
         WebElement buscador = driver.findElement(By.xpath("(//*[@type='text'])"));
         buscador.sendKeys("Hotel Club La Serena, La Serena, Chile");
         Thread.sleep(3000);
         buscador.sendKeys(Keys.TAB);
         driver.findElement(By.xpath("//input[@placeholder='Entrada']")).click();
+
         // Ingresar en campo fecha Ida "Lun, 3 ene 2022
         driver.findElement(By.xpath("(//span[@class='_dpmg2--date _dpmg2--available'])[1]")).click();
+
         // Ingresar en campo fecha Ida "Sáb, 8 ene 2022"
         driver.findElement(By.xpath("(//span[@class='_dpmg2--date _dpmg2--available _dpmg2--weekend _dpmg2--nights-tooltip'])[1]")).click();
         driver.findElement(By.xpath("//em[@class='_dpmg2--desktopFooter-button-apply-text btn-text']")).click();
+
         // Añadir una habitacion extra para 3 adultos y realizar busqueda
         driver.findElement(By.xpath("//div[@class='sbox-distri-input-container sbox-distribution-picker-wrapper']")).click();
         driver.findElement(By.xpath("//a[@class='_pnlpk-panel__button _pnlpk-panel__button--link-left _pnlpk-add-room-button']")).click();
         driver.findElement(By.xpath("(//a[@class='steppers-icon-right sbox-3-icon-plus'])[3]")).click();
         driver.findElement(By.xpath("//div[@class='sbox-button-container']")).click();
+
         //Ingresamos al "Hotel Club La Serena, La Serena, Chile"
         driver.findElement(By.xpath("//div[@class='eva-3-pricebox-cluster -responsive']")).click();
         String mainTab= driver.getWindowHandle();
@@ -99,6 +106,7 @@ public class Desafio {
             if(!actual.equalsIgnoreCase(mainTab)){
                 driver.switchTo().window(actual);
                 newTab = actual;
+
             }
         }
         // Validar si el Hotel está agotado y presiorar en botón "Ver otros alojamientos"
@@ -108,8 +116,10 @@ public class Desafio {
         Assert.assertEquals( "Agotado", texto);
         System.out.println("Estado de hotel: Agotado");
         driver.findElement(By.xpath("//a[@class='eva-3-btn-ghost -md -eva-3-fwidth']")).click();
+
         // En casilla Ordenar por, seleccionar "Mejor precio / calidad
         driver.findElement(By.xpath("//select//option[@value='quality_price_descending']")).click();
+
         // Seleccionar el hotel "Cabañas Campanario" de la lista"
         driver.findElement(By.xpath("//div[@class='cluster-content-wrapper']")).click();
         String MainTab= driver.getWindowHandle();
@@ -122,13 +132,13 @@ public class Desafio {
                 Thread.sleep(2000);
             }
         }
+
         // Validar que hotel "Cabañas Campanario" esta disponible para reservas"
         driver.findElement(By.xpath("//em[@class='btn-text']")).click();
         String Resultado = driver.findElement(By.xpath("//button[@class='eva-3-btn -md -secondary -eva-3-fwidth']")).getText();
         Assert.assertEquals("Reservar ahora", Resultado);
         System.out.println("Estado del hotel: Reservar ahora");
     }
-
 
     @Test @Ignore
     public void atc03_ValidadLecturaDeTerminosYCondiciones() throws InterruptedException {
@@ -174,6 +184,8 @@ public class Desafio {
                 driver.switchTo().window(actual);
                 newTab = actual;
             }
+        }
+
             Thread.sleep(2000);
             driver.findElement(By.xpath("//dic[@class='filters-wrapper -eva-3-fwidth'] //span[@class='scroll-wrapper']")).click();
             // Seleccionamos "habitación doble de lujo"
@@ -181,7 +193,7 @@ public class Desafio {
             // Comprar la reserva sin marcar la casilla de "terminos y condiciones"
             Thread.sleep(2000);
         }
-    }
+
 
 
     @Test
