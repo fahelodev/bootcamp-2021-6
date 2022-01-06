@@ -7,16 +7,14 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import static desafio.equipo4.Herramientas.*;
+import java.time.Duration;
 
 
-import javax.security.auth.kerberos.KerberosTicket;
-import java.security.Key;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Paquetes {
     private static WebDriver driver;
@@ -36,10 +34,10 @@ public class Paquetes {
     }
 
     @Test
-    public void atc01PaqueteSugerido() throws InterruptedException {
+    public void atc01PaqueteSugerido() {
 
         //Establecer un tiempo de espera explicito
-        WebDriverWait espera = new WebDriverWait(driver,15);
+        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(15));
 
         //Seleccionar modulo PACKAGES
         driver.findElement(By.cssSelector("a.shifu-3-button-circle.PACKAGES.paint-circle")).click();
@@ -57,9 +55,7 @@ public class Paquetes {
         driver.findElement(By.cssSelector("a.date-box")).click();
 
         //Cambiar de pestaña
-        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-        driver.close();
-        driver.switchTo().window(tabs.get(1));
+        changeTab(driver, 15);
 
         //Validamos caso de prueba
         espera.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("aloha-cluster-accommodation-info-container")));
@@ -68,10 +64,10 @@ public class Paquetes {
     }
 
     @Test
-    public void atc02BusquedaEspecificaDesayuno() throws InterruptedException {
+    public void atc02BusquedaEspecificaDesayuno() {
 
         //Espera
-        WebDriverWait espera = new WebDriverWait(driver,15);
+        WebDriverWait espera = new WebDriverWait(driver,Duration.ofSeconds(15));
 
         //Variables
         String desayuno = "Desayuno";
@@ -126,16 +122,16 @@ public class Paquetes {
     }
 
     @Test
-    public void atc03PrecioFinal() throws InterruptedException {
+    public void atc03PrecioFinal() {
 
         //Espera
-        WebDriverWait espera = new WebDriverWait(driver,15);
+        WebDriverWait espera = new WebDriverWait(driver,Duration.ofSeconds(15));
 
         //Variables
         String anioMesIda = "2022-01";
-        String diaIda = "5";
+        String diaIda = "15";
         String anioMesVuelta = "2022-01";
-        String diaVuelta = "15";
+        String diaVuelta = "25";
         String ciudadOrigen = "bue";
         String ciudadDestino = "ams";
 
@@ -183,11 +179,8 @@ public class Paquetes {
         driver.findElement(By.xpath("(//button[contains(@class,'eva-3-btn')])[5]")).click();
 
         //Cambiar pestaña
-        espera.until(ExpectedConditions.numberOfWindowsToBe(2));
-        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-        driver.close();
-        driver.switchTo().window(tabs.get(1));
-        espera.until(ExpectedConditions.titleIs("ibis Amsterdam Centre"));
+        changeTab(driver, 15);
+        espera.until(ExpectedConditions.titleIs(driver.getTitle()));
 
         //Seleccionar siguiente para confirmar paquete
         espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class,'pricebox-action')]//button[contains(@class,'eva-3-btn')]")));
