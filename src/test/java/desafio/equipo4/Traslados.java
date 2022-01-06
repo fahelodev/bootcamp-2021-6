@@ -36,7 +36,7 @@ public class Traslados {
         String diaArribo = "3";
         String hora = "03:00";
 
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait espera = new WebDriverWait(driver, 10);
 
         //Seleccionamos el modulo traslados, 'Desde el aeropuerto e ingresamos un aeropuerto en 'desde'
         driver.findElement(By.xpath("//*[text()='Traslados']")).click();
@@ -83,7 +83,7 @@ public class Traslados {
         String diaArribo = "16";
         String hora = "21:30";
 
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait espera = new WebDriverWait(driver, 10);
 
         //Seleccionamos el modulo traslados, 'Desde el aeropuerto' e ingresamos un aeropuerto en 'desde'
         driver.findElement(By.xpath("//*[text()='Traslados']")).click();
@@ -139,7 +139,7 @@ public class Traslados {
         String email = "jose@email.com";
         String codigoCupon = "123123";
 
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebDriverWait espera = new WebDriverWait(driver, 15);
 
         //Seleccionamos el modulo traslados, hacemos click en 'desde el aeropuerto' e ingresamos un aeropuerto
         driver.findElement(By.xpath("//*[text()='Traslados']")).click();

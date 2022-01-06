@@ -40,7 +40,7 @@ public class Alojamiento {
 
     public void tc_001_AlojamientoFiltroEstrellas()  {
 
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(6));
+        WebDriverWait espera = new WebDriverWait(driver, 6);
 
 
         //Cargar la página

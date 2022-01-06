@@ -33,7 +33,7 @@ public class ViajesFalabellaTest {
     @Test
     public void atc01_AlojamientoBasico() throws InterruptedException {
         //instancia de wait en 5 seg
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         //click en seccion de alojamiento
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Alojamientos\")]"))).click();
         //escritura en destino
@@ -62,7 +62,7 @@ public class ViajesFalabellaTest {
     @Test
     public void atc01_PaqueteBasico() {
         // Sincronizacion explicita
-        WebDriverWait d = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait d = new WebDriverWait(driver, 5);
         // Instanciar objeto desplegable origen
         WebElement origen = driver.findElement(By.cssSelector(".sbox-origin"));
         origen.sendKeys("Arturo Merino");
@@ -101,7 +101,7 @@ public class ViajesFalabellaTest {
 
     @Test
     public void atc01_TrasladoBasico() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         //Seleccionamos opción traslado
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Traslados\")]"))).click();
         //Seleccionar radiobutton Hacia el aeropuerto
@@ -132,7 +132,7 @@ public class ViajesFalabellaTest {
     @Test
     public void atc02_AlojamientoMedio() throws InterruptedException {
         //instancia de wait con 5 seg
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         //click en seccion de alojamiento
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Alojamientos\")]"))).click();
         //introducir texto en busqueda
@@ -187,7 +187,7 @@ public class ViajesFalabellaTest {
     @Test
     public void atc02_PaqueteMedio() {
         // Sincronizacion explicita
-        WebDriverWait d = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait d = new WebDriverWait(driver, 10);
         // Instanciar objeto desplegable origen
         WebElement origen = driver.findElement(By.cssSelector(".sbox-origin"));
         origen.sendKeys("bue");
@@ -228,7 +228,7 @@ public class ViajesFalabellaTest {
 
     @Test
     public void atc02_TrasladoMedio() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         //Seleccionamos opción traslado
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Traslados\")]"))).click();
         //Escribimos el aeropuerto
@@ -290,7 +290,7 @@ public class ViajesFalabellaTest {
     @Test
     public void atc03_AlojamientoComplejo() throws InterruptedException {
         //Instancia de wait
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         //click en seccion de alojamientos
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Alojamientos\")]"))).click();
         //entrega de texto para seccion de destino
@@ -402,7 +402,7 @@ public class ViajesFalabellaTest {
     @Test
     public void atc03_PaqueteComplejo() throws InterruptedException {
         // Sincronizacion explicita
-        WebDriverWait d = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait d = new WebDriverWait(driver, 10);
         //Seleccionar origen
         WebElement origen = driver.findElement(By.cssSelector(".sbox-origin"));
         origen.sendKeys("Cordoba");
@@ -476,7 +476,7 @@ public class ViajesFalabellaTest {
 
     @Test
     public void atc03_TrasladoComplejo() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         //Seleccionamos opción traslado
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Traslados\")]"))).click();
         //Escribimos el aeropuerto

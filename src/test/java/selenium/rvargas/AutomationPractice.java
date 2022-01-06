@@ -102,7 +102,7 @@ public class AutomationPractice {
 
         //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait espera = new WebDriverWait(driver, 5);
         espera.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#index > div.ac_results")));
 
 
