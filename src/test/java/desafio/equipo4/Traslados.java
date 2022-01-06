@@ -28,12 +28,12 @@ public class Traslados {
     }
 
     @Test
-    public void atc01_mensajeDeError() throws InterruptedException {
+    public void atc01_mensajeDeError() {
         //se recomienda usar estos datos para conseguir el error.
         String desdeAeropuerto = "Copiapo";
         String hastaHotel = "copiapo";
         String anioMesArribo = "2022-01";
-        String diaArribo = "3";
+        String diaArribo = "16";
         String hora = "03:00";
 
         WebDriverWait espera = new WebDriverWait(driver, 10);
@@ -75,7 +75,7 @@ public class Traslados {
     }
 
     @Test
-    public void atc02_opcionTransferencia(){
+    public void atc02_opcionTransferencia() {
         String desdeAeropuerto = "Santiago";
         String hastaHotel = "Santiago";
         //Elegir el año actual y los meses debe ser enero o febrero.
@@ -128,7 +128,7 @@ public class Traslados {
     }
 
     @Test
-    public void atc03_mensajeError_cuponInvalido(){
+    public void atc03_mensajeError_cuponInvalido() {
         String desdeAeropuerto = "Santiago";
         String hastaHotel = "Santiago";
         //Elegir el año actual, los meses debe ser enero o febrero.

@@ -9,8 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.ArrayList;
+import static desafio.equipo4.Herramientas.*;
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -27,6 +27,7 @@ public class Alojamientos {
     public void init(){
         System.out.println("init para instanciar");
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         // Definimos un implicit wait de 6 segundos
         driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
         driver.get("http://www.viajesfalabella.cl");
@@ -35,7 +36,6 @@ public class Alojamientos {
     @Test
     public void atc01_alojamientoSugerido() {
         System.out.println("Test Case atc01_alojamientoSugerido");
-        WebDriverWait espera = new WebDriverWait(driver,10);
 
         String tituloSeccion = "Despierta en algun lugar de Chile";
 
@@ -64,10 +64,7 @@ public class Alojamientos {
         }
 
         // cambiamos el driver a la nueva pestaña y cerramos la anterior
-        espera.until(ExpectedConditions.numberOfWindowsToBe(2));
-        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-        driver.close();
-        driver.switchTo().window(tabs.get(1));
+        changeTab(driver, 10);
 
         // obtenemos el nombre del primer alojamiento en la nueva pestaña
         String nombreAlojamientoEncontrado = driver.findElement(By.cssSelector(".cluster-content .offer-card-title")).getText();
@@ -130,6 +127,8 @@ public class Alojamientos {
     @Test
     public void atc03_mediosDePago() {
         System.out.println("Test Case atc03_mediosDePago");
+        WebDriverWait espera = new WebDriverWait(driver,10);
+
 
         String destino = "Nueva York";
         //corresponde al dia a seleccionar en el mes siguiente al actual (max 30 dias)
@@ -145,6 +144,7 @@ public class Alojamientos {
         // seleccionamos fecha de entrada y salida
         driver.findElement(By.xpath("//input[contains(@class,'sbox-checkin-date')]")).click();
         driver.findElement(By.cssSelector("._dpmg2--today")).click();
+        espera.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,'_dpmg2--has-limit-date')]//span[contains(text(),'"+diaSalida+"')]")));
         driver.findElement(By.xpath("//div[contains(@class,'_dpmg2--has-limit-date')]//span[contains(text(),'"+diaSalida+"')]")).click();
         driver.findElement(By.xpath("//button[contains(@class,'_dpmg2--desktopFooter-button-apply')]")).click();
 
@@ -157,22 +157,18 @@ public class Alojamientos {
         // realizamos la busqueda
         driver.findElement(By.cssSelector(".sbox-search")).click();
 
-        WebDriverWait espera = new WebDriverWait(driver,15);
-        espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class,'filters-column')]")));
-
+        //Bloque de codigo comentado por comportamiento erratico de este elemento
+        /*espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class,'filters-column')]//select[contains(@class,'select-tag')]")));
         // Cambiamos la moneda a USD
         Select select = new Select(driver.findElement(By.xpath("//div[contains(@class,'filters-column')]//select[contains(@class,'select-tag')]")));
-        select.selectByValue("USD");
+        select.selectByValue("USD");*/
 
         // click en ver detalle del primer resultado
         espera.until(ExpectedConditions.elementToBeClickable(By.xpath(".//aloha-cluster-container//aloha-button")));
         driver.findElement(By.xpath("//aloha-button//em[contains(text(),'Ver detalle')]")).click();
 
         // cambio driver a la nueva pestaña
-        espera.until(ExpectedConditions.numberOfWindowsToBe(2));
-        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-        driver.close();
-        driver.switchTo().window(tabs.get(1));
+        changeTab(driver, 10);
 
         // click en reservar ahora
         driver.findElement(By.xpath("//aloha-next-step-button//aloha-button")).click();
