@@ -1,4 +1,4 @@
-package selenium.mvargas.nmarinucci.rvargas;
+package selenium.rvargas;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
@@ -7,7 +7,12 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.ISelect;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -24,7 +29,8 @@ public class AutomationPractice {
     public void init(){
         System.out.println("init para instanciar");
         driver = new ChromeDriver();
-        driver.get("http://automationpractice.com/");
+        //driver.get("http://automationpractice.com/");
+        driver.get("https://www.amazon.com/");
         driver.manage().window().maximize();
     }
 
@@ -94,18 +100,26 @@ public class AutomationPractice {
 
         driver.findElement(By.xpath("//*[@id=\"search_query_top\"]")).sendKeys("blo");
 
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-        driver.findElement(By.xpath("//*[@id=\"search_query_top\"]")).sendKeys(Keys.ARROW_DOWN);
-        //driver.findElement(By.xpath("//*[@id=\"search\"]/div[2]/ul/li")).click();
-        //driver.findElement(By.xpath("//*[@id=\'searchbox\']/button")).click();
+        WebDriverWait espera = new WebDriverWait(driver, 5);
+        espera.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#index > div.ac_results")));
+
+
+        driver.findElement(By.xpath("//*[@id=\"search_query_top\"]")).sendKeys(Keys.DOWN);
+        driver.findElement(By.xpath("//*[@id=\"search_query_top\"]")).sendKeys(Keys.ENTER);
+
+
+        Assert.assertEquals("Model demo_2",driver.findElement(By.cssSelector("#product_reference")).getText());
     }
+
+
 
     @After
     public void close(){
         if(driver != null){
             System.out.println("Close");
-            driver.close();
+            //driver.close();
         }
 
     }

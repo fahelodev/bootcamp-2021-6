@@ -1,4 +1,5 @@
-package selenium.rgutierrez;
+package selenium.fmercado;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
 import org.openqa.selenium.By;
@@ -7,12 +8,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-public class AutomationFrankLuzon {
-
+public class AutomaticPractice2 {
     private WebDriver driver;
     @BeforeClass
     public static void setup(){
@@ -31,28 +30,31 @@ public class AutomationFrankLuzon {
     @Test
     public void atc01_agregarReview(){
         System.out.println("Test Case atc01_atc01_agregarReview");
-
+            // Cargar la página y validar.
         driver.get("http://automation.frankluzon.com/");
-        driver.manage().deleteAllCookies();
 
-        // Buscamos por la palabra CAP y seleccionamos 5 estrellas en la sección de review
-        driver.findElement(By.cssSelector("#woocommerce-product-search-field-0")).sendKeys("CAP" + Keys.ENTER);
-        driver.findElement(By.cssSelector(".reviews_tab")).click();
+            // Localizar el cuadro de busqueda e introducir "CAP" en el campo de busqueda y damos enter
+        driver.findElement(By.xpath("//*[@id=\'woocommerce-product-search-field-0\']")).sendKeys("CAP" + Keys.ENTER);
+
+            // Localizamos el href de reviews y clickeamos
+        driver.findElement(By.linkText("Reviews (0)")).click();
+
+            // Clickeamos en las estrellas para podes subri el comentario
         driver.findElement(By.cssSelector("form.comment-form a.star-5")).click();
 
-        // ingresamos un texto de review, un nombre y un mail
-        driver.findElement(By.xpath("//*[@id=\'comment\']")).sendKeys("For years I have searched for the perfect CAP");
-        driver.findElement(By.xpath("//*[@id=\'author\']")).sendKeys("Rodrigo");
-        driver.findElement(By.xpath("//*[@id=\'email\']")).sendKeys("rodrigo.prueba@gmail.com");
+            // Ingresamos nombre, email y comentario en su respectivos cuadros
+        driver.findElement(By.xpath("//*[@id=\'comment\']")).sendKeys("El producto esta genial!!");
+        driver.findElement(By.xpath("//*[@id=\'author\']")).sendKeys("Facu");
+        driver.findElement(By.xpath("//*[@id=\'email\']")).sendKeys("mercadofacundo21@gmail.com");
 
-        // click en el botón de submit
+            // Click en el botón de submit
         driver.findElement(By.xpath("//*[@id=\'submit\']")).click();
 
-        // explicit wait esperando el mensaje de la solicitud
+        // explicit wait Esperamos el mensaje de aprobado
         WebDriverWait expWait = new WebDriverWait(driver, 10);
         expWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".woocommerce-review__awaiting-approval")));
 
-        // validamos que el texto corresponda a "Your review is awaiting approval"
+        // validamos el texto
         String texto = driver.findElement(By.cssSelector(".woocommerce-review__awaiting-approval")).getText();
 
         Assert.assertEquals( "Your review is awaiting approval", texto);
@@ -71,5 +73,4 @@ public class AutomationFrankLuzon {
     public static void closeAll(){
         System.out.println("closeAll :: Cerrar otras conexiones que fueron utilizadas en el test");
     }
-
 }

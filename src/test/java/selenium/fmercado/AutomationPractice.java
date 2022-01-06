@@ -7,9 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.Keys;
 
+import java.time.Duration;
 import java.util.List;
 
 public class AutomationPractice {
@@ -146,15 +148,33 @@ public class AutomationPractice {
            String resultado = driver.findElement(By.xpath("//p[@id='product_reference']")).getText();
            Assert.assertEquals("Model demo_2",resultado);
         }
+        @Test
+        public void atc05_AgregarProductoCambiandoTallaYColor(){
+            driver.get("http://automationpractice.com");
+            driver.findElement(By.cssSelector("#search_query_top")).sendKeys("blo");
 
+                //seleccionamos el producto
+            WebDriverWait espera = new WebDriverWait(driver, 5);
+            espera.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#index > div.ac_results")));
+            driver.findElement(By.cssSelector("#search_query_top")).sendKeys(Keys.DOWN);
+            driver.findElement(By.cssSelector("#search_query_top")).sendKeys(Keys.ENTER);
 
-        @After
-        public void close(){
-            if(driver != null){
-                System.out.println("Close");
-                driver.close();
-            }
+                //elegimos la talla
+            Select select = new Select(driver.findElement(By.xpath("//*[@id='group_1']")));
+            select.selectByVisibleText("L");
 
+                //cambiamos el color
+            driver.findElement(By.xpath("//*[@id='color_8']")).click();
+            driver.findElement(By.xpath("//*[@id='add_to_cart']/button")).click();
+
+                //esperamos a que aparezca el mensaje.
+
+            espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[1]/h2")));
+
+                //guardamos el mensaje de compra
+            String mensaje =  driver.findElement(By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[1]/h2")).getText();
+
+            Assert.assertEquals("Product successfully added to your shopping cart", mensaje);
         }
 
         @AfterClass
