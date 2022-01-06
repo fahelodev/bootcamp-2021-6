@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static desafio.equipo4.Herramientas.*;
 import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Alojamientos {
 
@@ -28,7 +29,7 @@ public class Alojamientos {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         // Definimos un implicit wait de 6 segundos
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
+        driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
         driver.get("http://www.viajesfalabella.cl");
     }
 
@@ -104,7 +105,7 @@ public class Alojamientos {
         driver.findElement(By.cssSelector(".sbox-search")).click();
 
         // esperamos a que los resultados de la busqueda sean clickeables
-        WebDriverWait espera = new WebDriverWait(driver,Duration.ofSeconds(10));
+        WebDriverWait espera = new WebDriverWait(driver,10);
         espera.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".cluster-container")));
 
         // guardamos en una lista la ubicación de los alojamientos
@@ -126,7 +127,7 @@ public class Alojamientos {
     @Test
     public void atc03_mediosDePago() {
         System.out.println("Test Case atc03_mediosDePago");
-        WebDriverWait espera = new WebDriverWait(driver,Duration.ofSeconds(10));
+        WebDriverWait espera = new WebDriverWait(driver,10);
 
 
         String destino = "Nueva York";

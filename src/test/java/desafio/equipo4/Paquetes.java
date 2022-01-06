@@ -12,8 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import static desafio.equipo4.Herramientas.*;
 import java.time.Duration;
-
-
+import static desafio.equipo4.Herramientas.changeTab;
 
 
 public class Paquetes {
@@ -33,11 +32,13 @@ public class Paquetes {
         driver.get("http://www.viajesfalabella.cl");
     }
 
+
+    //TODO: Refactorizar duration.ofSeconds
     @Test
     public void atc01PaqueteSugerido() {
 
         //Establecer un tiempo de espera explicito
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebDriverWait espera = new WebDriverWait(driver,15);
 
         //Seleccionar modulo PACKAGES
         driver.findElement(By.cssSelector("a.shifu-3-button-circle.PACKAGES.paint-circle")).click();
@@ -67,7 +68,7 @@ public class Paquetes {
     public void atc02BusquedaEspecificaDesayuno() {
 
         //Espera
-        WebDriverWait espera = new WebDriverWait(driver,Duration.ofSeconds(15));
+        WebDriverWait espera = new WebDriverWait(driver,15);
 
         //Variables
         String desayuno = "Desayuno";
@@ -125,7 +126,7 @@ public class Paquetes {
     public void atc03PrecioFinal() {
 
         //Espera
-        WebDriverWait espera = new WebDriverWait(driver,Duration.ofSeconds(15));
+        WebDriverWait espera = new WebDriverWait(driver,15);
 
         //Variables
         String anioMesIda = "2022-01";
