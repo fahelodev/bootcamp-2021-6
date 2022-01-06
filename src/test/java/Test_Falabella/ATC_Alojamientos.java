@@ -56,7 +56,7 @@ public class ATC_Alojamientos {
     @Test
     public void TC002_FiltrarPorEstrellas() throws InterruptedException {
         driver.findElement(By.cssSelector("input.input-tag.sbox-main-focus.sbox-destination.sbox-primary.undefined")).sendKeys("Arica");
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        Thread.sleep(3000);
         //Click en el autocompletado
         driver.findElement(By.cssSelector("span.item-text")).click();
         //Seleccionar Checkbox
@@ -64,14 +64,14 @@ public class ATC_Alojamientos {
         //Buscar
         driver.findElement(By.cssSelector("div.sbox-button-container")).click();
         //Click en estrellas
-        driver.findElement(By.xpath("//body[1]//app-root//offers-filters//eva-tooltip[4]")).click();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        //Seleccionar una estrella
-        driver.findElement(By.xpath("//body[1]//app-root//offers-filters//eva-tooltip[4]//offers-filters-content[1]/div[1]/eva-checkbox[3]/span[1]/label[1]/span[1]/em[1]")).click();
-        driver.findElement(By.cssSelector("a.eva-3-btn.-md.-primary")).click();
-        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+        driver.findElement(By.xpath("//span[text()='Estrellas']")).click();
+        Thread.sleep(3000);
+        //Seleccionar 3 estrellas
+        driver.findElement(By.xpath("//em[@class=\"filter-name\" and text()=\"3\"]")).click();
+        driver.findElement(By.xpath("//*[contains(@class, 'filter-tags-wrapper')]//*[contains(@class, '-primary')]/em")).click();
+        Thread.sleep(4000);
         //Seleccionar primera opcion
-        driver.findElement(By.xpath("//*[@title='Amaru Express']//div[text()='Amaru Express']")).click();
+        driver.findElement(By.xpath("//div[@class=\"cluster-content\"][1]")).click();
         //Switch entre tabs
         String mainTab= driver.getWindowHandle();
         Set<String> handles = driver.getWindowHandles();
@@ -162,11 +162,5 @@ public class ATC_Alojamientos {
             System.out.println("Close");
             driver.close();
         }
-
-    }
-
-    @AfterClass
-    public static void closeAll() {
-        System.out.println("closeAll :: Cerrar otras conexiones que fueron utilizadas en el test");
     }
 }
