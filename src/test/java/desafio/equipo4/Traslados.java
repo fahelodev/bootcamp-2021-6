@@ -33,7 +33,7 @@ public class Traslados {
         String desdeAeropuerto = "Copiapo";
         String hastaHotel = "copiapo";
         String anioMesArribo = "2022-01";
-        String diaArribo = "3";
+        String diaArribo = "16";
         String hora = "03:00";
 
         WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(10));
