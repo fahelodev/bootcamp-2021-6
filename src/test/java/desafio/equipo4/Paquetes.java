@@ -16,6 +16,7 @@ import sun.java2d.loops.TransformHelper;
 
 import javax.security.auth.kerberos.KerberosTicket;
 import java.security.Key;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class Paquetes {
     public void atc01PaqueteSugerido() throws InterruptedException {
 
         //Establecer un tiempo de espera explicito
-        WebDriverWait espera = new WebDriverWait(driver,15);
+        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(15));
 
         //Seleccionar modulo PACKAGES
         driver.findElement(By.cssSelector("a.shifu-3-button-circle.PACKAGES.paint-circle")).click();
