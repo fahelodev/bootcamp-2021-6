@@ -51,7 +51,7 @@ public class AutomaticPractice2 {
         driver.findElement(By.xpath("//*[@id=\'submit\']")).click();
 
         // explicit wait Esperamos el mensaje de aprobado
-        WebDriverWait expWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait expWait = new WebDriverWait(driver, 10);
         expWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".woocommerce-review__awaiting-approval")));
 
         // validamos el texto

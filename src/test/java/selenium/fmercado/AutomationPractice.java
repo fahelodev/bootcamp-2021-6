@@ -154,7 +154,7 @@ public class AutomationPractice {
             driver.findElement(By.cssSelector("#search_query_top")).sendKeys("blo");
 
                 //seleccionamos el producto
-            WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebDriverWait espera = new WebDriverWait(driver, 5);
             espera.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#index > div.ac_results")));
             driver.findElement(By.cssSelector("#search_query_top")).sendKeys(Keys.DOWN);
             driver.findElement(By.cssSelector("#search_query_top")).sendKeys(Keys.ENTER);
