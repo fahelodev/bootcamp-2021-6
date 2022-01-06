@@ -9,7 +9,7 @@ import java.util.List;
 public class SeleniumBase {
 
     //Atributos
-    WebDriver driver;
+    public WebDriver driver;
 
     public SeleniumBase(WebDriver driver) {
         this.driver = driver;
@@ -25,6 +25,19 @@ public class SeleniumBase {
     public List<WebElement> encontrarElementosWeb(By localizador){
         return driver.findElements(localizador);
     }
+    public String getText(WebElement element){
+        return element.getText();
+    }
+    public String getText(By localizador){
+        return driver.findElement(localizador).getText();
+    }
+
+
+    //accion
+    public void type(String inputText, By localizador){
+        driver.findElement(localizador).sendKeys(inputText);
+    }
+
 
     //accion -> void
     public void obtenerUrl(String URL){
@@ -33,7 +46,17 @@ public class SeleniumBase {
 
     //accion -> void
     public void clickear(By localizador){
-        encontrarElementoWeb(localizador).click();
+        driver.findElement(localizador).click();
     }
+
+    public Boolean isABoolean(By localizador){
+        try {
+            return driver.findElement(localizador).isDisplayed();
+        } catch (org.openqa.selenium.NoSuchElementException e){
+            return false;
+        }
+
+    }
+
 
 }
