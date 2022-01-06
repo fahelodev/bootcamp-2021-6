@@ -35,7 +35,7 @@ public class AutomationPracticeAMAZON {
         driver.findElement(By.xpath("//*[@id=\"nav-hamburger-menu\"]")).click();
 
         //Tiempo de espera
-        WebDriverWait espera_ = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait espera_ = new WebDriverWait(driver, 5);
 
         driver.findElement(By.xpath("//*[@id=\"hmenu-content\"]/ul[1]/li[7]/a")).click();
         driver.findElement(By.xpath("//*[@id=\"hmenu-content\"]/ul[5]/li[3]/a")).click();

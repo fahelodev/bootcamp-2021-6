@@ -102,7 +102,7 @@ public class AutomationPractice {
     @Test
     public void encontrarProductoDeListaDinamica_XPath(){
         driver.get("http://automationpractice.com");
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait espera = new WebDriverWait(driver, 5);
         //Enviamos "blo" por el searchbox
         driver.findElement(By.xpath("//*[@id='search_query_top']")).sendKeys("blo");
         espera.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='index']/div[2]/ul/li")));
@@ -123,7 +123,7 @@ public class AutomationPractice {
         driver.findElement(By.cssSelector("#search_query_top")).sendKeys("blo");
 
         //ingresamos al producto especificado
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait espera = new WebDriverWait(driver, 5);
         espera.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#index > div.ac_results")));
         driver.findElement(By.cssSelector("#search_query_top")).sendKeys(Keys.DOWN);
         driver.findElement(By.cssSelector("#search_query_top")).sendKeys(Keys.ENTER);
