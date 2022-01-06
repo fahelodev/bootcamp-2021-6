@@ -35,7 +35,7 @@ public class Paquetes {
     }
 
     @Test
-    public void atc01PaqueteSugerido() throws InterruptedException {
+    public void atc01PaqueteSugerido() {
 
         //Establecer un tiempo de espera explicito
         WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(15));
@@ -65,7 +65,7 @@ public class Paquetes {
     }
 
     @Test
-    public void atc02BusquedaEspecificaDesayuno() throws InterruptedException {
+    public void atc02BusquedaEspecificaDesayuno() {
 
         //Espera
         WebDriverWait espera = new WebDriverWait(driver,Duration.ofSeconds(15));
@@ -123,7 +123,7 @@ public class Paquetes {
     }
 
     @Test
-    public void atc03PrecioFinal() throws InterruptedException {
+    public void atc03PrecioFinal() {
 
         //Espera
         WebDriverWait espera = new WebDriverWait(driver,Duration.ofSeconds(15));
