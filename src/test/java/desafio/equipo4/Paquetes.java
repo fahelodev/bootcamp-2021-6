@@ -20,6 +20,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import static desafio.equipo4.Herramientas.changeTab;
+
 public class Paquetes {
     private static WebDriver driver;
 
