@@ -19,7 +19,7 @@ public class VFHomePage extends SeleniumBase {
     By btnTraslados = By.xpath("//*[text()='Traslados']");
 
     //metodos de la pagina - Keyword Driven
-       public void irAPaquetes(){
+    public void irAPaquetes(){
         obtenerUrl(URL);
         clickear(btnPaquetes);
 
