@@ -34,6 +34,7 @@ public class SeleniumBase {
         driver.get(URL);
     }
     //accion -> void
+    //TODO: sobrecargar clickear para recibir WebElement.
     public void clickear(By localizador){
         encontrarElementoWeb(localizador).click();
     }

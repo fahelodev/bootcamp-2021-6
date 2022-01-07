@@ -14,22 +14,26 @@ public class VFHomePage extends SeleniumBase {
     }
 
     //atributos de la pagina -> Localizadores
-    By btnInicioSesion = By.xpath("//span[@class=\"header-autogestion-title\"]");
     By btnPaquetes = By.cssSelector("a.shifu-3-button-circle.PACKAGES.paint-circle");
+    By btnAlojamientos = By.xpath("//li[contains(@class,'header-product-item')]//label[contains(text(),'Alojamientos')]");
+    By btnTraslados = By.xpath("//*[text()='Traslados']");
 
     //metodos de la pagina - Keyword Driven
-    public void irAInicioDeSesion(){
-        obtenerUrl(URL);
-        clickear(btnInicioSesion);
-        WebElement validacion = encontrarElementoWeb(By.xpath("/html/body/div[2]/div/div/div/div/div/div/div[1]/div/div/h3"));
-        if(validacion.isEnabled()){
-            System.out.println("LISTO");
-        }
-    }
-
-    public void irAPaquetes(){
+       public void irAPaquetes(){
         obtenerUrl(URL);
         clickear(btnPaquetes);
+
+    }
+
+    public void irAAlojamientos(){
+        obtenerUrl(URL);
+        clickear(btnAlojamientos);
+
+    }
+
+    public void irATraslados(){
+        obtenerUrl(URL);
+        clickear(btnTraslados);
 
     }
 
