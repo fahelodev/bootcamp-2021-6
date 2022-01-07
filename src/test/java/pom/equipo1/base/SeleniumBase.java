@@ -1,4 +1,4 @@
-package pom.mentoria.base;
+package pom.equipo1.base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -37,20 +37,11 @@ public class SeleniumBase {
         encontrarElementoWeb(localizador).click();
     }
 
-    public void teclear(By localizador, String text) {
-        driver.findElement(localizador).sendKeys(text);
-    }
+//    public void enviarKeysWithEnter(By localizador, String texto){ encontrarElementoWeb(localizador).sendKeys(texto + Keys.ENTER);}
 
-    public void enviarEnter(By localizador){
-        driver.findElement(localizador).sendKeys(Keys.ENTER);
+    public String devolerTexto(By localizador){return encontrarElementoWeb(localizador).getText();}
 
-    }
-
+    public void enviarKeys(By localizador, String texto){ encontrarElementoWeb(localizador).sendKeys(texto+ Keys.ENTER);}
 
 
 }
-
-
-
-
-
