@@ -1,5 +1,6 @@
 package pom.mentoria.equipo3.pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,7 +13,7 @@ public class act07HomePage extends SeleniumBase {
         super(driver);
     }
 
-    WebDriverWait espera= new WebDriverWait(driver, 8000);
+    WebDriverWait wait = new WebDriverWait(driver,30);
 
     private String URL = "https://www.viajesfalabella.cl/";
 
@@ -33,24 +34,40 @@ public class act07HomePage extends SeleniumBase {
     By recomendaciones_hotel = By.xpath("//*[@class='ac-wrapper -desktop -facet -show']//ul");
     By span_hora = By.xpath("//span[.='hora']/..//select");
 
-    public void act07_TrasladosFamiliaDesde(){
+    public void act07_TrasladosFamiliaDesde() {
 
         obtenerUrl(URL);
         clickear(traslados);
         clickear(desdeElAeropuerto);
+
+        //Aeropuerto
         type("Aeropuerto Desierto de Atacama, Copiapo, Chile",inputAeropuerto);
-        espera(recomendaciones_aeropuerto,inputAeropuerto);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(recomendaciones_aeropuerto));
+        presionarTecla(inputAeropuerto);
+
+        //Hotel
         type("Hampton by Hilton Antofagasta - Avenida Edmundo Pérez Zujovic, Antofagasta, Chile",inputHotel);
-        espera(recomendaciones_hotel,inputHotel);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(recomendaciones_hotel));
+        presionarTecla(inputHotel);
+
+
+        //Fecha y hora
         clickear(inputFecha);
+        wait.until(ExpectedConditions.elementToBeClickable(calendario));
         clickear(spanDia);
         select_dia_hora(span_hora, horaArribo);
         clickear(buscar);
-
-
     }
 
+    public void resultado_esperado(){
+        //Devuelve resultados según disponibilidad.
+        String urlEsperada = "https://www.viajesfalabella.cl/transfers/search/";
+        String urlResultados = driver.getCurrentUrl();
 
+        new WebDriverWait(driver, 10).until(ExpectedConditions.urlContains(urlEsperada));
+
+        Assert.assertTrue(urlResultados.startsWith(urlEsperada));
+    }
 
 
 
