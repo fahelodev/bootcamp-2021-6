@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
+public class JunitTestBase {
 
     public WebDriver driver;
 
