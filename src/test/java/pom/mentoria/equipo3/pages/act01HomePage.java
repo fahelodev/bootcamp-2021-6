@@ -25,8 +25,8 @@ public class act01HomePage extends SeleniumBase {
     public void act01_AlojamientoSinFechaPrevista(){
         obtenerUrl(URL);
         clickear(alojamientos);
-        clickear(NoDecidirFecha);
         type("Rio de janeiro",inputDestino);
+        clickear(NoDecidirFecha);
         clickear(buscador);
 
     }

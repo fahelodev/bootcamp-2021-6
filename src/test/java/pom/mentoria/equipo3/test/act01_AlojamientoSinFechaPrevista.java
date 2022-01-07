@@ -11,7 +11,7 @@ public class act01_AlojamientoSinFechaPrevista extends TestBase {
 
 
     @Test
-    public void Test(){
+    public void test(){
         //usar POM :: declarar las pages asoiciadas a la prueba
         act01HomePage obj1 = new act01HomePage(driver);
         obj1.act01_AlojamientoSinFechaPrevista();
