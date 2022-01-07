@@ -4,10 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
 public class SeleniumBase {
+
 
     //Atributos
     public WebDriver driver;
@@ -26,13 +29,14 @@ public class SeleniumBase {
     public List<WebElement> encontrarElementosWeb(By localizador){
         return driver.findElements(localizador);
     }
+
     public String getText(WebElement element){
         return element.getText();
     }
+
     public String getText(By localizador){
         return driver.findElement(localizador).getText();
     }
-
 
     //accion
     public void type(String inputText, By localizador){
@@ -52,6 +56,24 @@ public class SeleniumBase {
     public void clickear(By localizador){
         driver.findElement(localizador).click();
     }
+
+    public void presionarTecla(By localizador){
+        driver.findElement(localizador).sendKeys(Keys.RETURN);
+    }
+
+    //accion -> select
+
+    public void select_dia_hora(By localizador, String horaArribo){
+        Select select = new Select(driver.findElement(localizador));
+        select.selectByVisibleText(horaArribo); //hora
+    }
+
+    //accion -> select menores
+    public void select_edad_menores(By localizador, String edad){
+        Select select = new Select(driver.findElement(localizador));
+        select.selectByVisibleText(edad); //hora
+    }
+
 
     public Boolean isABoolean(By localizador){
         try {
