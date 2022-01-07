@@ -1,6 +1,7 @@
 package pom.mentoria.equipo3.base;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -38,6 +39,9 @@ public class SeleniumBase {
         driver.findElement(localizador).sendKeys(inputText);
     }
 
+    public void presionarTecla(By localizador){
+        driver.findElement(localizador).sendKeys(Keys.RETURN);
+    }
 
     //accion -> void
     public void obtenerUrl(String URL){
