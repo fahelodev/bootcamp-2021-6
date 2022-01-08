@@ -18,8 +18,29 @@ public class HomePageTraslados extends SeleniumBaseTraslados {
     private String uSDTexto = "//*[contains(@class, 'clusters-container')]/div/transfer-cluster/div/div/div[2]/ds-cluster-pricebox/div/div/div/div[2]/span";
     private String btnComprar = "//*[contains(@class, 'clusters-container')]/div/transfer-cluster/div/div/div[2]/ds-cluster-pricebox/div/div/div[2]/button";
 
+    //Form 1
+    public void irAPageTraslados(){
+        navigateTo("https://www.viajesfalabella.cl/traslados/");
+    }
+
+    public void btnClickCardAutoTraslado(){
+        clickElement(btnVerMas);
+        clickElement(cardAuto);
+        CloseTabs();
+    }
+
+    public void dropDownChangeDolar(){
+        SwitchTabs();
+        selectFromDropdownByValue(dropDownDolar, uSDValue);
+    }
 
 
+    public String validaTextUsd(){
+        return textFromElement(uSDTexto);
+
+    }
+
+    //Form 2
     public void cambiarPesoToDolar() {
         navigateTo("https://www.viajesfalabella.cl/traslados/");
         clickElement(btnVerMas);
@@ -49,6 +70,7 @@ public class HomePageTraslados extends SeleniumBaseTraslados {
     private String btnAplicarPasajeros = "//a[text()='Aplicar']";
     private String btnComprarTraslado = "//*[contains(@class, 'clusters-container')]/div/transfer-cluster/div/div/div[2]/ds-cluster-pricebox/div/div/div[2]/button";
     private String textTraslado = "//div[contains(text(), 'De Aeropuerto Arturo Merino Benitez a Hyatt Centric Las Condes Santiago')]";
+
 
 
     public void busquedaEspecificaTrasladoIda() throws InterruptedException {
