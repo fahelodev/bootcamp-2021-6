@@ -537,8 +537,8 @@ public class ViajesFalabellaTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class, 'number-picker')])[1]//a[contains(@class, 'plus')]"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='sbox-button']//a"))).click();
         //Creamos variables y arrays para comparar
-        String newDate = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[contains(@class, 're-search')])[2]//span[contains(text(), '19 jun')]"))).getText();
-        String finalDate = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='-eva-3-mt-xsm']/span[contains(text(), '19 jun')])[1]"))).getText();
+        String newDate = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("((//div[contains(@class, 're-search')])[2]//span[contains(@class, 'item-date')])[2]"))).getText();
+        String finalDate = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@class='-eva-3-mt-xsm']/span[contains(@class, 'eva-')])[1]"))).getText();
         String[] arr = newDate.split(" ");
         String[] arr2 = finalDate.split(" ");
         String selectDate = arr[2] + arr[3];
