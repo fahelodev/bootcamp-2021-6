@@ -28,6 +28,9 @@ public class atc_Traslados extends TestBase {
         resultado = new ResultadoTrasladoPage(driver);
         home.irATraslado();
         traslado.setTrasladoMedio();
+
+
+        resultado.getPassengers();
     }
 
     @Test
@@ -40,5 +43,7 @@ public class atc_Traslados extends TestBase {
         traslado.setTrasladoComplejo();
         resultado.changeReturn();
         resultado.changePassengersAndSearch();
+
+        resultado.getDate();
     }
 }
