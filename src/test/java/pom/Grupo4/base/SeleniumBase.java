@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.security.auth.kerberos.KerberosKey;
@@ -59,8 +60,6 @@ public class SeleniumBase {
         espera.until(ExpectedConditions.elementToBeClickable(localizador));
     }
 
-
-
     //Enviar ENTER
     public void enviarEnter(By localizador){encontrarElementoWeb(localizador).sendKeys(Keys.ENTER);}
 
@@ -70,7 +69,12 @@ public class SeleniumBase {
     //Enviar texto
     public void enviarTexto(By localizador, String texto){encontrarElementoWeb(localizador).sendKeys(texto);}
 
-    //
+    //crear un Select
+    public Select crearSelect(By localizador){
+        Select select = new Select(encontrarElementoWeb(localizador));
+        return select;
+    }
 
-
+    //obtener texto
+    public String obtenerTexto(By localizador){return encontrarElementoWeb(localizador).getText();}
 }
