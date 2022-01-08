@@ -39,9 +39,11 @@ public class SeleniumBase {
 
 //    public void enviarKeysWithEnter(By localizador, String texto){ encontrarElementoWeb(localizador).sendKeys(texto + Keys.ENTER);}
 
-    public String devolerTexto(By localizador){return encontrarElementoWeb(localizador).getText();}
+    public String devolverTexto(By localizador){return encontrarElementoWeb(localizador).getText();}
 
-    public void enviarKeys(By localizador, String texto){ encontrarElementoWeb(localizador).sendKeys(texto+ Keys.ENTER);}
+    public void doSendKeys(By localizador, String texto){ encontrarElementoWeb(localizador).sendKeys(texto);}
+
+    public void sendEnter(By localizador){ encontrarElementoWeb(localizador).sendKeys(Keys.ENTER);}
 
 
 }

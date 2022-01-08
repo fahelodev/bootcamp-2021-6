@@ -6,19 +6,27 @@ import pom.equipo1.pages.ResultadoTrasladoPage;
 import pom.equipo1.pages.TrasladoPage;
 import pom.equipo1.pages.VFHomePage;
 
-public class atc01_TrasladoBasico extends TestBase {
+public class atc_Traslados extends TestBase {
     protected VFHomePage home;
     protected TrasladoPage traslado;
     protected ResultadoTrasladoPage resultado;
 
     @Test
-    public void Test(){
+    public void atc01_TrasladoBasico(){
         home = new VFHomePage(driver);
         traslado = new TrasladoPage(driver);
         resultado = new ResultadoTrasladoPage(driver);
         home.irATraslado();
-        traslado.setTraslado();
+        traslado.setTrasladoBasico();
         resultado.getPrices();
     }
 
+    @Test
+    public void atc02_TrasladoMedio(){
+        home = new VFHomePage(driver);
+        traslado = new TrasladoPage(driver);
+        resultado = new ResultadoTrasladoPage(driver);
+        home.irATraslado();
+        traslado.setTrasladoMedio();
+    }
 }
