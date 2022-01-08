@@ -88,12 +88,17 @@ public class TrasladoPage extends SeleniumBase {
         cicloDate("Junio");
         clickear(dateGoing);
         clickear(applyDate);
-        selectStartHour(38);
+        selectStartHour(20);
         clickear(checkboxAddReturn);
         clickear(startDate);
         clickear(dateReturn);
         clickear(applyDateReturn);
-        selectReturnHour(11);
+        selectReturnHour(38);
+        clickear(boxPassengers);
+        clickear(addMinor);
+        selectAgeMinor(11);
+        clickear(applyPassengers);
+        clickear(clickSearch);
 
 
     }

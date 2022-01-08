@@ -29,4 +29,16 @@ public class atc_Traslados extends TestBase {
         home.irATraslado();
         traslado.setTrasladoMedio();
     }
+
+    @Test
+    public void atc03_TrasladoComplejo(){
+        home = new VFHomePage(driver);
+        traslado = new TrasladoPage(driver);
+        resultado = new ResultadoTrasladoPage(driver);
+
+        home.irATraslado();
+        traslado.setTrasladoComplejo();
+        resultado.changeReturn();
+        resultado.changePassengersAndSearch();
+    }
 }
