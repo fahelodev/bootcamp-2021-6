@@ -14,7 +14,7 @@ public class VFHomePage extends SeleniumBase {
     //atributos de la pagina -> Localizadores
     By seccionTraslado = By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Traslados\")]");
     By seccionPaquete = By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Alojamientos\")]");
-
+    By seccionAlojamiento = By.xpath("//div[@class=\"header-products-container\"]//a[contains(@title,\"Alojamientos\")]");
 
     //metodos de la pagina - Keyword Driven
     public void irATraslado(){
@@ -27,6 +27,10 @@ public class VFHomePage extends SeleniumBase {
         clickear(seccionPaquete);
     }
 
+    public void irAAlojamiento(){
+        obtenerUrl(URL);
+        clickear(seccionAlojamiento);
+    }
 
 
 

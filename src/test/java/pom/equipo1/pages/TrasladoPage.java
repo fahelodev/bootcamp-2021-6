@@ -38,7 +38,7 @@ public class TrasladoPage extends SeleniumBase {
     By selectReturnTime = By.xpath("(//div[@class='sbox-row'])[2]//select");
     By boxPassengers = By.xpath("//div[@class='sbox-distri-container']//div[@class='input-container']");
     By addMinor = By.xpath("(//div[contains(@class,'number-picker')])[2]//a[contains(@class, 'plus')]");
-    By selectAgeMinor = By.xpath("//div[contains(@class,'minors-age')]//select");
+    By ageMinor = By.xpath("//div[contains(@class,'minors-age')]//select");
     By applyPassengers = By.xpath("//div/a[contains(@class, 'apply')]");
     By clickSearch = By.xpath("//div[@class='sbox-button']//a");
 
@@ -129,7 +129,7 @@ public class TrasladoPage extends SeleniumBase {
     }
 
     private void selectAgeMinor(int agePeople){
-        Select age = new Select(encontrarElementoWeb(selectAgeMinor));
+        Select age = new Select(encontrarElementoWeb(ageMinor));
         age.selectByIndex(agePeople);
     }
 }

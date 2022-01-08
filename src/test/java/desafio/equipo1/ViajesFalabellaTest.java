@@ -55,7 +55,6 @@ public class ViajesFalabellaTest {
         Thread.sleep(1000);
         //obtencion de cantidad de estrellas
         List<WebElement> stars = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("(//div[contains(@class,\"card-rating\")])[1]//i")));
-
         Assert.assertEquals(5, stars.size());
     }
 
