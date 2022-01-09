@@ -62,7 +62,6 @@ public class SeleniumBase {
         driver.switchTo().window(pestañas.get(1));
     }
 
-
     //Espera explicita hasta elemento visible
     public void esperarElementoVisible (int tiempo,By localizador){
         WebDriverWait espera = new WebDriverWait(driver,tiempo);
