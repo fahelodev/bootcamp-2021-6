@@ -53,15 +53,6 @@ public class SeleniumBase {
     //Envolver getWindowsHandle
     public Set<String> obtenerPestanias(){ return driver.getWindowHandles(); }
 
-    //Cambiar pestaña siguiente
-    public void pestañaSiguiente(){
-        WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.numberOfWindowsToBe(2));
-        ArrayList<String> pestañas = new ArrayList<>(obtenerPestanias());
-        driver.close();
-        driver.switchTo().window(pestañas.get(1));
-    }
-
     //Espera explicita hasta elemento visible
     public void esperarElementoVisible (int tiempo,By localizador){
         WebDriverWait espera = new WebDriverWait(driver,tiempo);
@@ -95,5 +86,17 @@ public class SeleniumBase {
     //Sobrecarga obtener texto
     public String obtenerTexto(WebElement elemento){return elemento.getText();}
 
+    //Espera explicita hasta que exista nueva ventana
+    public void esperarNuevaVentana(int tiempo){
+        WebDriverWait espera = new WebDriverWait(driver,tiempo);
+        espera.until(ExpectedConditions.numberOfWindowsToBe(2));
+    }
+
+    public void changeTab(int segundosEspera){
+        esperarNuevaVentana(10);
+        ArrayList<String> tabs = new ArrayList<String>(obtenerPestanias());
+        driver.close();
+        driver.switchTo().window(tabs.get(1));
+    }
 
 }

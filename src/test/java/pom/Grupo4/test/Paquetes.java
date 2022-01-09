@@ -2,7 +2,6 @@ package pom.Grupo4.test;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pom.Grupo4.base.TestBase;
 import pom.Grupo4.pages.*;
 
@@ -12,7 +11,7 @@ public class Paquetes extends TestBase{
     protected VFHomePage paginaHome;
     protected VFPaquetesPage paginaPaquetes;
     protected VFPaquetesResultadosPage paginaPaquetesResultado;
-    protected VFPaquetesCheckoutPage paginaPaquetesCheckout;
+    protected VFCheckoutPage paginaCheckout;
 
     @Test
     public void atc01_PaqueteSugerido() {
@@ -33,7 +32,7 @@ public class Paquetes extends TestBase{
 
         //cambio de pestaña
         paginaPaquetesResultado = new VFPaquetesResultadosPage(driver);
-        paginaPaquetesResultado.pestañaSiguiente();
+        paginaPaquetesResultado.changeTab(15);
 
         //Validacion
         String resultado = paginaPaquetesResultado.obtenerResultadoEsperado();
@@ -99,7 +98,7 @@ public class Paquetes extends TestBase{
         paginaPaquetesResultado.seleccionarOpcion();
 
         //cambiar pestaña
-        paginaPaquetesResultado.pestañaSiguiente();
+        paginaPaquetesResultado.changeTab(15);
 
         //Click opcion detallada
         paginaPaquetesResultado.clickSiguienteA();
@@ -112,8 +111,8 @@ public class Paquetes extends TestBase{
         paginaPaquetesResultado.clickSiguiente();
 
         //Obtener precio final del paquete
-        paginaPaquetesCheckout = new VFPaquetesCheckoutPage(driver);
-        int precioFinal = paginaPaquetesCheckout.obtenerPrecioFinal();
+        paginaCheckout = new VFCheckoutPage(driver);
+        int precioFinal = paginaCheckout.obtenerPrecioFinal();
 
         //Validacion
         Assert.assertTrue(precioFinal <= precioCompleto);

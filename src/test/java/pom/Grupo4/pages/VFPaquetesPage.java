@@ -49,9 +49,7 @@ public class VFPaquetesPage extends SeleniumBase {
     }
 
     //Cambio de pestaña
-    public void cambioDePestaña(){
-        pestañaSiguiente();
-    }
+    public void cambioDePestaña(){ changeTab(15); }
 
     //Seleccionar Origen
     public void seleccionarOrigen(String origen) {

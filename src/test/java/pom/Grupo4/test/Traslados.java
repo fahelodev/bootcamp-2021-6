@@ -11,7 +11,7 @@ public class Traslados extends TestBase{
     protected VFTrasladosPage paginaTraslados;
     //protected VFTrasladosReslutadoErrorPage paginaResultadoError;
     protected VFTrasladosResultadoPage paginaResultado;
-    protected VFTrasladosCheckoutPage paginaCheckout;
+    protected VFCheckoutPage paginaCheckout;
 
 
     @Test
@@ -54,7 +54,7 @@ public class Traslados extends TestBase{
         paginaResultado = new VFTrasladosResultadoPage(driver);
         paginaResultado.comprarPrimerResultado();
 
-        paginaCheckout = new VFTrasladosCheckoutPage(driver);
+        paginaCheckout = new VFCheckoutPage(driver);
         paginaCheckout.presionarTransferenciaBancaria();
         String mensajeEsperado = "Transferencia Bancaria";
         String mensajeActual = paginaCheckout.obtenerTextoTransferenciaBancaria();
@@ -81,7 +81,7 @@ public class Traslados extends TestBase{
         paginaResultado = new VFTrasladosResultadoPage(driver);
         paginaResultado.comprarPrimerResultado();
 
-        paginaCheckout = new VFTrasladosCheckoutPage(driver);
+        paginaCheckout = new VFCheckoutPage(driver);
         paginaCheckout.ingresarDatosCupon();
 
         String mensajeEsperado = "El email o código ingresados son incorrectos";
