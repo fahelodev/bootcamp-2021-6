@@ -24,7 +24,6 @@ public class VFPaquetesPage extends SeleniumBase {
     By inpAniadirHabitacion = By.xpath("//a[contains(@class,'_pnlpk-add-room-button')]");
     By btnSumarAdulto = By.xpath("(//a[contains(@class,'steppers-icon-right')])[3]");
     By btnAplicarHabitaciones = By.xpath("(//a[contains(@class,'_pnlpk-apply-button')])[2]");
-
     By btnBuscar = By.xpath("//div[@class='sbox-button-container']");
 
 
