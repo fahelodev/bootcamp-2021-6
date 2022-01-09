@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.security.auth.kerberos.KerberosKey;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -77,4 +78,21 @@ public class SeleniumBase {
 
     //obtener texto
     public String obtenerTexto(By localizador){return encontrarElementoWeb(localizador).getText();}
+
+    //Espera explicita hasta que exista nueva ventana
+    public void esperarNuevaVentana(int tiempo){
+        WebDriverWait espera = new WebDriverWait(driver,tiempo);
+        espera.until(ExpectedConditions.numberOfWindowsToBe(2));
+    }
+
+    public void changeTab(int segundosEspera){
+        esperarNuevaVentana(10);
+        ArrayList<String> tabs = new ArrayList<String>(obtenerPestanias());
+        driver.close();
+        driver.switchTo().window(tabs.get(1));
+    }
+
+    //obtener texto
+    public String obtenerTexto(WebElement elemento){return elemento.getText();}
+
 }
