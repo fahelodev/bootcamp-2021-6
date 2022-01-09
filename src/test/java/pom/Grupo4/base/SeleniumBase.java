@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.security.auth.kerberos.KerberosKey;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -26,6 +27,10 @@ public class SeleniumBase {
     //retorno ->  en su declaracion debe indicar que Objeto retorna
     public WebElement encontrarElementoWeb(By localizador){
         return driver.findElement(localizador);
+    }
+    //Sobrecarga encontrarElemento
+    public WebElement encontrarElementoWeb(WebElement elemento, By localizador){
+        return elemento.findElement(localizador);
     }
 
     public List<WebElement> encontrarElementosWeb(By localizador){
@@ -47,6 +52,16 @@ public class SeleniumBase {
 
     //Envolver getWindowsHandle
     public Set<String> obtenerPestanias(){ return driver.getWindowHandles(); }
+
+    //Cambiar pestaña siguiente
+    public void pestañaSiguiente(){
+        WebDriverWait espera = new WebDriverWait(driver, 10);
+        espera.until(ExpectedConditions.numberOfWindowsToBe(2));
+        ArrayList<String> pestañas = new ArrayList<>(obtenerPestanias());
+        driver.close();
+        driver.switchTo().window(pestañas.get(1));
+    }
+
 
     //Espera explicita hasta elemento visible
     public void esperarElementoVisible (int tiempo,By localizador){
@@ -77,4 +92,9 @@ public class SeleniumBase {
 
     //obtener texto
     public String obtenerTexto(By localizador){return encontrarElementoWeb(localizador).getText();}
+
+    //Sobrecarga obtener texto
+    public String obtenerTexto(WebElement elemento){return elemento.getText();}
+
+
 }

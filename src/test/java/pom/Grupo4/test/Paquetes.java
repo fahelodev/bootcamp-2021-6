@@ -5,12 +5,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pom.Grupo4.base.TestBase;
 import pom.Grupo4.pages.VFHomePage;
 import pom.Grupo4.pages.VFPaquetesPage;
+import pom.Grupo4.pages.VFPaquetesResultadosPage;
 
 
 public class Paquetes extends TestBase{
 
     protected VFHomePage paginaHome;
     protected VFPaquetesPage paginaPaquetes;
+    protected VFPaquetesResultadosPage paginaPaquetesResultado;
 
 
     @Test
@@ -21,7 +23,17 @@ public class Paquetes extends TestBase{
 
         //Instanciamos la pagina de paquetes y reasignamos el driver.
         paginaPaquetes = new VFPaquetesPage(driver);
+        String region = paginaPaquetes.obtenerSugerencia();
         paginaPaquetes.clickPaqueteSugerido();
+        paginaPaquetes.seleccionarVentanaEmergenta();
+
+        //cambio de pestaña
+        paginaPaquetesResultado = new VFPaquetesResultadosPage(driver);
+        paginaPaquetesResultado.pestañaSiguiente();
+
+        //Validacion
+        paginaPaquetesResultado.validacionSugerencia(region);
+
 
 
     }
