@@ -4,6 +4,8 @@ import pom.equipo2.base.SeleniumBaseHoteles;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static pom.equipo2.base.SeleniumBaseTraslados.navigateTo;
+
 public class HomePageHoteles extends SeleniumBaseHoteles {
     private String URL = "https://www.viajesfalabella.cl/hoteles/";
     public HomePageHoteles(WebDriver driver) {
@@ -28,6 +30,33 @@ public class HomePageHoteles extends SeleniumBaseHoteles {
     By BtnPaquete = By.xpath("//*[contains(@class, 'activity-highlight-slide')]//*[contains(@class, 'highlight-card-container')]");
     By BtnConfirmarPaquete= By.xpath("//*[contains(@class, 'detail-actions')]//*[contains(@class, 'btn-text')]");
     By btn_ConfirmarReservaPaquetes= By.cssSelector(".pricebox-sticky-button .btn-text");
+
+    //Form 1
+    public void PaginaHoteles(){
+        navigateTo("https://www.viajesfalabella.cl/hoteles/");
+    }
+    public void BusquedaDeHotel() throws InterruptedException {
+        Click(TBX_Destino);
+        SendKeysArica(TBX_Destino);
+        Thread.sleep(2000);
+        Click(BTN_Predictivo);
+        Click(CheckBox);
+        Click(BTN_Buscar);
+    }
+    public void FiltrarBusquedaEstrellas() throws InterruptedException {
+        Click(BTN_Estrellas);
+        Click(CheckBox_3_Estrellas);
+        Click(BTN_Aplicar_estrellas);
+        Thread.sleep(2000);
+    }
+    public void ClickEnELPrimerHotel(){
+        Click(Item_PrimerElementoBusqueda);
+        CloseTabs();
+        SwitchTabs();
+        ValidacionATC2();
+    }
+
+
 
     //metodos de la pagina - Keyword Driven
 

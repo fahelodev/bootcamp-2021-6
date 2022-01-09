@@ -47,6 +47,9 @@ public class SeleniumBaseHoteles {
             }
         }
     }
+    public void navigateTo(String url){
+        driver.get(url);
+    }
     public void CloseTabs(){
         changeTab(driver, 10);
     }
