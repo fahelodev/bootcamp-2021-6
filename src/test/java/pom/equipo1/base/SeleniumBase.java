@@ -39,6 +39,7 @@ public class SeleniumBase {
 
     public void enviarKeys(By localizador, String texto){ encontrarElementoWeb(localizador).sendKeys(texto);}
 
+<<<<<<< HEAD
 //    public void sendEnter(By localizador){ encontrarElementoWeb(localizador).sendKeys(Keys.ENTER);}
 
     public String devolverTexto(By localizador){return encontrarElementoWeb(localizador).getText();}
@@ -47,6 +48,13 @@ public class SeleniumBase {
         new Select(encontrarElementoWeb(localizador)).selectByValue(value);
     }
 
+=======
+    public String devolverTexto(By localizador){return encontrarElementoWeb(localizador).getText();}
+
+    public void doSendKeys(By localizador, String texto){ encontrarElementoWeb(localizador).sendKeys(texto);}
+
+    public void sendEnter(By localizador){ encontrarElementoWeb(localizador).sendKeys(Keys.ENTER);}
+>>>>>>> 0ba90a06aaa7586fe906c6c647791cb30ee3535d
 
 
 }
