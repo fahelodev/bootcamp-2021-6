@@ -37,6 +37,7 @@ public class atc_Paquetes extends TestBase {
         paquete = new PaquetePage(driver);
         resultado = new ResultadoPaquetePage(driver);
         home.Paquetes();
+        Thread.sleep(1000);
         paquete.setPaqueteComplejo();
         resultado.getPackageHard();
     }
