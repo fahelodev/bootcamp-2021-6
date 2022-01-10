@@ -15,67 +15,74 @@ import java.util.List;
 public class SeleniumBase {
 
     //Atributos
-    private WebDriver driver;
+    public WebDriver driver;
 
     //Constructor Base
-    public SeleniumBase(WebDriver driver){
+    public SeleniumBase(WebDriver driver) {
         this.driver = driver;
     }
 
     //Wrappers Selenium
+
     /**
      * funcion wrapper para obtener un WebElement
+     *
      * @param locator: Objeto By de la Page
      * @return WebElement
      */
-    public WebElement findElement(By locator){
+    public WebElement findElement(By locator) {
         return driver.findElement(locator);
     }
 
     /**
      * funcion wrapper para obtener una Lista de WebElement
+     *
      * @param locator: Objeto By de la Page
      * @return Lista de WebElement
      */
-    public List<WebElement> findElements (By locator){
+    public List<WebElement> findElements(By locator) {
         return driver.findElements(locator);
     }
 
     /**
      * funcion que obtiene el texto de un objeto WebElement
+     *
      * @param locator: Objeto By del repositorio
      * @return String     *
      */
-    public String getText (By locator){
+    public String getText(By locator) {
         return driver.findElement(locator).getText();
     }
 
     /**
      * funcion que escribe un texto enviado a un objeto WebElement
+     *
      * @param inputText : texto a escribir
-     * @param locator : Objeto By del repositorio
+     * @param locator   : Objeto By del repositorio
      */
-    public void type(String inputText, By locator){
+    public void type(String inputText, By locator) throws InterruptedException {
         driver.findElement(locator).sendKeys(inputText);
     }
 
     /**
      * funcion que hace 1 click en un WebElement
+     *
      * @param locator : Objeto By del repositorio
      */
-    public void click(By locator){
+    public void click(By locator) {
         driver.findElement(locator).click();
     }
 
     /**
      * funcion que cierra el Objeto WebDriver
      */
-    public void closeDriver(){
+    public void closeDriver() {
         driver.close();
     }
 
     /**
      * funcion para saber si un WebElement esta desplegado en pantalla
+     *
      * @param locator : Objeto By del repositorio
      * @return : verdadero o falso
      */
@@ -89,20 +96,15 @@ public class SeleniumBase {
 
     /**
      * funcion para Navegar a un URL
+     *
      * @param url : String con URL
      */
-    public void goToUrl(String url){
+    public void goToUrl(String url) {
         driver.get(url);
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return driver.getTitle();
     }
-
-
-
-
-
-
 
 }
