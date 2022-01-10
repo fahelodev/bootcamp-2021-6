@@ -30,4 +30,14 @@ public class atc_Paquetes extends TestBase {
         paquete.setPaqueteMedio();
         resultado.getPackage();
     }
+
+    @Test
+    public void atc03_PaqueteComplejo() throws InterruptedException {
+        home = new VFHomePage(driver);
+        paquete = new PaquetePage(driver);
+        resultado = new ResultadoPaquetePage(driver);
+        home.Paquetes();
+        paquete.setPaqueteComplejo();
+        resultado.getPackageHard();
+    }
 }

@@ -24,6 +24,8 @@ public class PaquetePage extends SeleniumBase {
     By plus = By.xpath("//*[contains(@class, '_pnlpk-panel--show')]//*[contains(@class, '_pnlpk-panel__blocks')]/div/div[2]/div/div[2]/div/a[2]");
     By apply1 = By.xpath("//*[contains(@class, '_pnlpk-panel--show')]//a[text()='Aplicar']");
 
+    By add_room = By.xpath("//a[text()='Añadir habitación']");
+
     public void setPaqueteBasico(){
         enviarKeys(origen, "Arturo Merino");
         clickear(origen_destino);
@@ -45,6 +47,21 @@ public class PaquetePage extends SeleniumBase {
         clickear(apply);
         clickear(room);
         clickear(plus);
+        clickear(apply1);
+        clickear(buscar);
+    }
+
+    public void setPaqueteComplejo(){
+        enviarKeys(origen, "Cordoba");
+        clickear(origen_destino);
+        enviarKeys(destino, "Miami");
+        clickear(origen_destino);
+        clickear(box_fecha);
+        clickear(ida);
+        clickear(vuelta);
+        clickear(apply);
+        clickear(room);
+        clickear(add_room);
         clickear(apply1);
         clickear(buscar);
     }

@@ -18,6 +18,17 @@ public class ResultadoPaquetePage extends SeleniumBase {
 
     By package_text = By.xpath("//h3[contains(text(), 'Este es el paquete perfecto para tí. ¡Empieza a vivir tu viaje!')]");
 
+    By stars_checkbox = By.xpath("//*[contains(@class, 'eva-3-dropdown')]/li[3]/aloha-filter/aloha-checkbox-filter/ul/li[4]/span/span/aloha-checkbox/span/label/i");
+    By rate = By.xpath("//span[text()='7.6']");
+    By hotel = By.xpath("//*[contains(@class, 'results-items-wrapper')]/aloha-list-view-container/div[4]/div/aloha-cluster-container/div/div/div[2]/aloha-cluster-pricebox-container/div/div[2]/div[2]/aloha-button/button/em");
+    By hotel1 = By.xpath("//*[contains(@class, 'pricebox-action')]//em[text()='Siguiente']");
+    By scale = By.xpath("//*[@id='filter-stops']//*[contains(@class, 'dropdown-subcontent')]/div/checkbox-filter/checkbox-filter-item[2]/li/span/span/span/label/i");
+    By baggage = By.xpath("//*[@id='filter-baggage']//*[contains(@class, 'dropdown-subcontent')]/div/checkbox-filter/checkbox-filter-item[2]/li/span/span/span/label/i");
+    By airline = By.xpath("//*[@id='filter-airlines']//*[contains(@class, 'container-filter')]");
+    By airline_select = By.xpath("//*[@id='filter-airlines']//*[contains(@class, 'dropdown-subcontent')]/div/checkbox-filter/checkbox-filter-item[2]/li/span/span/span/label/i");
+    By scale_text = By.xpath("//*[contains(@class, 'tags-scroll-hide')]//span[text()='1 Escala']");
+    By baggage_text = By.xpath("//*[contains(@class, 'tags-scroll-hide')]//span[text()='Equipaje de mano']");
+
     public void getPackageFilter() throws InterruptedException {
         clickear(filtro_noches);
         clickear(filtro_noches1);
@@ -33,6 +44,29 @@ public class ResultadoPaquetePage extends SeleniumBase {
         Thread.sleep(2000);
         String text = devolverTexto(package_text);
         Assert.assertEquals("Este es el paquete perfecto para tí. ¡Empieza a vivir tu viaje!", text);
+    }
+
+    public void getPackageHard() throws InterruptedException {
+        clickear(stars_checkbox);
+        String text = devolverTexto(rate);
+        Double text_int = Double.parseDouble(text);
+        if (text_int >= 7){
+            Thread.sleep(2000);
+            clickear(hotel);
+        }
+        handleTab();
+        clickear(hotel1);
+        clickear(scale);
+        Thread.sleep(2000);
+        clickear(baggage);
+        Thread.sleep(2000);
+        clickear(airline);
+        clickear(airline_select);
+        Thread.sleep(2000);
+        String text2 = devolverTexto(scale_text);
+        String text3 = devolverTexto(baggage_text);
+        Assert.assertEquals("1 Escala", text2);
+        Assert.assertEquals("Equipaje de mano", text3);
     }
 
 }

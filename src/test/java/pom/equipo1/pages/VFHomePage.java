@@ -22,10 +22,11 @@ public class VFHomePage extends SeleniumBase {
         clickear(seccionTraslado);
     }
 
-<<<<<<< HEAD
-    public void Paquetes(){
+
+    public void Paquetes() {
         obtenerUrl(URL);
-=======
+    }
+
     public void irAPaquetes(){
         obtenerUrl(URL);
         clickear(seccionPaquete);
@@ -34,7 +35,6 @@ public class VFHomePage extends SeleniumBase {
     public void irAAlojamiento(){
         obtenerUrl(URL);
         clickear(seccionAlojamiento);
->>>>>>> 0ba90a06aaa7586fe906c6c647791cb30ee3535d
     }
 
 
