@@ -14,9 +14,9 @@ public class ResultadoTrasladoPage extends SeleniumBase {
     By price2 = By.xpath("//div[@class='pricebox-value']/span[2]");
 
     public void getPrices(){
-        String value = devolerTexto(price);
+        String value = devolverTexto(price);
         String[] arr = value.split(" ");
-        String value2 = devolerTexto(price2);
+        String value2 = devolverTexto(price2);
 
         Assert.assertEquals(arr[1], value2);
     }

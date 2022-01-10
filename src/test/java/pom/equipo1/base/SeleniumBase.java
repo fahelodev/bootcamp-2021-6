@@ -1,9 +1,9 @@
 package pom.equipo1.base;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -37,11 +37,16 @@ public class SeleniumBase {
         encontrarElementoWeb(localizador).click();
     }
 
-//    public void enviarKeysWithEnter(By localizador, String texto){ encontrarElementoWeb(localizador).sendKeys(texto + Keys.ENTER);}
+    public void enviarKeys(By localizador, String texto){ encontrarElementoWeb(localizador).sendKeys(texto);}
 
-    public String devolerTexto(By localizador){return encontrarElementoWeb(localizador).getText();}
+//    public void sendEnter(By localizador){ encontrarElementoWeb(localizador).sendKeys(Keys.ENTER);}
 
-    public void enviarKeys(By localizador, String texto){ encontrarElementoWeb(localizador).sendKeys(texto+ Keys.ENTER);}
+    public String devolverTexto(By localizador){return encontrarElementoWeb(localizador).getText();}
+
+    public void setSelect(By localizador, String value){
+        new Select(encontrarElementoWeb(localizador)).selectByValue(value);
+    }
+
 
 
 }

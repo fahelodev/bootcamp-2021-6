@@ -20,6 +20,9 @@ public class VFHomePage extends SeleniumBase {
         clickear(seccionTraslado);
     }
 
+    public void Paquetes(){
+        obtenerUrl(URL);
+    }
 
 
 
