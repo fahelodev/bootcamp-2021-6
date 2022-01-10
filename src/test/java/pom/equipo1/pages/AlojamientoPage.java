@@ -43,7 +43,7 @@ public class AlojamientoPage extends SeleniumBase {
         doSendKeys(setDestination, "Rio");
         clickear(firstDestination);
         clickear(setDay);
-        cicloDate("Mayo");
+        cicloDate();
         clickear(departureDate);
         Thread.sleep(1000);
         clickear(returnDate);
@@ -58,7 +58,7 @@ public class AlojamientoPage extends SeleniumBase {
         doSendKeys(setDestination, "Rio");
         clickear(firstDestination);
         clickear(setDay);
-        cicloDate("Mayo");
+        cicloDate();
         clickear(departureDate);
         Thread.sleep(1000);
         clickear(returnDate);
@@ -78,12 +78,12 @@ public class AlojamientoPage extends SeleniumBase {
 
     //Metodos privados
 
-    private void cicloDate(String month) {
+    private void cicloDate() {
         while (true) {
             //se crea un string con los meses
             String dates = devolverTexto(datesActive);
             //se crea la condicion de que si el nombre del mes no es igual a Febrero haga click
-            if (!dates.equals(month)) {
+            if (!dates.equals("Mayo")) {
                 clickear(arrowDates);
             } else {//sale del bucle al cumplirse la condicion
                 break;

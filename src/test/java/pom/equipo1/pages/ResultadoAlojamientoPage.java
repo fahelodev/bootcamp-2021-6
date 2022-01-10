@@ -31,9 +31,6 @@ public class ResultadoAlojamientoPage extends SeleniumBase {
     By hotelSpecWithMap = By.xpath("//div[@class=\"reduced-cluster-wrapper\"]//p[contains(@class,\"first\")]");
     By location = By.xpath("(//div[@class=\"marker-container\"]//span[contains(@class,\"text\")])[1]");
 
-    By zoom = By.xpath("//span[text()=\" Copacabana \"]");
-    By searchInTheZone = By.xpath("//button[contains(@class,\"eva-3-shadow\")]");
-
     public void getNumberOfStars() throws InterruptedException {
         clickear(starFilter);
         clickear(selectFiveStars);
@@ -79,7 +76,7 @@ public class ResultadoAlojamientoPage extends SeleniumBase {
         order.selectByIndex(1);
     }
 
-    private void nearbyHotels(By hotel) throws InterruptedException {
+    private void nearbyHotels(By hotel) {
         List<WebElement> hotels = encontrarElementosWeb(hotel);
         int count = 0;
 
