@@ -25,7 +25,25 @@ public class atc_Alojamientos extends TestBase {
         alojamiento = new AlojamientoPage(driver);
         resultado = new ResultadoAlojamientoPage(driver);
         home.irAAlojamiento();
+        Thread.sleep(1000);
         alojamiento.setAlojamientoMedio();
+        Thread.sleep(2000);
         resultado.getSpecf();
+    }
+
+    @Test
+    public void atc03_AlojamientoComplejo() throws InterruptedException {
+        home = new VFHomePage(driver);
+        alojamiento = new AlojamientoPage(driver);
+        resultado = new ResultadoAlojamientoPage(driver);
+
+        home.irAAlojamiento();
+        Thread.sleep(1000);
+        alojamiento.setAlojamientoComplejo();
+        Thread.sleep(2000);
+        resultado.map();
+        Thread.sleep(1000);
+        resultado.getSpecfWithMap();
+
     }
 }

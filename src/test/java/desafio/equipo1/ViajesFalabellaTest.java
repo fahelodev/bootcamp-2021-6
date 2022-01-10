@@ -341,7 +341,7 @@ public class ViajesFalabellaTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//aloha-checkbox-filter//span[contains(text(),\"Desayuno\")]"))).click();
         Thread.sleep(2000);
         //click en ver en mapa
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,\"results-toolbar\")]//div[contains(@class,\"right-buttons\")]//label"))).click();
+        driver.findElement(By.xpath("//div[contains(@class,\"right-buttons\")]//label")).click();
 
         //entrega de ubicacion cercana
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class=\"input-container\"]/input[contains(@placeholder,\"lugares\")]"))).sendKeys("Copacabana");

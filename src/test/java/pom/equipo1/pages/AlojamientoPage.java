@@ -25,8 +25,12 @@ public class AlojamientoPage extends SeleniumBase {
     By buttonApplyDate = By.xpath("//button[contains(@class,\"button-apply\")]");
     By accommodationOfPeople = By.xpath("//div[contains(@class,\"guests-container\")]/div");
     By addMinor = By.xpath("//div[contains(@class,\"stepper-minors\")]//a[not(contains(@class,\"disable\"))]");
-    By ageMinor = By.xpath("//div[@class=\"select-container\"]/select");
+    By selectAgeMinor = By.xpath("//div[@class=\"select-container\"]/select");
     By applyPassengers = By.xpath("//div[contains(@class,\"medium-down\")]/a[contains(@class,\"link-right\")]");
+    By addRoom =  By.xpath("//div[contains(@class,\"medium\")]/a[contains(text(),\"Añadir\")]");
+    By addAdult = By.xpath("(//div[@class=\"_pnlpk-itemBlock\"]//a[contains(@class,\"plus\")])[3]");
+    By addNewMinor = By.xpath("(//div[contains(@class,\"stepper-minors\")]//a[not(contains(@class,\"disable\"))])[3]");
+    By selectAgeNewMinor = By.xpath("(//div[@class=\"select-container\"]/select)[8]");
 
     public void setAlojamientoBasico() {
         doSendKeys(setDestination, "Rio");
@@ -41,19 +45,33 @@ public class AlojamientoPage extends SeleniumBase {
         clickear(setDay);
         cicloDate("Mayo");
         clickear(departureDate);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         clickear(returnDate);
         clickear(buttonApplyDate);
         clickear(accommodationOfPeople);
         clickear(addMinor);
-        selectAgeMinor(15);
+        selectAgeMinors(15, selectAgeMinor);
         clickear(applyPassengers);
         clickear(buttonSearch);
     }
-    public void setAlojamientoComplejo() {
+    public void setAlojamientoComplejo() throws InterruptedException {
         doSendKeys(setDestination, "Rio");
         clickear(firstDestination);
-        //clickear(setDay);
+        clickear(setDay);
+        cicloDate("Mayo");
+        clickear(departureDate);
+        Thread.sleep(1000);
+        clickear(returnDate);
+        clickear(buttonApplyDate);
+        clickear(accommodationOfPeople);
+        clickear(addRoom);
+        clickear(addMinor);
+        selectAgeMinors(15, selectAgeMinor);
+        clickear(addAdult);
+        clickear(addNewMinor);
+        selectAgeMinors(18, selectAgeNewMinor);
+        clickear(applyPassengers);
+        clickear(buttonSearch);
 
 
     }
@@ -73,7 +91,7 @@ public class AlojamientoPage extends SeleniumBase {
         }
     }
 
-    private void selectAgeMinor(int agePeople){
+    private void selectAgeMinors(int agePeople, By ageMinor){
         Select age = new Select(encontrarElementoWeb(ageMinor));
         age.selectByIndex(agePeople);
     }

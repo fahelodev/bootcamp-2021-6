@@ -22,11 +22,12 @@ public class atc_Traslados extends TestBase {
     }
 
     @Test
-    public void atc02_TrasladoMedio(){
+    public void atc02_TrasladoMedio() throws InterruptedException {
         home = new VFHomePage(driver);
         traslado = new TrasladoPage(driver);
         resultado = new ResultadoTrasladoPage(driver);
         home.irATraslado();
+        Thread.sleep(1000);
         traslado.setTrasladoMedio();
 
 

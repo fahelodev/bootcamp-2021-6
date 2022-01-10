@@ -33,11 +33,7 @@ public class SeleniumBase {
         driver.get(URL);
     }
     //accion -> void
-    public void clickear(By localizador){
-        encontrarElementoWeb(localizador).click();
-    }
-
-//    public void enviarKeysWithEnter(By localizador, String texto){ encontrarElementoWeb(localizador).sendKeys(texto + Keys.ENTER);}
+    public void clickear(By localizador){encontrarElementoWeb(localizador).click();}
 
     public String devolverTexto(By localizador){return encontrarElementoWeb(localizador).getText();}
 
