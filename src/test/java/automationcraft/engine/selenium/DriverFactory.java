@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class DriverFactory {
 
     public WebDriver driver;
@@ -15,7 +17,7 @@ public class DriverFactory {
      * @param browser: chrome | firefox
      * @return Webdriver
      */
-    public WebDriver init_driver(String browser){
+    public static WebDriver init_driver(String browser){
         System.out.println("browser value is: "+browser);
 
         if(browser.equals("chrome")){
@@ -29,6 +31,7 @@ public class DriverFactory {
         }
         getDriver().manage().deleteAllCookies();
         getDriver().manage().window().maximize();
+        getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return getDriver();
     }
 
