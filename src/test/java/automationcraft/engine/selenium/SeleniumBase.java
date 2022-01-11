@@ -1,9 +1,12 @@
 package automationcraft.engine.selenium;
 
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -99,10 +102,19 @@ public class SeleniumBase {
         return driver.getTitle();
     }
 
+    public void teclear(By localizador, String text){
+        driver.findElement(localizador).sendKeys(text);
+    }
 
+    public void ValidacionTitle(String text){
+        String title = driver.getTitle();
+        Assert.assertEquals(text, title);
+    }
 
-
-
-
+    public void waitExplicitInvisibility(WebElement locator, int time){
+        WebDriverWait espera;
+        espera = new WebDriverWait(driver,time);
+        espera.until(ExpectedConditions.invisibilityOf(locator));
+    }
 
 }
