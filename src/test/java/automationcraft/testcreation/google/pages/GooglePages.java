@@ -13,10 +13,9 @@ public class GooglePages extends SeleniumBase {
 
     //Atraibutos o Localizaodres
     String URL = "http://www.google.com";
-    By srchBox = By.xpath("//div[@class='SDkEP']");
-    By btnSearch = By.xpath("//input[contains(@data-ved,'gQ4dUDCAs')]");
-    By srchContainer = By.xpath("//div[@class='GyAeWb']");
-
+    By srchBox = By.xpath("//input[@class='gLFyf gsfi']");
+    By btnSearch = By.xpath("(//input[@value='Buscar con Google'])[2]");
+    By srchContainer = By.xpath("//div[@id='rcnt']");
     // Metodos KeywordDriven
 
     public void homeGoogle(){
@@ -28,7 +27,7 @@ public class GooglePages extends SeleniumBase {
     }
 
     public void clickSearch(){
-        click(btnSearch);
+        typeEnter(srchBox);
     }
 
     public void srchValidation(String string){
