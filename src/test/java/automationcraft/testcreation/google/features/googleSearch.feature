@@ -8,8 +8,8 @@ Feature: Google Search
     And click the Search Button
     Then "cats" should be mentioned in the results
 
-  Scenario: Standard Search Two
-    Given that I have gone to the Google page
-    When I add "dogs" to the search box
-    And click the Search Button
-    Then "dogs" should be mentioned in the results
+#  Scenario: Standard Search Two
+#    Given that I have gone to the Google page
+#    When I add "dogs" to the search box
+#    And click the Search Button
+#    Then "dogs" should be mentioned in the results
