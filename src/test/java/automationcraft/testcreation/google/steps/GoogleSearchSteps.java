@@ -22,24 +22,25 @@ public class GoogleSearchSteps  {
     }
 
     @When("I add {string} to the search box")
-    public void i_add_to_the_search_box(String string) throws InterruptedException {
-        google = new GooglePages(DriverFactory.getDriver());
-        google.enterSearchCriteria(string);
+    public void i_add_to_the_search_box(String nameAnimal) throws InterruptedException {
+
+        google.enterSearchCriteria(nameAnimal);
 
     }
 
     @When("click the Search Button")
     public void click_the_search_button() {
-        google = new GooglePages(DriverFactory.getDriver());
+
         google.clickGoogleSearch();
     }
 
 
-    @Then("{string} should be mentioned in the results")
-    public void should_be_mentioned_in_the_results(String string) {
+    @Then("the {string} should be mentioned in the results")
+    public void should_be_mentioned_in_the_results(String nameAnimal) {
+
         google = new GooglePages(DriverFactory.getDriver());
         String searchResult = google.getTitle();
-            Assert.assertTrue(searchResult.contains(string));
+            Assert.assertTrue(searchResult.contains(nameAnimal));
 
 
     }

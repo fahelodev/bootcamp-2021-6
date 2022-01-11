@@ -25,14 +25,15 @@ public class GooglePages extends SeleniumBaseDyanez {
 
     // Metodos KeywordDriven
 
+
     public void navigateToGoogle(){
 
         navigateTo("https://www.google.cl");
     }
 
-    public void enterSearchCriteria(String criteria) throws InterruptedException {
-        //clickElement(searchTextField);
-        writeTextWithEscape(searchTextField,criteria);
+
+    public void enterSearchCriteria(String nameAnimal) throws InterruptedException {
+        writeTextWithEscape(searchTextField,nameAnimal);
 
     }
 
@@ -42,6 +43,7 @@ public class GooglePages extends SeleniumBaseDyanez {
     }
 
     public String validateTextCart(){
+
         return textFromElement(firtsResults);
     }
 
