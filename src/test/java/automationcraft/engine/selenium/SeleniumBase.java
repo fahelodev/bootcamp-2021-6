@@ -3,15 +3,19 @@ package automationcraft.engine.selenium;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Instant;
 import java.util.List;
 
 /**
  * Clase Base de Selenium, para poder enmascarar
  * la version de Selenium
- * @responsable eduardo.araya
+ * @responsable encargado framework
  */
 public class SeleniumBase {
 
@@ -89,11 +93,22 @@ public class SeleniumBase {
      * @return : verdadero o falso
      */
     public Boolean isDisplayed(By locator) {
-        try {
+            implicitWait(locator);
             return driver.findElement(locator).isDisplayed();
-        } catch (org.openqa.selenium.NoSuchElementException e) {
-            return false;
-        }
+    }
+
+    public void implicitWait(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(locator)));
+    }
+
+    public void explicitWait(int millis) throws InterruptedException {
+        Thread.sleep(millis);
+    }
+
+    public Boolean isEnabled(By locator) {
+            implicitWait(locator);
+            return driver.findElement(locator).isEnabled();
     }
 
     /**
@@ -104,9 +119,10 @@ public class SeleniumBase {
         driver.get(url);
     }
 
-    public String getTitle(){
+    public String getTitle(String url){
         return driver.getTitle();
     }
+
 
 
 
