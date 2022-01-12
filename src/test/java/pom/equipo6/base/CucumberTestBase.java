@@ -18,7 +18,7 @@ public class CucumberTestBase {
         WebDriverManager.chromedriver().setup();
     }
 
-    @Before(order = 1)
+    @Before(order = 1)//Caracteristica que tiene un orden
     public void setupDriver(){
         driver = new ChromeDriver();
         //Borrar todas las cookies

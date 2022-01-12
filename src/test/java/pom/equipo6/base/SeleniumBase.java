@@ -39,7 +39,6 @@ public class SeleniumBase {
 
     public void texto(By localizador) {
         encontrarElementoWeb(localizador).getText();
-
     }
     public void ingresarTexto(By localizador, String texto){ encontrarElementoWeb(localizador).sendKeys(texto);}
 
