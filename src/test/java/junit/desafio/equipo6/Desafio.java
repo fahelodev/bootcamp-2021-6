@@ -1,6 +1,7 @@
-package desafio.equipo6;
+package junit.desafio.equipo6;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import junit.desafio.equipo4.Herramientas;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -8,10 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
-import static desafio.equipo4.Herramientas.changeTab;
+import java.util.concurrent.TimeUnit;
 
 public class Desafio {
 
@@ -51,7 +50,7 @@ public class Desafio {
         driver.findElement(By.xpath("//div[@class='sbox-button-container']")).click();
         // Seleccionar el primer un hotel de la lista
         driver.findElement(By.xpath("//div[@title='Riu Plaza España']")).click();
-        changeTab(driver, 10);
+        Herramientas.changeTab(driver, 10);
 
         // En Comentarios sobre este alojamiento marcar, Ordenar por "Menor Puntaje"
         driver.findElement(By.xpath("//select[@id='jr-eva-select'] //option[@value='overall_rating_asc']")).click();
@@ -95,7 +94,7 @@ public class Desafio {
 
         //Ingresamos al "Hotel Club La Serena, La Serena, Chile"
         driver.findElement(By.xpath("//div[@class='eva-3-pricebox-cluster -responsive']")).click();
-        changeTab(driver, 10);
+        Herramientas.changeTab(driver, 10);
         // Validar si el Hotel está agotado y presiorar en botón "Ver otros alojamientos"
         Thread.sleep(3000);
         String texto = driver.findElement(By.xpath("//h3[@class='eva-3-h3']")).getText();
@@ -110,7 +109,7 @@ public class Desafio {
 
         // Seleccionar el hotel "Cabañas Campanario" de la lista"
         driver.findElement(By.xpath("//div[@class='cluster-content-wrapper']")).click();
-        changeTab(driver, 10);
+        Herramientas.changeTab(driver, 10);
 
         // Validar que hotel "Cabañas Campanario" esta disponible para reservas"
         driver.findElement(By.xpath("//em[@class='btn-text']")).click();
@@ -163,11 +162,11 @@ public class Desafio {
         driver.findElement(By.xpath("//div[@class='sbox-button-container']")).click();
 
         // Ingresamos a el hotel "Loreine Hotel"
-        Thread.sleep(6000);
+        Thread.sleep(5000);
         driver.findElement(By.xpath("(//div[@class='promotion-wrapper'])[1]")).click();
 
         // Cambiamos de ventana
-        changeTab(driver, 10);
+        Herramientas.changeTab(driver, 10);
 
         // Filtramos reserva flexible.
         Thread.sleep(2000);
@@ -199,7 +198,7 @@ public class Desafio {
         // Seleccionar las "7 noches" predefinidas
         driver.findElement(By.xpath("//div[text()='7 NOCHES']")).click();
         // Cambiamos de ventana
-        changeTab(driver, 10);
+        Herramientas.changeTab(driver, 10);
 
         // Marcar la casilla "5 estrellas"
         driver.findElement(By.xpath("(//i[contains(@class,'checkbox-check eva-3-icon-checkmark')])[5]")).click();

@@ -1,4 +1,4 @@
-package desafio.equipo5;
+package junit.desafio.equipo5;
 
 //Librerias importadas
 import io.github.bonigarcia.wdm.WebDriverManager;

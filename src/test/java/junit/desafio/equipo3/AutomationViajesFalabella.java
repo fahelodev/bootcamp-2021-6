@@ -1,4 +1,4 @@
-package desafio.equipo3;
+package junit.desafio.equipo3;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;

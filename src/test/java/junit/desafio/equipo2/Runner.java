@@ -1,4 +1,4 @@
-package desafio.equipo2;
+package junit.desafio.equipo2;
 
 import junit.framework.JUnit4TestAdapter;
 import junit.framework.TestSuite;

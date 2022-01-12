@@ -1,4 +1,4 @@
-package desafio.equipo4;
+package junit.desafio.equipo4;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
@@ -10,9 +10,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static desafio.equipo4.Herramientas.*;
-import java.time.Duration;
-import static desafio.equipo4.Herramientas.changeTab;
+
+import static junit.desafio.equipo4.Herramientas.changeTab;
 
 
 public class Paquetes {
