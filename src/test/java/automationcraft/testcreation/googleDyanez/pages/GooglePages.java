@@ -1,6 +1,5 @@
-package automationcraft.testcreation.google.pages;
+package automationcraft.testcreation.googleDyanez.pages;
 
-import automationcraft.engine.selenium.SeleniumBase;
 import automationcraft.engine.selenium.SeleniumBaseDyanez;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -11,16 +11,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 
+
 import java.util.List;
 import java.util.Set;
-
-
 
 public class SeleniumBaseDyanez {
     protected static WebDriver driver;
     private static WebDriverWait wait;
     private static Actions action;
-
 
     public SeleniumBaseDyanez(WebDriver driver){
         SeleniumBaseDyanez.driver = driver;
@@ -44,7 +42,6 @@ public class SeleniumBaseDyanez {
     private WebElement Find (String locator){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
     }
-
 
     //click in element
     public void clickElement(String locator){
@@ -74,28 +71,30 @@ public class SeleniumBaseDyanez {
         Select dropdown = new Select (Find(locator));
 
 
+
         dropdown.selectByValue(valueToSelect);
 
 
     }
-
 
     public void validationText(String localizator, String text){
         Assert.assertEquals(text, Find(localizator).getText());
     }
 
 
+
+
+
+
+
     public void selectFromDropdownByIndex(String locator, int valueToSelect){
         Select dropdown = new Select (Find(locator));
-
 
         dropdown.selectByIndex(valueToSelect);
     }
 
-
     public void selectFromDropdownByText(String locator, String valueToSelect){
         Select dropdown = new Select (Find(locator));
-
 
         dropdown.selectByVisibleText(valueToSelect);
     }
@@ -119,9 +118,13 @@ public class SeleniumBaseDyanez {
     }
 
 
+
+
+
+
+
     //get list of result of element
     public List<WebElement> bringMeAllElements(String locator){
-
 
         return driver.findElements(By.xpath(locator));
     }
@@ -131,6 +134,7 @@ public class SeleniumBaseDyanez {
     public String getTitle() {
         return driver.getTitle();
     }
+
 
 
     public boolean elementIsDisplayed(String locator){
@@ -149,6 +153,7 @@ public class SeleniumBaseDyanez {
 
 
 }
+
 
 
 
