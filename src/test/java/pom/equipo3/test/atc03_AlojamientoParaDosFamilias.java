@@ -1,8 +1,8 @@
-package pom.mentoria.equipo3.test;
+package pom.equipo3.test;
 
 import org.junit.Test;
-import pom.mentoria.base.TestBase;
-import pom.mentoria.equipo3.pages.act03HomePage;
+import pom.equipo3.base.TestBase;
+import pom.equipo3.pages.act03HomePage;
 
 public class atc03_AlojamientoParaDosFamilias extends TestBase {
 

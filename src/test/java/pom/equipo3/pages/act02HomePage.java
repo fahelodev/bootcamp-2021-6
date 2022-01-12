@@ -1,4 +1,4 @@
-package pom.mentoria.equipo3.pages;
+package pom.equipo3.pages;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pom.mentoria.equipo3.base.SeleniumBase;
+import pom.equipo3.base.SeleniumBase;
 
 public class act02HomePage extends SeleniumBase {
 

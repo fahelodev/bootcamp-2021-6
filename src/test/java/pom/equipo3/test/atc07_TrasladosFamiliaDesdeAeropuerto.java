@@ -1,8 +1,8 @@
-package pom.mentoria.equipo3.test;
+package pom.equipo3.test;
 
 import org.junit.Test;
-import pom.mentoria.equipo3.base.TestBase;
-import pom.mentoria.equipo3.pages.act07HomePage;
+import pom.equipo3.base.TestBase;
+import pom.equipo3.pages.act07HomePage;
 
 public class atc07_TrasladosFamiliaDesdeAeropuerto extends TestBase {
 

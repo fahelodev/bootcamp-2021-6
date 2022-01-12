@@ -1,7 +1,7 @@
-package pom.mentoria.equipo3.test;
+package pom.equipo3.test;
 import org.junit.Test;
-import pom.mentoria.base.TestBase;
-import pom.mentoria.equipo3.pages.act01HomePage;
+import pom.equipo3.base.TestBase;
+import pom.equipo3.pages.act01HomePage;
 
 
 public class act01_AlojamientoSinFechaPrevista extends TestBase {

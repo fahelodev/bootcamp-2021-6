@@ -1,11 +1,10 @@
-package pom.mentoria.equipo3.base;
+package pom.equipo3.base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -55,10 +54,6 @@ public class SeleniumBase {
     //accion -> void
     public void clickear(By localizador){
         driver.findElement(localizador).click();
-    }
-
-    public void presionarTecla(By localizador){
-        driver.findElement(localizador).sendKeys(Keys.RETURN);
     }
 
     //accion -> select
