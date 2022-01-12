@@ -31,8 +31,6 @@ public class Paquetes {
         driver.get("http://www.viajesfalabella.cl");
     }
 
-
-    //TODO: Refactorizar duration.ofSeconds
     @Test
     public void atc01PaqueteSugerido() {
 
