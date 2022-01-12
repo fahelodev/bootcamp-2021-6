@@ -1,22 +1,14 @@
 package automationcraft.engine.selenium;
 
-
 import org.openqa.selenium.By;
-<<<<<<< HEAD
 import org.openqa.selenium.Keys;
-=======
 import org.openqa.selenium.NoSuchElementException;
->>>>>>> 85b885f5f8b88cb71ced88f045c4e972f3b26801
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-<<<<<<< HEAD
 import java.util.ArrayList;
-=======
 import java.time.Instant;
->>>>>>> 85b885f5f8b88cb71ced88f045c4e972f3b26801
 import java.util.List;
 
 /**
@@ -127,21 +119,5 @@ public class SeleniumBase {
         WebDriverWait espera = new WebDriverWait(driver,tiempo);
         espera.until(ExpectedConditions.visibilityOfElementLocated(localizador));
     }
-    //Espera explicita hasta elemento clickeable
-    public void esperarElementoClickeable (int tiempo,By localizador){
-        WebDriverWait espera = new WebDriverWait(driver,tiempo);
-        espera.until(ExpectedConditions.elementToBeClickable(localizador));
-    }
-
-    //Espera explicita hasta que exista nueva ventana
-    public void esperarNuevaVentana(int tiempo){
-        WebDriverWait espera = new WebDriverWait(driver,tiempo);
-        espera.until(ExpectedConditions.numberOfWindowsToBe(2));
-    }
-
-    public void typeEnter(By locator){
-        driver.findElement(locator).sendKeys(Keys.ENTER);
-    }
-
 
 }
