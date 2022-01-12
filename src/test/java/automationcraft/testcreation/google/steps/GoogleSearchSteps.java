@@ -15,6 +15,8 @@ public class GoogleSearchSteps  {
     protected GooglePages google;
 
 
+    GooglePages googlePages;
+
     @Given("that I have gone to the Google page")
     public void that_i_have_gone_to_the_google_page() {
         google = new GooglePages(DriverFactory.getDriver());
@@ -42,6 +44,26 @@ public class GoogleSearchSteps  {
         String searchResult = google.getTitle();
             Assert.assertTrue(searchResult.contains(nameAnimal));
 
+        googlePages = new GooglePages(DriverFactory.getDriver());
+        googlePages.goToGoogleHome();
+    }
+
+    @When("I add {string} to the search box")
+    public void i_add_to_the_search_box(String string) {
+        googlePages = new GooglePages(DriverFactory.getDriver());
+        googlePages.addTextGoogleBar(string);
+    }
+
+    @When("click the Search Button")
+    public void click_the_search_button() throws InterruptedException {
+        googlePages = new GooglePages(DriverFactory.getDriver());
+        googlePages.enterGoogleBar();
+    }
+
+    @Then("{string} should be mentioned in the results")
+    public void should_be_mentioned_in_the_results(String string) {
+        googlePages = new GooglePages(DriverFactory.getDriver());
+        googlePages.validation(string);
 
     }
 

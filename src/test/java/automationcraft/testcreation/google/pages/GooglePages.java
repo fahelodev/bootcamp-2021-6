@@ -1,7 +1,10 @@
 package automationcraft.testcreation.google.pages;
 
 import automationcraft.engine.selenium.SeleniumBase;
-import automationcraft.engine.selenium.SeleniumBaseDyanez;
+
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -24,6 +27,8 @@ public class GooglePages extends SeleniumBaseDyanez {
     }
 
     // Metodos KeywordDriven
+    public void goToGoogleHome(){goToUrl(URL);}
+
 
 
     public void navigateToGoogle(){
@@ -45,12 +50,24 @@ public class GooglePages extends SeleniumBaseDyanez {
     public String validateTextCart(){
 
         return textFromElement(firtsResults);
+
+    public void addTextGoogleBar(String inputText){
+        click(googleBar);
+        type(inputText, googleBar);
+        type(String.valueOf(Keys.ESCAPE),googleBar);
+    }
+
+    public void enterGoogleBar() throws InterruptedException {
+        click(btn_googleBar);
+        Thread.sleep(2000);
+
     }
 
     public void validation(String inputText){
         String result = getTitle();
         Assert.assertTrue(result.contains(inputText));
     }
+
 
 
 
@@ -64,8 +81,5 @@ public class GooglePages extends SeleniumBaseDyanez {
         return stringFromList;
 
     }
-
-
-
 
 }
