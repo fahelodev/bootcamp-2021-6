@@ -55,7 +55,7 @@ public class CarritoDeCompraSteps {
 
     @When("el cliente introduce un número de tarjeta CMR inválido")
     public void elClienteIntroduceUnNúmeroDeTarjetaCMRInválido() {
-        
+
     }
 
     @Then("se despliega un mensaje de error en el carrito que dice {string}")
