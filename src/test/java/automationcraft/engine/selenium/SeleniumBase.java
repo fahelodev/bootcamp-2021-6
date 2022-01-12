@@ -1,6 +1,7 @@
 package automationcraft.engine.selenium;
 
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -112,6 +113,10 @@ public class SeleniumBase {
 
     public String getTitle(String url){
         return driver.getTitle();
+    }
+
+    public void validacionText(By localizador, String text){
+        Assert.assertEquals(text, driver.findElement(localizador).getText());
     }
 
 
