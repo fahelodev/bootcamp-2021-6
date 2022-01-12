@@ -4,7 +4,11 @@ package automationcraft.engine.selenium;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 /**
@@ -64,6 +68,8 @@ public class SeleniumBase {
      * @param locator : Objeto By del repositorio
      */
     public void click(By locator){
+        WebDriverWait espera = new WebDriverWait(driver, 2);
+        espera.until(ExpectedConditions.elementToBeClickable(locator));
         driver.findElement(locator).click();
     }
 
@@ -95,14 +101,8 @@ public class SeleniumBase {
         driver.get(url);
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return driver.getTitle();
     }
-
-
-
-
-
-
 
 }
