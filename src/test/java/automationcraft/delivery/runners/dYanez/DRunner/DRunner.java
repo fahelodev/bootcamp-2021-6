@@ -9,7 +9,7 @@ import org.testng.annotations.DataProvider;
         glue = {"automationcraft.testcreation.dYanez.steps","automationcraft.engine.bdd"},
         plugin = {"pretty","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "timeline:test-output-thread"},
-        tags = "@01"
+        tags = ""
 )
 public class DRunner extends AbstractTestNGCucumberTests {
     @Override
