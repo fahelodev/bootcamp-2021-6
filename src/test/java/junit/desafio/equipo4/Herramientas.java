@@ -1,4 +1,4 @@
-package desafio.equipo4;
+package junit.desafio.equipo4;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
