@@ -12,10 +12,6 @@ Feature: Google Search
       |nameAnimal |
       |cats       |
       |dogs       |
-
-#  Scenario: Standard Search Two
-#    Given that I have gone to the Google page
-#    When I add "dogs" to the search box
-#    And click the Search Button
-#    Then "dogs" should be mentioned in the results
-
+      #|elephants  |
+      #|pigs       |
+      #|birs       |
