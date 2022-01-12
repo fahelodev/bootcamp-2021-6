@@ -1,6 +1,7 @@
 package automationcraft.testcreation.google.pages;
 
 import automationcraft.engine.selenium.SeleniumBase;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class GooglePages extends SeleniumBase {
@@ -10,6 +11,10 @@ public class GooglePages extends SeleniumBase {
 
     //Atraibutos o Localizaodres
 
+
     // Metodos KeywordDriven
+
+
+
 
 }

@@ -9,6 +9,7 @@ public class GoogleSearchSteps {
     @Given("that I have gone to the Google page")
     public void that_i_have_gone_to_the_google_page() {
         System.out.println("Configurado");
+
     }
 
     @When("I add {string} to the search box")
