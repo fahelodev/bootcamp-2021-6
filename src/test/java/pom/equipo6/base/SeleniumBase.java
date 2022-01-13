@@ -1,4 +1,4 @@
-package pom.mentoria.base;
+package pom.equipo6.base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -10,25 +10,25 @@ import java.util.List;
 public class SeleniumBase {
 
     //Atributos
-    WebDriver driver;
+    protected WebDriver driver;
 
+    //Constructor
     public SeleniumBase(WebDriver driver) {
         this.driver = driver;
     }
 
     //Metodos Wrapper - Envoltorios
-
-    //retorno ->  en su declaracion debe indicar que Objeto retorna
-    public WebElement encontrarElementoWeb(By localizador){
+    //Funciones de retorno ->  en su declaracion debe indicar que Objeto retorna
+    public WebElement encontrarElementoWeb(By localizador){//encuentra los elementos a travez de variable localizador
         return driver.findElement(localizador);
 
     }
-
+    //Lista
     public List<WebElement> encontrarElementosWeb(By localizador){
         return driver.findElements(localizador);
     }
 
-    //accion -> void
+    //Funciones de accion -> void
     public void obtenerUrl(String URL){
         driver.get(URL);
     }
@@ -37,14 +37,20 @@ public class SeleniumBase {
         encontrarElementoWeb(localizador).click();
     }
 
+    public void texto(By localizador) {
+        encontrarElementoWeb(localizador).getText();
+    }
+    public void ingresarTexto(By localizador, String texto){ encontrarElementoWeb(localizador).sendKeys(texto);}
+
+    public void enter(By localizador){ encontrarElementoWeb(localizador).sendKeys(Keys.ENTER);}
+
     public void teclear(By localizador, String text) {
         driver.findElement(localizador).sendKeys(text);
     }
 
-    public void enviarEnter(By localizador){
-        driver.findElement(localizador).sendKeys(Keys.ENTER);
+    public String sacarTexto(By localizador){return encontrarElementoWeb(localizador).getText();}
 
-    }
+
 
 
 
