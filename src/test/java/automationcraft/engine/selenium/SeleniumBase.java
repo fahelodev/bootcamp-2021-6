@@ -124,6 +124,10 @@ public class SeleniumBase {
         return driver.getTitle();
     }
 
+    public void validacionText(By localizador, String text){
+        Assert.assertEquals(text, driver.findElement(localizador).getText());
+    }
+
 
     //Espera explicita hasta elemento visible
     public void esperarElementoVisible (int tiempo,By localizador){

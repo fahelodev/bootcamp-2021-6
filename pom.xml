@@ -109,7 +109,7 @@
                 <version>${maven.surefire.version}</version>
                 <configuration>
                     <includes>
-                        <include>**/**NMRunner.java</include>
+                        <include>**/**PRunner.java</include>
                     </includes>
                     <parallel>methods</parallel>
                     <threadCount>4</threadCount>
