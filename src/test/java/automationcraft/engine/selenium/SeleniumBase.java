@@ -1,14 +1,13 @@
 package automationcraft.engine.selenium;
 
-
-import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import java.util.ArrayList;
 import java.time.Instant;
 import java.util.List;
 
@@ -55,6 +54,10 @@ public class SeleniumBase {
         return driver.findElement(locator).getText();
     }
 
+    public String getText(WebElement element){
+        return element.getText();
+    }
+
     /**
      * funcion que escribe un texto enviado a un objeto WebElement
      * @param inputText : texto a escribir
@@ -64,11 +67,17 @@ public class SeleniumBase {
         driver.findElement(locator).sendKeys(inputText);
     }
 
+    public void sendEnter(By locator){
+        driver.findElement(locator).sendKeys(Keys.ENTER);
+    }
+
     /**
      * funcion que hace 1 click en un WebElement
      * @param locator : Objeto By del repositorio
      */
     public void click(By locator){
+        WebDriverWait espera = new WebDriverWait(driver, 2);
+        espera.until(ExpectedConditions.elementToBeClickable(locator));
         driver.findElement(locator).click();
     }
 
@@ -111,7 +120,7 @@ public class SeleniumBase {
         driver.get(url);
     }
 
-    public String getTitle(String url){
+    public String getTitle(){
         return driver.getTitle();
     }
 
@@ -120,10 +129,13 @@ public class SeleniumBase {
     }
 
 
-
-
-
-
-
+    //Espera explicita hasta elemento visible
+    public void esperarElementoVisible (int tiempo,By localizador){
+        WebDriverWait espera = new WebDriverWait(driver,tiempo);
+        espera.until(ExpectedConditions.visibilityOfElementLocated(localizador));
+    }
 
 }
+
+
+

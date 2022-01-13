@@ -10,6 +10,8 @@ public class CarritoDeCompraSteps {
 
     CarritoDeCompraPages carritoDeCompraPages = new CarritoDeCompraPages(DriverFactory.getDriver());
 
+
+    //Background
     @Given("que estoy en la url {string}")
     public void que_estoy_en_la_url(String string) throws Exception {
         carritoDeCompraPages.validacionUrl(string);
@@ -29,13 +31,15 @@ public class CarritoDeCompraSteps {
         carritoDeCompraPages.validarDespliegueCarritoCompraWeb();
     }
 
+    //CA-01
     @When("el cliente aumenta la cantidad a pedir del producto a un número mayor de {int}")
-    public void el_cliente_aumenta_la_cantidad_a_pedir_del_producto_a_un_número_mayor_de(Integer int1) {
-
+    public void el_cliente_aumenta_la_cantidad_a_pedir_del_producto_a_un_número_mayor_de(Integer int1) throws Exception {
+        carritoDeCompraPages.validarAumentarCantidadProducto(int1);
     }
 
     @When("hace clic en {string}")
     public void hace_clic_en(String string) {
+        carritoDeCompraPages.validarActualizarCompra(string);
 
     }
 
@@ -44,11 +48,13 @@ public class CarritoDeCompraSteps {
 
     }
 
+    //CA-02
     @Then("en cada artículo que esté asociado a un producto con receta médica debe aparecer un mensaje de alerta {string}")
     public void en_cada_artículo_que_esté_asociado_a_un_producto_con_receta_médica_debe_aparecer_un_mensaje_de_alerta(String string) {
 
     }
 
+    //AC-03
     @Given("que el cliente está el en carrito de compras con al menos {int} producto")
     public void queElClienteEstáElEnCarritoDeComprasConAlMenosProducto(int arg0) {
     }
