@@ -76,6 +76,8 @@ public class SeleniumBase {
      * @param locator : Objeto By del repositorio
      */
     public void click(By locator){
+        WebDriverWait espera = new WebDriverWait(driver, 2);
+        espera.until(ExpectedConditions.elementToBeClickable(locator));
         driver.findElement(locator).click();
     }
 
@@ -118,7 +120,7 @@ public class SeleniumBase {
         driver.get(url);
     }
 
-    public String getTitle(String url){
+    public String getTitle(){
         return driver.getTitle();
     }
 
