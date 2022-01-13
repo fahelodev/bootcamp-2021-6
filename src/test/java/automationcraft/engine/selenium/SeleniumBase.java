@@ -1,13 +1,13 @@
 package automationcraft.engine.selenium;
 
-
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import java.util.ArrayList;
 import java.time.Instant;
 import java.util.List;
 
@@ -114,11 +114,10 @@ public class SeleniumBase {
         return driver.getTitle();
     }
 
-
-
-
-
-
-
+    //Espera explicita hasta elemento visible
+    public void esperarElementoVisible (int tiempo,By localizador){
+        WebDriverWait espera = new WebDriverWait(driver,tiempo);
+        espera.until(ExpectedConditions.visibilityOfElementLocated(localizador));
+    }
 
 }

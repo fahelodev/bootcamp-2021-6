@@ -15,8 +15,10 @@ public class CarritoDeCompraPages extends SeleniumBase {
     By btnAgregarCarritoBromex = By.xpath("//*[@id=\"maincontent\"]/div[2]/div[1]/div[4]/div[2]/ol/li[1]/div/div[2]/div[2]/div/div[1]/form/button");
     By btnCantidadCarrito = By.xpath("//a[3]//span[@class='counter qty']");
     By btnVerCarrito = By.xpath("//a[@id=\"top-cart-btn-checkout\"]");
+    By btnAumentarCantidad = By.xpath("//input[@id='cart-2598860-qty']");
 
 
+    //Comportamientos
     public void validacionUrl(String url) throws Exception {
         goToUrl(url);
     }
@@ -38,6 +40,16 @@ public class CarritoDeCompraPages extends SeleniumBase {
         click(btnVerCarrito);
     }
 
+    public void validarAumentarCantidadProducto(int cantidad) throws Exception {
+        if(!isDisplayed(btnAumentarCantidad)) {
+            throw new Exception("Elemento no Encontrado");
+        }
+        type(String.valueOf(cantidad), btnAumentarCantidad);
+    }
 
+    public void validarActualizarCompra(String string) {
+        By btnActualizarCompra = By.xpath("//button[@name='update_cart_action' and @title='"+string+ "']");
+        click(btnActualizarCompra);
+    }
 
 }
