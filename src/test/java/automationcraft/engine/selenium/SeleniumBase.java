@@ -1,20 +1,30 @@
 package automationcraft.engine.selenium;
 
 import org.openqa.selenium.By;
+<<<<<<< HEAD
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+=======
+>>>>>>> f30a182f5f34c9a61d5d331efd57bfab2a7077e1
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.time.Instant;
+=======
+import java.time.Duration;
+>>>>>>> f30a182f5f34c9a61d5d331efd57bfab2a7077e1
 import java.util.List;
 
 /**
  * Clase Base de Selenium, para poder enmascarar
  * la version de Selenium
- * @responsable encargado framework
+ * @responsable eduardo.araya
  */
 public class SeleniumBase {
 
@@ -81,13 +91,10 @@ public class SeleniumBase {
      *
      * @param locator : Objeto By del repositorio
      */
-<<<<<<< HEAD
+
     public void click(By locator){
         WebDriverWait espera = new WebDriverWait(driver, 2);
         espera.until(ExpectedConditions.elementToBeClickable(locator));
-=======
-    public void click(By locator) {
->>>>>>> 1adab6b6401189b004df320cd2a81cd84b0dd5a8
         driver.findElement(locator).click();
     }
 
@@ -105,22 +112,11 @@ public class SeleniumBase {
      * @return : verdadero o falso
      */
     public Boolean isDisplayed(By locator) {
-            implicitWait(locator);
+        try {
             return driver.findElement(locator).isDisplayed();
-    }
-
-    public void implicitWait(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver,5);
-        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(locator)));
-    }
-
-    public void explicitWait(int millis) throws InterruptedException {
-        Thread.sleep(millis);
-    }
-
-    public Boolean isEnabled(By locator) {
-            implicitWait(locator);
-            return driver.findElement(locator).isEnabled();
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
     }
 
     /**
@@ -133,32 +129,24 @@ public class SeleniumBase {
     }
 
 <<<<<<< HEAD
-    public String getTitle(){
-        return driver.getTitle();
-    }
 
     public void validacionText(By localizador, String text){
         Assert.assertEquals(text, driver.findElement(localizador).getText());
     }
 
-
+    public String getTitle() {
+        return driver.getTitle();
+    }
     //Espera explicita hasta elemento visible
     public void esperarElementoVisible (int tiempo,By localizador){
         WebDriverWait espera = new WebDriverWait(driver,tiempo);
         espera.until(ExpectedConditions.visibilityOfElementLocated(localizador));
     }
-
-}
-
-
-
 =======
     public String getTitle() {
         return driver.getTitle();
     }
-    public String getTitle(String url){
-        return driver.getTitle();
-    }
+>>>>>>> f30a182f5f34c9a61d5d331efd57bfab2a7077e1
 
 }
->>>>>>> 1adab6b6401189b004df320cd2a81cd84b0dd5a8
+
