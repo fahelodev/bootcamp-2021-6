@@ -54,6 +54,10 @@ public class SeleniumBase {
         return driver.findElement(locator).getText();
     }
 
+    public String getText(WebElement element){
+        return element.getText();
+    }
+
     /**
      * funcion que escribe un texto enviado a un objeto WebElement
      * @param inputText : texto a escribir
@@ -61,6 +65,10 @@ public class SeleniumBase {
      */
     public void type(String inputText, By locator){
         driver.findElement(locator).sendKeys(inputText);
+    }
+
+    public void sendEnter(By locator){
+        driver.findElement(locator).sendKeys(Keys.ENTER);
     }
 
     /**
