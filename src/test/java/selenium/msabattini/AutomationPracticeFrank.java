@@ -29,7 +29,7 @@ public class AutomationPracticeFrank {
     public void atc01_AgregarReview() throws InterruptedException{
 
         String review = "a very good productd";
-        WebDriverWait espera_ = new WebDriverWait(driver, Duration.ofSeconds(4));
+        WebDriverWait espera_ = new WebDriverWait(driver, 5);
 
         //Ingresar producto a buscar y dar enter
         driver.findElement(By.xpath("//*[@id=\"woocommerce-product-search-field-0\"]")).sendKeys("CAP");

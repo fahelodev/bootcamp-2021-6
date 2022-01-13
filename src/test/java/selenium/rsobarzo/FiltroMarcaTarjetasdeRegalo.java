@@ -40,7 +40,7 @@ public class FiltroMarcaTarjetasdeRegalo {
         driver.get("https://www.amazon.com/-/es/");
         driver.findElement(By.xpath("//*[@id=\"nav-hamburger-menu\"]/span")).click();
 
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(3));
+        WebDriverWait espera = new WebDriverWait(driver, 5);
         espera.until(visibilityOfElementLocated(By.xpath("//*[@id=\"hmenu-content\"]/ul[1]/li[7]/a"))).click();
 
         espera.until(visibilityOfElementLocated(By.xpath("//*[@id=\"hmenu-content\"]/ul[5]/li[3]/a"))).click();

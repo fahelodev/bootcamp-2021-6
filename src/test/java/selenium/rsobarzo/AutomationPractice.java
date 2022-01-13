@@ -1,7 +1,7 @@
 package selenium.rsobarzo;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -99,7 +99,7 @@ public class AutomationPractice {
 
         driver.findElement(By.cssSelector("#search_query_top")).sendKeys(productoBusqueda);
 
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait espera = new WebDriverWait(driver, 5);
         espera.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#index > div.ac_results")));
         driver.findElement(By.cssSelector("#search_query_top")).sendKeys(Keys.DOWN);
         driver.findElement(By.cssSelector("#search_query_top")).sendKeys(Keys.ENTER);
@@ -120,7 +120,7 @@ public class AutomationPractice {
         System.out.println(texto);
         driver.findElement(By.xpath("//*[@id=\"color_7\"]")).click();
         System.out.println("paso x cambio de color");
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait espera = new WebDriverWait(driver, 5);
         driver.findElement(By.xpath("//*[@id=\"center_column\"]/ul/li/div/div[2]/div[2]/a[1]/span")).click();
 
         System.out.println("add to cart");
@@ -130,7 +130,7 @@ public class AutomationPractice {
     @Test
     public void atc01_AgregarReview() throws InterruptedException {
         driver.get("http://automation.frankluzon.com/");
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(3));
+        WebDriverWait espera = new WebDriverWait(driver, 5);
         //ingreamos 'CAP' en el search box.
 
         String cajaBusqueda = "CAP";

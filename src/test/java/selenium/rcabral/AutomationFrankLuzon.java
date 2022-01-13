@@ -30,7 +30,7 @@ public class AutomationFrankLuzon {
     @Test
     public void atc01_AgregarReview_xPath_Css() throws InterruptedException {
         driver.get("http://automation.frankluzon.com/");
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(4));
+        WebDriverWait espera = new WebDriverWait(driver, 5);
         //ingreamos 'CAP' en el search box.
         driver.findElement(By.xpath("//*[@id=\"woocommerce-product-search-field-0\"]")).sendKeys("CAP");
 

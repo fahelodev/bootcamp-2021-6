@@ -27,7 +27,7 @@ public class AutomationAmazon {
     @Test
     public void filtroMarcaTarjetasDeRegalo() throws InterruptedException {
         driver.get("https://www.amazon.com/");
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(4));
+        WebDriverWait espera = new WebDriverWait(driver, 5);
 
         //click en el menu
         driver.findElement(By.xpath("//*[@id='nav-hamburger-menu']")).click();

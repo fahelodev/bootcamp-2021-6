@@ -117,7 +117,7 @@ public class AutomationPractice {
         driver.get("http://automationpractice.com/");
         //2.Buscar el producto "Blouse Model demo_2"
         driver.findElement(By.cssSelector("#search_query_top")).sendKeys("Blo");
-        WebDriverWait espera = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait espera = new WebDriverWait(driver, 5);
         //Esperamos explicitamente
         espera.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#index > div.ac_results")));
         //bajamos en los resultados.
