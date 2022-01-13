@@ -42,7 +42,7 @@ public class CarritoDeCompraSteps {
     }
 
     @When("el cliente introduce un número de cupón inválido y hace clic en el botón {string}")
-    public void el_cliente_introduce_un_número_de_cupón_inválido_y_hace_clic_en_el_botón(String string) {
+    public void el_cliente_introduce_un_número_de_cupón_inválido_y_hace_clic_en_el_botón(String string) throws InterruptedException {
         carritoDeCompraPages.ingresarCodigoCupon();
     }
 

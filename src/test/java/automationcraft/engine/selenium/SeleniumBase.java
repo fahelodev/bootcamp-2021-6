@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
 import java.util.ArrayList;
 import java.time.Instant;
 import java.util.List;
@@ -81,13 +83,10 @@ public class SeleniumBase {
      *
      * @param locator : Objeto By del repositorio
      */
-<<<<<<< HEAD
+
     public void click(By locator){
         WebDriverWait espera = new WebDriverWait(driver, 2);
         espera.until(ExpectedConditions.elementToBeClickable(locator));
-=======
-    public void click(By locator) {
->>>>>>> 1adab6b6401189b004df320cd2a81cd84b0dd5a8
         driver.findElement(locator).click();
     }
 
@@ -132,16 +131,14 @@ public class SeleniumBase {
         driver.get(url);
     }
 
-<<<<<<< HEAD
-    public String getTitle(){
-        return driver.getTitle();
-    }
 
     public void validacionText(By localizador, String text){
         Assert.assertEquals(text, driver.findElement(localizador).getText());
     }
 
-
+    public String getTitle() {
+        return driver.getTitle();
+    }
     //Espera explicita hasta elemento visible
     public void esperarElementoVisible (int tiempo,By localizador){
         WebDriverWait espera = new WebDriverWait(driver,tiempo);
@@ -150,15 +147,3 @@ public class SeleniumBase {
 
 }
 
-
-
-=======
-    public String getTitle() {
-        return driver.getTitle();
-    }
-    public String getTitle(String url){
-        return driver.getTitle();
-    }
-
-}
->>>>>>> 1adab6b6401189b004df320cd2a81cd84b0dd5a8

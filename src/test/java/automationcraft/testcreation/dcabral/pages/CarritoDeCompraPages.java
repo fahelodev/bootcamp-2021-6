@@ -43,7 +43,7 @@ public class CarritoDeCompraPages extends SeleniumBase {
 
     }
 
-    public void ingresarCodigoCupon(){
+    public void ingresarCodigoCupon() throws InterruptedException {
         type("123123123", cuponBox);
         click(aplicarCupon);
     }
