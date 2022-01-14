@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "properties": {
+    "country": {
+      "type": "string"
+      },
+    "provinces": {
+      "type": "array",
+      "properties": {
+        "province": {
+          "type": "string",
+          "confirmed": "number"
+        }
+      }
+    }
+  }
+}
