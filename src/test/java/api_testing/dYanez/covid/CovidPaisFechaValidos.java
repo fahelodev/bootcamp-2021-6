@@ -106,20 +106,38 @@ public class CovidPaisFechaValidos {
     @Test
     public void ATC_Ubicacion_Original()
     {
-
         String respuesta = given().header("x-rapidapi-key",this.key).
                 and().header("x-rapidapi-host",this.host).
                 param("name",this.name).
                 param("date", this.date).
                 get("report/country/name/").asPrettyString();
 
-        JsonPath j = new JsonPath(respuesta.toString());
+        JsonPath j = new JsonPath(respuesta);
         String zip = j.getString("country");
-        System.out.println(zip);
-
-
+        Assert.assertEquals(zip,"[Chile]");
 
     }
 
+    @Test
+    public void ATC_Estructura()
+    {
+        File file = new File("src/test/java/api_testing/dYanez/covid/covid-schema.json");
+        FileInputStream fileInputStream = null;
+        try {
+            fileInputStream = new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        given().header("x-rapidapi-key",this.key).
+                and().header("x-rapidapi-host",this.host).
+                param("name",this.name).
+                param("date", this.date).
+                when().
+                get("/covid-schema.json").
+                then().
+                assertThat().body(matchesJsonSchema(fileInputStream));
+
+    }
 
 }
