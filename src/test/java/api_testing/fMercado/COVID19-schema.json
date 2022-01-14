@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "properties": {
+    "provinces": {
+      "type": "array",
+      "properties": {
+        "province": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "latitude": {
+    "type": "number"
+  },
+  "longitude": {
+    "type": "number"
+  },
+  "date": {
+    "type": "date"
+  }
+}
