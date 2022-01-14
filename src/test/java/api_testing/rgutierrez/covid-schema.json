@@ -1,0 +1,1574 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "country": {
+          "type": "string"
+        },
+        "provinces": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "province": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "integer"
+                },
+                "recovered": {
+                  "type": "integer"
+                },
+                "deaths": {
+                  "type": "integer"
+                },
+                "active": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "province",
+                "confirmed",
+                "recovered",
+                "deaths",
+                "active"
+              ]
+            }
+          ]
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "date": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "country",
+        "provinces",
+        "latitude",
+        "longitude",
+        "date"
+      ]
+    }
+  ]
+}
