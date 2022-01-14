@@ -14,7 +14,6 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
 
 public class Covid_tests {
-
     //variables del encabezado
     String key;
     String host;
