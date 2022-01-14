@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://example.com/example.json",
+  "items": {
+    "id": "#/items",
+    "properties": {
+      "country": {
+        "id": "#/items/properties/country"
+      },
+      "provinces": {
+        "id": "#/items/properties/provinces",
+        "items": {
+          "id": "#/items/properties/provinces/items",
+          "properties": {
+            "province": {
+              "id": "#/items/properties/provinces/items/properties/province"
+            },
+            "confirmed": {
+              "id": "#/items/properties/provinces/items/properties/confirmed"
+            },
+            "recovered": {
+              "id": "#/items/properties/provinces/items/properties/recovered"
+            },
+            "deaths": {
+              "id": "#/items/properties/provinces/items/properties/deaths"
+            },
+            "active": {
+              "id": "#/items/properties/provinces/items/properties/active"
+            }
+          }
+        }
+      },
+      "latitude": {
+        "id": "#/items/properties/latitude"
+      },
+      "longitude": {
+        "id": "#/items/properties/longitude"
+      },
+      "date": {
+        "id": "#/items/properties/date"
+      }
+    }
+  }
+}
