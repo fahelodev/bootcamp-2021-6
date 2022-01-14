@@ -1,0 +1,43 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 30.827 s <<< FAILURE! - in TestSuite
+runScenario(automationcraft.delivery.runners.farmacia.FRunner)  Time elapsed: 2.276 s  <<< FAILURE!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //*[@id="maincontent"]/div[2]/div[1]/div[4]/div[2]/ol/li[1]/div/div[2]/div[2]/div/div[1]/form/button (tried for 2 second(s) with 500 milliseconds interval)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="maincontent"]/div[2]/div[1]/div[4]/div[2]/ol/li[1]/div/div[2]/div[2]/div/div[1]/form/button"}
+  (Session info: chrome=97.0.4692.71)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'AR-NB-599', ip: '172.16.242.107', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_202'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 97.0.4692.71, chrome: {chromedriverVersion: 97.0.4692.71 (adefa7837d02a..., userDataDir: C:\Users\FABRIC~1.FER\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:61964}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 2ba70954a5afd7db29d3d543c0724b92
+*** Element info: {Using=xpath, value=//*[@id="maincontent"]/div[2]/div[1]/div[4]/div[2]/ol/li[1]/div/div[2]/div[2]/div/div[1]/form/button}
+
+runScenario(automationcraft.delivery.runners.farmacia.FRunner)  Time elapsed: 7.853 s  <<< FAILURE!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //*[@id="maincontent"]/div[2]/div[1]/div[4]/div[2]/ol/li[1]/div/div[2]/div[2]/div/div[1]/form/button (tried for 2 second(s) with 500 milliseconds interval)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="maincontent"]/div[2]/div[1]/div[4]/div[2]/ol/li[1]/div/div[2]/div[2]/div/div[1]/form/button"}
+  (Session info: chrome=97.0.4692.71)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'AR-NB-599', ip: '172.16.242.107', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_202'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 97.0.4692.71, chrome: {chromedriverVersion: 97.0.4692.71 (adefa7837d02a..., userDataDir: C:\Users\FABRIC~1.FER\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:62044}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 9a2686fea0c4fd818af42e330f578372
+*** Element info: {Using=xpath, value=//*[@id="maincontent"]/div[2]/div[1]/div[4]/div[2]/ol/li[1]/div/div[2]/div[2]/div/div[1]/form/button}
+
+runScenario(automationcraft.delivery.runners.farmacia.FRunner)  Time elapsed: 8.229 s  <<< FAILURE!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //*[@id="maincontent"]/div[2]/div[1]/div[4]/div[2]/ol/li[1]/div/div[2]/div[2]/div/div[1]/form/button (tried for 2 second(s) with 500 milliseconds interval)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="maincontent"]/div[2]/div[1]/div[4]/div[2]/ol/li[1]/div/div[2]/div[2]/div/div[1]/form/button"}
+  (Session info: chrome=97.0.4692.71)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'AR-NB-599', ip: '172.16.242.107', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_202'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 97.0.4692.71, chrome: {chromedriverVersion: 97.0.4692.71 (adefa7837d02a..., userDataDir: C:\Users\FABRIC~1.FER\AppDa...}, goog:chromeOptions: {debuggerAddress: localhost:62079}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: ba2e66d7ea3eda633941816b6864ab19
+*** Element info: {Using=xpath, value=//*[@id="maincontent"]/div[2]/div[1]/div[4]/div[2]/ol/li[1]/div/div[2]/div[2]/div/div[1]/form/button}
+

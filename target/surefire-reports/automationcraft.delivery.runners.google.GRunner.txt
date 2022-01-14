@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: automationcraft.delivery.runners.google.GRunner
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 2.406 s <<< FAILURE! - in automationcraft.delivery.runners.google.GRunner
+runScenario(automationcraft.delivery.runners.google.GRunner)  Time elapsed: 0.126 s  <<< FAILURE!
+io.cucumber.core.runner.DuplicateStepDefinitionException: Duplicate step definitions in automationcraft.testcreation.google.steps.GoogleSearchSteps.click_the_search_button() and automationcraft.testcreation.google.steps.GoogleSearchSteps2.click_the_search_button()
+
+runScenario(automationcraft.delivery.runners.google.GRunner)  Time elapsed: 0 s  <<< FAILURE!
+io.cucumber.core.runner.DuplicateStepDefinitionException: Duplicate step definitions in automationcraft.testcreation.google.steps.GoogleSearchSteps.click_the_search_button() and automationcraft.testcreation.google.steps.GoogleSearchSteps2.click_the_search_button()
+

@@ -46,7 +46,6 @@ public class weather_datos_validos
                 param("q",this.q).
                 param("days", this.days).
                 get("/forecast.json").asPrettyString();
-
         System.out.println(respuesta);
     }
 
@@ -60,7 +59,6 @@ public class weather_datos_validos
                 when().
                 get("/forecast.json").
                 then().assertThat().statusCode(200);
-
     }
 
     @Test
@@ -99,5 +97,8 @@ public class weather_datos_validos
                 assertThat().body(matchesJsonSchema(fileInputStream));
 
     }
+
+
+
 
 }

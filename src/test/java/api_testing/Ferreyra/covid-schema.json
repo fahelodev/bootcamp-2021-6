@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "properties": {
+    "country": {
+      "type": "object"
+    },
+    "properties": {
+      "provinces": {
+        "type": "array",
+        "properties": {
+          "province": {
+            "type": "string"
+          },
+          "confirmed": {
+            "type": "number"
+          },
+          "recovered": {
+            "type": "number"
+          },
+          "deaths": {
+            "type": "number"
+          },
+          "active": {
+            "type": "number"
+          }
+        }
+      }
+    }
+
+
+  }
+}

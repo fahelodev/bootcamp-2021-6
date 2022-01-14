@@ -1,0 +1,7 @@
+automationcraft\engine\bdd\ApplicationHooks.class
+automationcraft\delivery\runners\google\GRunner.class
+automationcraft\testcreation\google\pages\GooglePages.class
+automationcraft\engine\selenium\SeleniumBase.class
+automationcraft\testcreation\google\steps\GoogleSearchSteps.class
+automationcraft\engine\properties\LoadProperties.class
+automationcraft\engine\selenium\DriverFactory.class
