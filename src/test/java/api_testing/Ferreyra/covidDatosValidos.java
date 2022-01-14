@@ -1,8 +1,5 @@
 package api_testing.Ferreyra;
-import io.restassured.module.jsv.JsonSchemaValidator;
-import io.restassured.module.jsv.JsonSchemaValidatorSettings;
 import org.junit.*;
-import org.openqa.selenium.json.Json;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,7 +11,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 
 
-public class covid19Test {
+public class covidDatosValidos {
 
         //variables del encabezado
         String key;
