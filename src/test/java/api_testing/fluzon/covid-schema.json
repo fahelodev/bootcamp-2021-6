@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Product set",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "country": {
+        "type": "string"
+      },
+      "provinces": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "province": {
+              "type": "string"
+            },
+            "confirmed": {
+              "type": "number"
+            },
+            "recovered": {
+              "type": "number"
+            },
+            "deaths": {
+              "type": "number"
+            },
+            "active": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "latitude": {
+        "type": "number"
+      },
+      "longitude": {
+        "type": "number"
+      },
+      "date": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "country",
+      "provinces",
+      "latitude",
+      "longitude",
+      "date"
+    ]
+  }
+}
