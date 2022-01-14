@@ -23,7 +23,7 @@ public class covid19Test {
         //parametros
         String name;
         String date;
-        String province;
+
 
         @Before
         public void init(){
@@ -32,7 +32,7 @@ public class covid19Test {
             //parametros
             this.date = "2020-04-01";
             this.name= "USA";
-            this.province="Alaska";
+
 
 
             //encabezados
