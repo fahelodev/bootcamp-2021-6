@@ -32,6 +32,7 @@ public class covidDatosValidos {
 
 
 
+
             //encabezados
             this.key = "65c3a8ec1emsh38db88917d7c333p1cd20ajsn923976797f86";
             this.host = "covid-19-data.p.rapidapi.com";
