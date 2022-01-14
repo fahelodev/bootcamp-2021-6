@@ -41,5 +41,4 @@ public class atc_Paquetes extends TestBase {
         paquete.setPaqueteComplejo();
         resultado.getPackageHard();
     }
-    
 }
