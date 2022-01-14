@@ -1,0 +1,7 @@
+automationcraft\delivery\runners\google\GRunner.class
+automationcraft\delivery\runners\nmarinucci\NMRunner.class
+automationcraft\testcreation\nmarinucci\pages\ParisPage.class
+automationcraft\engine\selenium\SeleniumBase.class
+automationcraft\testcreation\farmacia\pages\CarritoDeCompraPages.class
+automationcraft\testcreation\nmarinucci\steps\ParisSteps.class
+automationcraft\testcreation\farmacia\steps\CarritoDeCompraSteps.class
